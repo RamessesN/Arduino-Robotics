@@ -6,13 +6,9 @@
 1. 该实验可细分为 **LDR<sub>1</sub>** 接电源，**LDR<sub>1</sub>** 接地，**LDR<sub>2</sub>** 接电源，**LDR<sub>2</sub>** 接地4个子实验。
 
 2. 分别按如图所示进行接线:
-<div style="display: flex; justify-content: center">
-  <div style="margin-right: 10px;">
-    <img src="./Photos/Connection/GND_LDR_1.JPG" alt="GND_LDR_1" width="400">
-  </div>
-  <div>
-    <img src="./Photos/Connection/VCC_LDR_1.JPG" alt="VCC_LDR_1" width="400">
-  </div>
+<div style="display: flex; justify-content: center; gap: 10px;">
+  <img src="./Photos/Connection/GND_LDR_1.JPG" alt="GND_LDR_1" width="200">
+  <img src="./Photos/Connection/VCC_LDR_1.JPG" alt="VCC_LDR_1" width="200">
 </div>
 
 3. 通过 Arduino IDE 编写程序实现获取模拟引脚 A<sub>0</sub> 上的电压值经过模数转换(ADC)后的数值。其原理如下:  
@@ -102,22 +98,14 @@ plt.savefig("./Photos/Chart/GDN_LDR_01.png", dpi=1200)
 plt.show()
 ```
 6. 生成图像如下:
-<div style="display: flex; flex-direction: column; align-items: center;">
-  <div style="display: flex; justify-content: center; margin-bottom: 10px;">
-    <div style="margin-right: 10px;">
-      <img src="./Photos/Chart/GND_LDR_01.png" alt="GND_LDR_01" width="400">
-    </div>
-    <div>
-      <img src="./Photos/Chart/GND_LDR_02.png" alt="GND_LDR_02" width="400">
-    </div>
+<div style="display: flex; flex-direction: column; align-items: center; gap: 10px;">
+  <div style="display: flex; justify-content: center; gap: 10px;">
+    <img src="./Photos/Chart/GND_LDR_01.png" alt="GND_LDR_01" width="200">
+    <img src="./Photos/Chart/GND_LDR_02.png" alt="GND_LDR_02" width="200">
   </div>
-  <div style="display: flex; justify-content: center;">
-    <div style="margin-right: 10px;">
-      <img src="./Photos/Chart/VCC_LDR_01.png" alt="VCC_LDR_01" width="400">
-    </div>
-    <div>
-      <img src="./Photos/Chart/VCC_LDR_02.png" alt="VCC_LDR_02" width="400">
-    </div>
+  <div style="display: flex; justify-content: center; gap: 10px;">
+    <img src="./Photos/Chart/VCC_LDR_01.png" alt="VCC_LDR_01" width="200">
+    <img src="./Photos/Chart/VCC_LDR_02.png" alt="VCC_LDR_02" width="200">
   </div>
 </div>
 
@@ -127,13 +115,9 @@ plt.show()
 1. 该实验可细分为 **LDR<sub>1</sub> & LDR<sub>2</sub>** 同时接地，**LDR<sub>1</sub> & LDR<sub>2</sub>** 同时接电源2个子实验。
 
 2. 分别按如图所示进行接线:
-<div style="display: flex; justify-content: center">
-  <div style="margin-right: 10px;">
-    <img src="./Photos/Connection/VCC_LDR_BOTH.JPG" alt="GND_LDR_1" width="400">
-  </div>
-  <div>
-    <img src="./Photos/Connection/GND_LDR_BOTH.JPG" alt="VCC_LDR_1" width="400">
-  </div>
+<div style="display: flex; justify-content: center; gap: 10px;">
+  <img src="./Photos/Connection/VCC_LDR_BOTH.JPG" alt="GND_LDR_1" width="200">
+  <img src="./Photos/Connection/GND_LDR_BOTH.JPG" alt="VCC_LDR_1" width="200">
 </div>
 
 3. 通过 Arduino IDE 编写程序实现获取模拟引脚 A<sub>0</sub> & A<sub>1</sub> 上的电压值经过模数转换(ADC)后的数值。
@@ -219,13 +203,9 @@ plt.savefig("./Photos/Chart/VCC_LDR_Both.png", dpi=1200)
 plt.show()
 ```
 6. 生成图像如下:
-<div style="display: flex; justify-content: center">
-  <div style="margin-right: 10px;">
-    <img src="./Photos/Chart/VCC_LDR_Both.png" alt="GND_LDR_1" width="400">
-  </div>
-  <div>
-    <img src="./Photos/Chart/GND_LDR_Both.png" alt="VCC_LDR_1" width="400">
-  </div>
+<div style="display: flex; justify-content: center; gap: 10px;">
+  <img src="./Photos/Chart/VCC_LDR_Both.png" alt="GND_LDR_1" width="200">
+  <img src="./Photos/Chart/GND_LDR_Both.png" alt="VCC_LDR_1" width="200">
 </div>
 
 ## 3. LDR在接"电源/地"时的"阻值-时间"变化曲线 [固定电阻阻值: $270\Omega$]
@@ -235,6 +215,8 @@ plt.show()
 <div style="display: flex; justify-content: center">
     <img src="./Photos/Connection/VCC_270_LDR.JPG" alt="GND_LDR_1" width="250">
 </div>
+2. 
+
 
 3. 通过 Arduino IDE 编写程序实现获取模拟引脚 A<sub>0</sub> 上的电压值经过模数转换(ADC)后的数值。
 4. 通过 IDE 的 Serial Monitor 获取到对应的 sensorValue, 具体如下:  
@@ -296,13 +278,13 @@ plt.show()
     <img src="./Photos/Connection/VCC_10k_LDR.JPG" alt="GND_LDR_1" width="250">
 </div>
 
-3. 通过 Arduino IDE 编写程序实现获取模拟引脚 A<sub>0</sub> 上的电压值经过模数转换(ADC)后的数值。
-4. 通过 IDE 的 Serial Monitor 获取到对应的 sensorValue, 具体如下:  
+2. 通过 Arduino IDE 编写程序实现获取模拟引脚 A<sub>0</sub> 上的电压值经过模数转换(ADC)后的数值。
+3. 通过 IDE 的 Serial Monitor 获取到对应的 sensorValue, 具体如下:  
 > 光线从暗变亮
 >> VCC_LDR_1:
     [ 606, 605, 618, 651, 212, 206, 206, 206, 71, 68, 66, 63, 60, 61, 42, 43, 42,
     33, 33, 33, 33, 31, 31, 31, 31, 32, 32, 38, 48]
-5. "处理数据 & 生成图像" 代码如下:
+4. "处理数据 & 生成图像" 代码如下:
 ```python
 import numpy as np
 import matplotlib.pyplot as plt
