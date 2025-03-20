@@ -103,11 +103,11 @@ plt.show()
 ```
 6. 生成图像如下:
 <p align="center">
-  <img src="./Photos/Chart/GND_LDR_01.png" alt="GND_LDR_01" width="200">
-  <img src="./Photos/Chart/GND_LDR_02.png" alt="GND_LDR_02" width="200">
+  <img src="./Photos/Chart/GND_LDR_01.png" alt="GND_LDR_01" width="600">
+  <img src="./Photos/Chart/GND_LDR_02.png" alt="GND_LDR_02" width="600">
   <br>
-  <img src="./Photos/Chart/VCC_LDR_01.png" alt="VCC_LDR_01" width="200">
-  <img src="./Photos/Chart/VCC_LDR_02.png" alt="VCC_LDR_02" width="200">
+  <img src="./Photos/Chart/VCC_LDR_01.png" alt="VCC_LDR_01" width="600">
+  <img src="./Photos/Chart/VCC_LDR_02.png" alt="VCC_LDR_02" width="600">
 </p>
 
 ## 2. 两个LDR同时接"电源/地"时的"阻值-时间"变化曲线 [固定电阻阻值: $1k\Omega$]
