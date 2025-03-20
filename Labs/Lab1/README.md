@@ -62,6 +62,7 @@ $ R_L=R_F \times \frac{V_{ref}-V_{A_0}}{V_{A_0}} $
 5. "处理数据 & 生成图像" 代码如下:
 ```python
 import numpy as np
+import mlx.core as mx
 import matplotlib.pyplot as plt
 
 R = 1000.0
@@ -74,20 +75,21 @@ adc_values_01 = np.array([
 ])
 
 voltage_values_01 = adc_values_01 / 1023.0 * Vref
+
 resistance_values_01 = R * ((Vref - voltage_values_01) / voltage_values_01)
 
-x_values_01 = np.arange(len(adc_values_01))
+x_values = mx.arange(stop=len(adc_values_01))
 
 poly_degree = 6
-poly_coeffs_01 = np.polyfit(x_values_01, resistance_values_01, poly_degree)
+poly_coeffs_01 = np.polyfit(x_values, resistance_values_01, poly_degree)
 poly_func_01 = np.poly1d(poly_coeffs_01)
 
-x_dense_01 = np.linspace(x_values_01.min(), x_values_01.max(), 300)
-y_dense_01 = poly_func_01(x_dense_01)
+x_dense = mx.linspace(start=x_values.min(), stop=x_values.max(), num=300)
+y_dense = poly_func_01(x_dense)
 
 plt.figure(figsize=(8, 5))
-plt.plot(x_values_01, resistance_values_01, 'ro', label="Data 01")
-plt.plot(x_dense_01, y_dense_01, 'r-', label=f"Fit 01 (Degree {poly_degree})")
+plt.plot(x_values, resistance_values_01, 'ro', label="Data 01")
+plt.plot(x_dense, y_dense, 'r-', label=f"Fit 01 (Degree {poly_degree})")
 
 plt.xlabel("Light Intensity")
 plt.ylabel("Resistance")
@@ -141,6 +143,7 @@ plt.show()
 5. "处理数据 & 生成图像" 代码如下:
 ```python {.line-numbers}
 import numpy as np
+import mlx.core as mx
 import matplotlib.pyplot as plt
 
 R = 1000.0
@@ -163,8 +166,8 @@ voltage_values_02 = adc_values_02 / 1023.0 * Vref
 resistance_values_01 = R * ((Vref - voltage_values_01) / voltage_values_01)
 resistance_values_02 = R * ((Vref - voltage_values_02) / voltage_values_02)
 
-x_values_01 = np.arange(len(adc_values_01))
-x_values_02 = np.arange(len(adc_values_02))
+x_values_01 = mx.arange(stop=len(adc_values_01))
+x_values_02 = mx.arange(stop=len(adc_values_02))
 
 poly_degree = 6
 poly_coeffs_01 = np.polyfit(x_values_01, resistance_values_01, poly_degree)
@@ -173,21 +176,17 @@ poly_coeffs_02 = np.polyfit(x_values_02, resistance_values_02, poly_degree)
 poly_func_01 = np.poly1d(poly_coeffs_01)
 poly_func_02 = np.poly1d(poly_coeffs_02)
 
-
-x_dense_01 = np.linspace(x_values_01.min(), x_values_01.max(), 300)
-x_dense_02 = np.linspace(x_values_02.min(), x_values_02.max(), 300)
+x_dense_01 = mx.linspace(start=x_values_01.min(), stop=x_values_01.max(), num=300)
+x_dense_02 = mx.linspace(start=x_values_02.min(), stop=x_values_02.max(), num=300)
 
 y_dense_01 = poly_func_01(x_dense_01)
 y_dense_02 = poly_func_02(x_dense_02)
 
-
 plt.figure(figsize=(8, 5))
 
-# 绘制原始数据点
 plt.plot(x_values_01, resistance_values_01, 'ro', label="Data 01")
 plt.plot(x_values_02, resistance_values_02, 'go', label="Data 02")
 
-# 绘制多项式拟合曲线
 plt.plot(x_dense_01, y_dense_01, 'r-', label=f"Fit 01 (Degree {poly_degree})")
 plt.plot(x_dense_02, y_dense_02, 'g-', label=f"Fit 02 (Degree {poly_degree})")
 
@@ -226,6 +225,7 @@ plt.show()
 4. "处理数据 & 生成图像" 代码如下:
 ```python
 import numpy as np
+import mlx.core as mx
 import matplotlib.pyplot as plt
 
 R = 270.0
@@ -237,21 +237,21 @@ adc_values_01 = np.array([
     560, 541, 508, 480, 456, 437, 399, 432, 492, 524, 831, 1023 
 ])
 
-voltage_values_01 = adc_values_01 / 1023.0 * Vref
-resistance_values_01 = R * ((Vref - voltage_values_01) / voltage_values_01)
+voltage_values = adc_values_01 / 1023.0 * Vref
+resistance_values_01 = R * ((Vref - voltage_values) / voltage_values)
 
-x_values_01 = np.arange(len(adc_values_01))
+x_values = mx.arange(stop=len(adc_values_01))
 
 poly_degree = 6
-poly_coeffs_01 = np.polyfit(x_values_01, resistance_values_01, poly_degree)
-poly_func_01 = np.poly1d(poly_coeffs_01)
+poly_coeffs = np.polyfit(x_values, resistance_values_01, poly_degree)
+poly_func = np.poly1d(poly_coeffs)
 
-x_dense_01 = np.linspace(x_values_01.min(), x_values_01.max(), 300)
-y_dense_01 = poly_func_01(x_dense_01)
+x_dense = mx.linspace(start=x_values.min(), stop=x_values.max(), num=300)
+y_dense = poly_func(x_dense)
 
 plt.figure(figsize=(8, 5))
-plt.plot(x_values_01, resistance_values_01, 'ro', label="Data 01")
-plt.plot(x_dense_01, y_dense_01, 'r-', label=f"Fit 01 (Degree {poly_degree})")
+plt.plot(x_values, resistance_values_01, 'ro', label="Data 01")
+plt.plot(x_dense, y_dense, 'r-', label=f"Fit 01 (Degree {poly_degree})")
 
 plt.xlabel("Light Intensity")
 plt.ylabel("Resistance")
@@ -285,6 +285,7 @@ plt.show()
 4. "处理数据 & 生成图像" 代码如下:
 ```python
 import numpy as np
+import mlx.core as mx
 import matplotlib.pyplot as plt
 
 R = 10000.0
@@ -295,21 +296,21 @@ adc_values_01 = np.array([
     33, 33, 33, 33, 31, 31, 31, 31, 32, 32, 38, 48
 ])
 
-voltage_values_01 = adc_values_01 / 1023.0 * Vref
-resistance_values_01 = R * ((Vref - voltage_values_01) / voltage_values_01)
+voltage_values = adc_values_01 / 1023.0 * Vref
+resistance_values_01 = R * ((Vref - voltage_values) / voltage_values)
 
-x_values_01 = np.arange(len(adc_values_01))
+x_values = mx.arange(stop=len(adc_values_01))
 
 poly_degree = 6
-poly_coeffs_01 = np.polyfit(x_values_01, resistance_values_01, poly_degree)
-poly_func_01 = np.poly1d(poly_coeffs_01)
+poly_coeffs = np.polyfit(x_values, resistance_values_01, poly_degree)
+poly_func = np.poly1d(poly_coeffs)
 
-x_dense_01 = np.linspace(x_values_01.min(), x_values_01.max(), 300)
-y_dense_01 = poly_func_01(x_dense_01)
+x_dense = mx.linspace(start=x_values.min(), stop=x_values.max(), num=300)
+y_dense = poly_func(x_dense)
 
 plt.figure(figsize=(8, 5))
-plt.plot(x_values_01, resistance_values_01, 'ro', label="Data 01")
-plt.plot(x_dense_01, y_dense_01, 'r-', label=f"Fit 01 (Degree {poly_degree})")
+plt.plot(x_values, resistance_values_01, 'ro', label="Data 01")
+plt.plot(x_dense, y_dense, 'r-', label=f"Fit 01 (Degree {poly_degree})")
 
 plt.xlabel("Light Intensity")
 plt.ylabel("Resistance")
