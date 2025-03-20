@@ -1,4 +1,5 @@
 import numpy as np
+import mlx.core as mx
 import matplotlib.pyplot as plt
 
 R1 = 1000.0
@@ -15,13 +16,13 @@ voltage_values = adc_values_01 / 1023.0 * Vref
 
 resistance_values = R1 * ((Vref - voltage_values) / voltage_values)
 
-x_values = np.arange(len(adc_values_01))
+x_values = mx.arange(stop=len(adc_values_01))
 
 poly_degree = 6
 poly_coeffs = np.polyfit(x_values, resistance_values, poly_degree)
 poly_func = np.poly1d(poly_coeffs)
 
-x_dense = np.linspace(x_values.min(), x_values.max(), 300)
+x_dense = mx.linspace(start=x_values.min(), stop=x_values.max(), num=300)
 y_dense = poly_func(x_dense)
 
 plt.figure(figsize=(8, 5))
