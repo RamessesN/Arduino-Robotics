@@ -2,14 +2,14 @@ import numpy as np
 import mlx.core as mx
 import matplotlib.pyplot as plt
 
-R_Fixed = 270.0
+R_Fixed = 1000.0
 Vref = 5.0
 
 adc_values_01 = np.array([
-    1023, 1023, 1023, 1023, 1023, 1023, 1023, 1023, 1023, 1023, 1023, 1023,
-    892, 880, 887, 788, 796, 716, 723, 731, 717, 680, 678, 600, 656, 619, 560,
-    541, 508, 480, 456, 437, 399, 395, 380, 365, 370, 368
-])[::-1]
+    172, 178, 181, 184, 277, 591, 585, 559, 550, 552, 757, 762, 768, 853,
+    853, 845, 846, 902, 897, 892, 885, 909, 911, 913, 914, 915, 913, 913,
+    916, 922, 956, 972, 982, 989, 1005, 1007, 1023, 1023, 1023, 1023
+])
 
 Vout = adc_values_01 / 1023.0 * Vref
 
@@ -25,15 +25,16 @@ x_dense = mx.linspace(start=x_values.min(), stop=x_values.max(), num=300)
 y_dense = poly_func_01(x_dense)
 
 plt.figure(figsize=(8, 5))
-plt.plot(x_values, R_LDR, 'ro', label="LDR1 data")
+plt.plot(x_values, R_LDR, 'ro', label="LDR2 data")
 plt.plot(x_dense, y_dense, 'b-', label=f"Fitting Curve (Degree-{poly_degree})")
+plt.plot(x_values, adc_values_01, 'go', label="ADC data")
 
 plt.xlabel("Light Intensity / cd")
 plt.ylabel(r"Resistance / $\Omega$")
-plt.title("VCC_270_LDR")
+plt.title("VCC_LDR_02")
 plt.grid(True)
 plt.legend()
 
-plt.savefig("./Photos/Chart/VCC_270_LDR.png", dpi=1200)
+plt.savefig("./Photos/Chart/VCC_LDR_02.png", dpi=1200)
 
 plt.show()
