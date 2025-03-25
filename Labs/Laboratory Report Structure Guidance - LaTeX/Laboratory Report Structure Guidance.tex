@@ -2,15 +2,41 @@
 
 \usepackage{listings}
 \usepackage{enumitem}
-\setlength{\parindent}{0pt}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{ragged2e}
+\usepackage{lipsum}
+\usepackage{mathptmx}
+\usepackage{graphicx}
+\usepackage{titlesec}
+\usepackage[top=2.5cm, bottom=2.5cm, left=3cm, right=3cm]{geometry}
 
-\title{Lab1 - Properties of LDR}
-\author{Yuwei Zhao, Haohao Qi, Yilin Zhang}
-\date{\today}
+\setlength{\emergencystretch}{3em}
+\AtBeginDocument{\RaggedRight}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\textbf{Group 15}}
+\fancyhead[R]{\textbf{Page} \thepage\ \textbf{of}\ \pageref{LastPage}}
+\fancyfoot[C]{\thepage}
+
+\title{\fontsize{16pt}{18pt}\selectfont{\textbf{Labi} - XXX}}
+\author{\fontsize{11pt}{13pt}\selectfont{Yuwei ZHAO, Haohao QI, Yilin ZHANG}}
+\date{\fontsize{11pt}{13pt}\selectfont{\today}}
+
+\titleformat{\section}[block]
+    {\fontsize{14pt}{16pt}\bfseries}
+    {\thesection}{1em}{}
+
+\titlespacing*{\section}
+    {0pt}
+    {2ex}
+    {1.5ex}
 
 \begin{document}
 
 \maketitle
+\vspace*{-0.5em}
 
 The word counts suggested here do not need to be strictly adhered to they are for some basic guidance.
 
@@ -42,5 +68,8 @@ please keep text as concise as possible.
 \section*{Conclusions} 
 (approx: 100 words) \\
 Please give the conclusions from the characterisations including a summary of the results collected.
+
+\section*{Hello}
+Hello World;
 
 \end{document}
