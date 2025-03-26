@@ -6,7 +6,7 @@
 \usepackage{lastpage}
 \usepackage{ragged2e}
 \usepackage{lipsum}
-\usepackage{mathptmx}
+\usepackage{newtxtext,newtxmath}
 \usepackage{graphicx}
 \usepackage{titlesec}
 \usepackage{titling}
@@ -15,22 +15,32 @@
 \setlength{\emergencystretch}{3em}
 \AtBeginDocument{\RaggedRight}
 
+\setlength{\headheight}{14.5pt}
 \pagestyle{fancy}
 \fancyhf{}
-\fancyhead[L]{\textbf{Group 15}}
-\fancyhead[R]{\textbf{Page} \thepage\ \textbf{of}\ \pageref{LastPage}}
-\fancyfoot[C]{\thepage}
+\fancyhead[L]{\small\textit{Group 15 -- Lab Report}}
+\fancyhead[R]{\small\textit{\thepage/\pageref{LastPage}}}
+\fancyfoot[C]{\small\thepage}
 
+\newcommand{\wordcount}[1]{\footnotesize\textcolor{gray}{(#1 words)}}
 \renewcommand{\headrulewidth}{1.0pt}
 \setlength{\droptitle}{-3em}
 
-\title{\fontsize{16pt}{18pt}\selectfont{\textbf{Labi} - XXX}}
-\author{\fontsize{11pt}{13pt}\selectfont{Yuwei ZHAO, Haohao QI, Yilin ZHANG}}
+\title{\fontsize{16pt}{18pt}\selectfont{\textbf{Lab$_i$} - XXX}}
+\author{\fontsize{11pt}{13pt}\selectfont{
+    Yuwei Zhao\textsuperscript{1},
+    Haohao Qi\textsuperscript{2},
+    Yilin Zhang\textsuperscript{3} \\
+    \small\textsuperscript{1,2,3}School of Computer Science and Technology, 
+    University of Science \\
+    \small\textsuperscript{1,2,3}Bachelor of Engineering with Honours in Robotics
+}}
 \date{\fontsize{11pt}{13pt}\selectfont{\today}}
 
-\titleformat{\section}[block]
-    {\fontsize{14pt}{16pt}\bfseries}
-    {\thesection}{1em}{}
+\titleformat{\section}[hang]
+{\normalfont\fontsize{14}{16}\bfseries}
+{\thesection}{0.5em}{}
+\titlespacing{\section}{0pt}{2.5ex plus 1ex minus .2ex}{1.5ex plus .2ex}
 
 \titlespacing*{\section}
     {0pt}
@@ -39,28 +49,25 @@
 
 \begin{document}
 
-\maketitle
+\maketitle{}
 \thispagestyle{fancy}
 \vspace*{-0.5em}
 
 The word counts suggested here do not need to be strictly adhered to they are for some basic guidance.
 
-\section*{Introduction}
-(approx: 150 words) \\
+\section*{Introduction} \wordcount{150}
 Give a brief description for the aims of the laboratory and a summary of the results collected.
 Please write this as constant prose in a way that a fellow student,
 who does not know anything about the experiment,
 can understand the approach.
 
-\section*{Theory and Technical Background}
-(approx: 200 words) \\
+\section*{Theory and Technical Background} \wordcount{200}
 Give a brief description of the background theory for the experiment being tackled.
 Please cite appropriate work.
 Feel free to add figures into this section, where
 each figure and each equation may reduce the number of words you use.
 
-\section*{Method}
-(approx: 300 words) \\
+\section*{Method} \wordcount{300}
 Describe the technical procedures to collect the results.
 Add figures into this section, where
 each figure and each equation may reduce the number of words you use.
@@ -70,8 +77,7 @@ Add all appropriate figures and analysis.
 No formal word count for this section, however
 please keep text as concise as possible.
 
-\section*{Conclusions}
-(approx: 100 words) \\
+\section*{Conclusions} \wordcount{100}
 Please give the conclusions from the characterisations including a summary of the results collected.
 
 \end{document}
