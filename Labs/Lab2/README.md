@@ -227,13 +227,13 @@ plt.show()
 
 2. 其余步骤同1。代码同2。
 3. 通过 IDE 的 Serial Monitor 获取到对应的参数，具体如下：
-> 正转
+> Clockwise
 >>  Speed: 136;    Sequence: Clockwise;    POT-LIN: 527  
     Speed: 136;    Sequence: Clockwise;    POT-LIN: 527   
     Speed: 134;    Sequence: Clockwise;    POT-LIN: 524  
     ...
 
-> 反转
+> Counter-Clockwise
 >>  Speed: 132;    Sequence: Counter-Clockwise;    POT-LIN: 526  
     Speed: 136;    Sequence: Counter-Clockwise;    POT-LIN: 526  
     Speed: 135;    Sequence: Counter-Clockwise;    POT-LIN: 525  
