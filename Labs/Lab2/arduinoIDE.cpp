@@ -1,10 +1,10 @@
-const int enablePin = 11;
-const int in1Pin = 10;
-const int in2Pin = 9;
-const int switchPin = 7;
-const int potPin = 0;
-const float fixedR = 1000.0
-const float VCC = 5.0
+int enablePin = 11;
+int in1Pin = 10;
+int in2Pin = 9;
+int switchPin = 7;
+int potPin = 0;
+int fixedR = 10000;
+int VCC = 5;
 
 void setup() {
   // put your setup code here, to run once:
@@ -34,11 +34,11 @@ void loop() {
 
   setMotor(speed, reverse);
 
-  int sensorValue_A1 = analogRead(A1);
-  float Vref = (sensorValue_A1 / 1023.0) * VCC;
-  float R = fixedR * (VCC - Vref) / Vref;
+  int sensorValue_A0 = analogRead(A0);
+  float Vout = (sensorValue_A0 / 1023.0) * VCC;
+  float Rpot = fixedR * ((VCC - Vout) / Vout);
   Serial.print("POT-LIN: ");
-  Serial.println(R);
+  Serial.println(sensorValue_A0);
 
   delay(1);
   delay(500);
