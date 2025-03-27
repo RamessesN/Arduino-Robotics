@@ -25,15 +25,17 @@
 \renewcommand{\headrulewidth}{1.0pt}
 \setlength{\droptitle}{-3em}
 
-\title{\fontsize{16pt}{18pt}\selectfont{\textbf{Lab\textsubscript{i}} - XXX}}
+\title{\fontsize{16pt}{18pt}\selectfont\textbf{Lab 2 - H-Bridge with DC Motor} - XXX}
 \author{\fontsize{11pt}{13pt}\selectfont
-    Yuwei Zhao\textsuperscript{1},
-    Haohao Qi\textsuperscript{2},
-    Yilin Zhang\textsuperscript{3} \\
-    \fontsize{9pt}{11pt}\selectfont\textsuperscript{1,2,3}School of Computer Science and Technology, 
-    University of Science
+  Yuwei Zhao\textsuperscript{1},
+  Haohao Qi\textsuperscript{2},
+  Yilin Zhang\textsuperscript{3} \\
+  \small\textsuperscript{1,2,3}School of Computer Science and Technology, University of Science \\
+  \small\textsuperscript{1}Yuwei Zhao (Experimental design \& initial draft) \\
+  \small\textsuperscript{2}Haohao Qi (Data acquisition \& visualization) \\
+  \small\textsuperscript{3}Yilin Zhang (Result discussion \& paper revision and polishment)
 }
-\date{\fontsize{11pt}{13pt}\selectfont{\today}}
+\date{\fontsize{11pt}{13pt}\selectfont\today}
 
 \titleformat{\section}[hang]
 {\normalfont\fontsize{14}{16}\bfseries}
@@ -41,9 +43,9 @@
 \titlespacing{\section}{0pt}{2.5ex plus 1ex minus .2ex}{1.5ex plus .2ex}
 
 \titlespacing*{\section}
-    {0pt}
-    {2ex}
-    {1.5ex}
+  {0pt}
+  {2ex}
+  {1.5ex}
 
 \begin{document}
 
@@ -51,9 +53,22 @@
 \thispagestyle{fancy}
 \vspace*{-0.5em}
 
-The word counts suggested here do not need to be strictly adhered to they are for some basic guidance.
+\begin{abstract} 
+\noindent Motors are widely used in robotics, 
+\end{abstract}
+
+\newpage
 
 \section*{Introduction}
+The experiment contains three steps.
+\begin{itemize}
+  \item Set up motor to be running;
+  \item Change motor to a certain speed;
+  \item Run motor forward and reverse.
+\end{itemize}
+The motor is placed in a breadboard, and powered by a voltage up to 5V.
+Motor's speed is adjusted by changing voltage, with a 
+
 Give a brief description for the aims of the laboratory and a summary of the results collected.
 Please write this as constant prose in a way that a fellow student,
 who does not know anything about the experiment,
