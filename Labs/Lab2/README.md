@@ -163,10 +163,9 @@ plt.show()
 
 6. 生成图像如下：
 <p align="center">
-  <span style="color: aqua;">4/4 PWM</span> <span style="display: inline-block; width: 180px;"> </span> <span style="color: aqua;">3/4 PWM</span><br>
   <img src="./Photos/Chart/424_MOTOR_CLOCKWISE.png" alt="424_MOTOR_CLOCKWISE" width="250">
   <img src="./Photos/Chart/324_MOTOR_CLOCKWISE.png" alt="424_MOTOR_CLOCKWISE" width="250">
-  <br> <span style="color: aqua;">2/4 PWM</span>  <span style="display: inline-block; width: 180px;"> </span> <span style="color: aqua;">1/4 PWM</span><br>
+  <br>
   <img src="./Photos/Chart/224_MOTOR_CLOCKWISE.png" alt="424_MOTOR_CLOCKWISE" width="250">
   <img src="./Photos/Chart/124_MOTOR_CLOCKWISE.png" alt="424_MOTOR_CLOCKWISE" width="250">
 </p>
