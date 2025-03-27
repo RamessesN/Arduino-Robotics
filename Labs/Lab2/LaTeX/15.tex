@@ -1,0 +1,103 @@
+\documentclass[12pt]{article}
+
+\usepackage{listings}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{ragged2e}
+\usepackage{lipsum}
+\usepackage{newtxtext,newtxmath}
+\usepackage{graphicx}
+\usepackage{titlesec}
+\usepackage{titling}
+\usepackage[top=2.5cm, bottom=2.5cm, left=3cm, right=3cm]{geometry}
+
+\setlength{\emergencystretch}{3em}
+\AtBeginDocument{\RaggedRight}
+
+\setlength{\headheight}{14.5pt}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small\textit{Group 15 -- Lab Report}}
+\fancyhead[R]{\small\textit{\thepage / \pageref{LastPage}}}
+\fancyfoot[C]{\small\thepage}
+
+\renewcommand{\headrulewidth}{1.0pt}
+\setlength{\droptitle}{-3em}
+
+\title{\fontsize{16pt}{18pt}\selectfont\textbf{Lab 2 - H-Bridge with DC Motor}}
+\author{\fontsize{11pt}{13pt}\selectfont
+  Yuwei Zhao\textsuperscript{1},
+  Haohao Qi\textsuperscript{2},
+  Yilin Zhang\textsuperscript{3} \\
+  \small\textsuperscript{1,2,3}School of Computer Science and Technology, University of Science \\
+  \small\textsuperscript{1}Yuwei Zhao (Experimental design \& initial draft) \\
+  \small\textsuperscript{2}Haohao Qi (Data acquisition \& visualization) \\
+  \small\textsuperscript{3}Yilin Zhang (Result discussion \& paper revision and polishment)
+}
+\date{\fontsize{11pt}{13pt}\selectfont\today}
+
+\titleformat{\section}[hang]
+{\normalfont\fontsize{14}{16}\bfseries}
+{\thesection}{0.5em}{}
+\titlespacing{\section}{0pt}{2.5ex plus 1ex minus .2ex}{1.5ex plus .2ex}
+
+\titlespacing*{\section}
+  {0pt}
+  {2ex}
+  {1.5ex}
+
+\begin{document}
+
+\maketitle
+\thispagestyle{fancy}
+\vspace*{-0.5em}
+
+\begin{abstract} 
+\noindent Motors are widely used in robotics, industrial machinery and automation, and many other industries. 
+By understanding the schematic diagram of a specific motor givin in the lab, 
+we build a circuit based on $Arduino Kona328$ and $chip-L293D$ to run the motor.
+We demonstrate adjusting speed, and then reverse its rotation direction. 
+Additionally, since light-dependent registers (LDRs) can be used to change speed and direction, 
+a light focused car motor design is presented in this lab report.
+\end{abstract}
+
+\bigskip
+
+\section*{Introduction}
+This experiment aims on discovering the basic working principle of a simple motor. 
+Then a theory of experiments would be 
+An Arduino programmed circuit is built to run the motor. 
+\begin{itemize}
+  \item Set up motor to be running;
+  \item Change motor to a certain speed;
+  \item Run motor forward and reverse.
+\end{itemize}
+The motor is placed in a breadboard, and powered by a voltage up to 5V.
+Motor's speed is adjusted by changing voltage, with a 
+
+Give a brief description for the aims of the laboratory and a summary of the results collected.
+Please write this as constant prose in a way that a fellow student,
+who does not know anything about the experiment,
+can understand the approach.
+
+\section*{Theory and Technical Background}
+Give a brief description of the background theory for the experiment being tackled.
+Please cite appropriate work.
+Feel free to add figures into this section, where
+each figure and each equation may reduce the number of words you use.
+
+\section*{Method}
+Describe the technical procedures to collect the results.
+Add figures into this section, where
+each figure and each equation may reduce the number of words you use.
+
+\section*{Results}
+Add all appropriate figures and analysis.
+No formal word count for this section, however
+please keep text as concise as possible.
+
+\section*{Conclusions}
+Please give the conclusions from the characterisations including a summary of the results collected.
+
+\end{document}
