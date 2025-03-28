@@ -3,13 +3,16 @@ import mlx.core as mx
 import matplotlib.pyplot as plt
 
 speed =  [
-    31, 31, 31, 31, 31, 33, 34, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46,
-    47, 47, 48, 49, 50, 50, 51, 51, 52, 53, 53, 54, 54, 55, 55, 54, 54, 54
+    136, 136, 134, 135, 135, 135, 137, 144, 153, 155, 160, 163, 166, 169, 174,
+    176, 179, 182, 183, 184, 185, 187, 188, 190, 191, 193, 194, 196, 197, 196,
+    196, 198, 198, 200, 200, 202, 202, 203, 202, 205, 206, 206, 209, 208, 209,
+    211, 216, 216, 214, 213, 216, 214, 216
 ]
 pot_lin = [
-    450, 462, 474, 490, 508, 531, 559, 580, 602, 614, 630, 646, 665, 684, 698,
-    715, 724, 736, 750, 762, 775, 785, 797, 806, 816, 825, 836, 844, 853, 861,
-    870, 875, 876, 861, 863, 870
+    527, 527, 524, 525, 525, 524, 532, 564, 597, 611, 629, 635, 641, 651, 669,
+    671, 691, 699, 693, 707, 715, 723, 720, 735, 743, 748, 748, 751, 767, 760,
+    770, 778, 787, 782, 801, 802, 805, 808, 813, 822, 816, 825, 823, 844, 847,
+    851, 862, 866, 868, 865, 863, 861, 856
 ]
 
 speed = mx.array(speed)
@@ -26,12 +29,12 @@ plt.figure(figsize=(10, 6))
 plt.plot(speed, pot_lin, 'ro', label='Original Data')
 plt.plot(speed_dense, pot_lin_dense, 'b-', label=f"Fitting Curve (Degree-{poly_degree})")
 
-plt.xlabel("Speed / (rad / s)")
+plt.xlabel("Speed")
 plt.ylabel(r"POT-LIN / $\Omega$")
-plt.title('Speed - POT-LIN (1/4 PWM)')
+plt.title('Speed - POT-LIN (4/4 PWM)')
 plt.grid(True)
 plt.legend()
 
-plt.savefig("./Photos/Chart/124_MOTOR_CLOCKWISE.png", dpi=1200)
+plt.savefig("./Photos/Chart/424_MOTOR_CLOCKWISE.png", dpi=1200)
 
 plt.show()
