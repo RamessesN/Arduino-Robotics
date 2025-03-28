@@ -9,13 +9,13 @@
 
 2. 按照如图所示进行接线:
 <p align="center">
+***actual***
+  <br>
+  <img src="./Photos/Connection/actual/Motor_actual_1.JPG" alt="Motor_actual_1" width="200">
+  <br> <br>
   ***JLC***
   <br>
-  <img src="" alt="Motor_JLC_1" width="250">
-  <br> <br>
-  ***actual***
-  <br>
-  <img src="Photos/Connection/actual/Motor_actual_1.JPG" alt="Motor_actual_1" width="250">
+  <img src="./Photos/Connection/JLC/Motor_JLC_1.jpg" alt="Motor_JLC_1" width="300">
 </p>
 
 3. 通过 Arduino IDE 编写程序实现驱动 motor 转动，具体代码如下：
@@ -57,13 +57,13 @@ $ 3/4\ PWM $ <sup>②</sup>、$ 2/4\ PWM $ <sup>③</sup>、$ 1/4\ PWM $ <sup>�
 
 2. 按照如图所示接线
 <p align="center">
-  ***JLC***
-  <br>
-  <img src="" alt="Motor2R_JLC_1" width="250">
-  <br> <br>
   ***actual***
   <br>
-  <img src="./Photos/Connection/actual/Motor2R_actual_1.JPG" alt="Motor2R_actual_1" width="250">
+  <img src="./Photos/Connection/actual/Motor2R_actual_1.JPG" alt="Motor2R_actual_1" width="200">
+  <br> <br>
+  ***JLC***
+  <br>
+  <img src="./Photos/Connection/JLC/Motor2R_JLC_1.jpg" alt="Motor2R_JLC_1" width="300">
 </p>
 
 3. Arduino IDE 代码如下：
