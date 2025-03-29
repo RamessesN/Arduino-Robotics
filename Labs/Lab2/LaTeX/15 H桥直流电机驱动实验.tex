@@ -25,7 +25,7 @@
 \renewcommand{\headrulewidth}{1.0pt}
 \setlength{\droptitle}{-3em}
 
-\title{\fontsize{16pt}{18pt}\selectfont\textbf{Lab 2 - H-Bridge with DC Motor}}
+\title{\fontsize{16pt}{18pt}\selectfont\textbf{Lab 2 - H-Bridge DC Motor Drive Experiment}}
 \author{\fontsize{11pt}{13pt}\selectfont
   Yuwei Zhao\textsuperscript{1},
   Haohao Qi\textsuperscript{2},
@@ -54,32 +54,31 @@
 \vspace*{-0.5em}
 
 \begin{abstract} 
-\noindent Motors are widely used in robotics, industrial machinery and automation, and many other industries. 
-By understanding the schematic diagram of a specific motor givin in the lab, 
-we build a circuit based on $Arduino Kona328$ and $chip-L293D$ to run the motor.
-We demonstrate adjusting speed, and then reverse its rotation direction. 
-Additionally, since light-dependent registers (LDRs) can be used to change speed and direction, 
-a light focused car motor design is presented in this lab report.
+\noindent Motors are widely used in robotics, industrial machinery, automation, and other applications. 
+In this experiment, we constructed a circuit based on an \textit{Arduino Uno R3} (ATmega328P) and an \textit{L293D} motor driver chip to control a DC motor. 
+We demonstrated \textbf{speed adjustment} and \textbf{direction reversal} of the motor. 
+Additionally, by utilizing light-dependent resistors (LDRs) to modulate the motor's behavior, 
+we proposed a \textbf{light-sensitive} motor control system as a practical application.
 \end{abstract}
 
-\bigskip
-
 \section*{Introduction}
-This experiment aims on discovering the basic working principle of a simple motor. 
-Then a theory of experiments would be 
-An Arduino programmed circuit is built to run the motor. 
+% Give a brief description for the aims of the laboratory and a summary of the results collected.
+% Please write this as constant prose in a way that a fellow student,
+% who does not know anything about the experiment,
+% can understand the approach.
+This experiment aims to demonstrate the fundamental principles of DC motor control using an H-bridge circuit. 
+The specific objectives include:  
 \begin{itemize}
-  \item Set up motor to be running;
-  \item Change motor to a certain speed;
-  \item Run motor forward and reverse.
+  \item Constructing a motor driver circuit with an \textit{L293D} chip and an \textit{Arduino Uno} microcontroller.  
+  \item Adjusting the motor speed by varying the input voltage (via PWM signals).  
+  \item Reversing the motor direction by switching the polarity of the H-bridge outputs.  
 \end{itemize}
-The motor is placed in a breadboard, and powered by a voltage up to 5V.
-Motor's speed is adjusted by changing voltage, with a 
 
-Give a brief description for the aims of the laboratory and a summary of the results collected.
-Please write this as constant prose in a way that a fellow student,
-who does not know anything about the experiment,
-can understand the approach.
+To achieve these goals, we programmed the Arduino to generate control signals for the \textit{L293D}, 
+which acts as an H-bridge to drive the motor. 
+The results show that the motor speed can be linearly controlled by the analog voltage applied to the potentiometer pin (pin $0$), 
+while the direction is toggled by a digital signal on the switch pin (pin $7$). 
+This setup also extends to light-sensitive control by replacing the potentiometer with LDRs.
 
 \section*{Theory and Technical Background}
 Give a brief description of the background theory for the experiment being tackled.
