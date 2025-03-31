@@ -1,10 +1,11 @@
-\documentclass[12pt]{article}
+\documentclass[a4paper,12pt]{article}
 \usepackage{listings}
 \usepackage{enumitem}
 \usepackage{fancyhdr}
 \usepackage{lastpage}
 \usepackage{ragged2e}
 \usepackage{lipsum}
+\usepackage{xcolor}
 \usepackage{newtxtext,newtxmath}
 \usepackage{graphicx}
 \usepackage{titlesec}
@@ -33,9 +34,9 @@
   Haohao Qi\textsuperscript{2},
   Yilin Zhang\textsuperscript{3} \\
   \small\textsuperscript{1,2,3}School of Computer Science and Technology, University of Science \\
-  \small\textsuperscript{1}Yuwei Zhao (Experimental design \& initial draft) \\
-  \small\textsuperscript{2}Haohao Qi (Data acquisition \& visualization) \\
-  \small\textsuperscript{3}Yilin Zhang (Result discussion \& paper revision and polishment)
+  \small\textsuperscript{1}Yuwei Zhao (Data Processing \&  \small\textsuperscript{2}Experiment Implementation) \\
+  \small\textsuperscript{2}Haohao Qi (Initial Draft  \& Images Collection) \\
+  \small\textsuperscript{3}Yilin Zhang (Paper Writing  \& \small\textsuperscript{1}Experiment Implementation)
 }
 \date{\today}
 
@@ -48,6 +49,18 @@
   {0pt}
   {2ex}
   {1.5ex}
+
+\lstset{
+    basicstyle=\ttfamily\small,
+    keywordstyle=\color{blue}, % 关键字颜色
+    commentstyle=\color{green}, % 注释颜色
+    stringstyle=\color{red}, % 字符串颜色
+    numbers=left, % 显示行号
+    numberstyle=\tiny\color{gray}, % 行号样式
+    frame=single, % 添加边框
+    breaklines=true, % 自动换行
+    tabsize=4 % 缩进大小
+}
 
 \begin{document}
 
@@ -68,7 +81,7 @@ we proposed a \textbf{light-sensitive} motor control system as a practical appli
 \end{abstract}
 
 \textbf{Key words:} 
-L293D, H bridge, indirect mesurement
+L293D, H bridge, indirect measurement
 
 \section*{Introduction}
 % Give a brief description for the aims of the laboratory and a summary of the results collected.
@@ -91,8 +104,8 @@ Reversing the motor direction by switching the polarity of the H-bridge outputs.
 
 To achieve these goals, we programmed the Arduino to generate control signals for the \textit{L293D}, 
 which acts as an H-bridge to drive the motor. 
-The results show that the motor speed can be linearly controlled by the analog voltage applied to the potentiometer pin (pin $0$), 
-while the direction is toggled by a digital signal on the switch pin (pin $7$). 
+The results show that the motor speed can be linearly controlled by the analog voltage applied to the potentiometer pin (pin-$0$), 
+while the direction is toggled by a digital signal on the switch pin (pin-$7$). 
 This setup also extends to light-sensitive control by replacing the potentiometer with LDRs.
 
 \section*{Theory and Technical Background}
@@ -122,14 +135,15 @@ The rotation speed of the motor can be controlled based on the ratio of the high
 \end{figure}
 
 
-\section*{Method}
+\section*{Methods}
 % Describe the technical procedures to collect the results.
 % Add figures into this section, where
 % each figure and each equation may reduce the number of words you use.
-\begin{table}[h]
+\begin{table}[H]
   \centering
-  \begin{tabularx}{0.8\textwidth}{cl}
-    \hline\hline
+  \setlength{\arrayrulewidth}{1pt}
+  \begin{tabularx}{0.8\textwidth}{@{\hspace{35pt}}cl}
+    \hline
     abridge & \multicolumn{1}{c}{full name} \\
     \hline
     \textbf{ADC} & Analog-to-Digital Conversion \\
@@ -198,12 +212,15 @@ These are showed in figure~\ref{fig:advanced-circuit}.
 
 The purpose of this experiment is to obtain the real-time rotational speed of the motor and to calculate the resistance value of the potentiometer through voltage division by connecting a fixed resistor in series. 
 It can be further divided into four sub-experiments with PWM values of full, 3/4, 2/4, and 1/4.
-Formulas are based on follows：
+Formulas are based on follows:
 \begin{equation}
-  I = \frac{U}{R}
+  Voltage = \frac{V_{A_0}}{1023} \times V_{ref}
 \end{equation}
 \begin{equation}
-  I = \frac{U}{R_1 + R_2}
+  V_{out} = V_{ref} \times \frac{R_{pot}}{R_{pot} + R_{fixed}}
+\end{equation}
+\begin{equation}
+  R_{pot} = R_{fixed} \times \frac{V_{CC} - V_{out}}{V_{out}}
 \end{equation}
 
 The real-time speed and the corresponding resistance value of the potentiometer are obtained by dividing the value after analog-to-digital conversion (ADC) of the voltage on analog pin A0, 
@@ -230,9 +247,9 @@ The specific details are as follows:
 \begin{itemize}
   \item \textbf{4/4 PWM}
 
-  speed: [ 136, 136, 134, 135, 135, 135, 137, 144, 153, 155, 160, 163, 166, 169, 174, 176, 179, 182, 183, 184, 185, 187, 188, 190, 191, 193, 194, 196, 197, 196, 196, 198, 198, 200, 200, 202, 202, 203, 202, 205, 206, 206, 209, 208, 209, 211, 216, 216, 214, 213, 216, 214, 216 ]
+  \textcolor{gray}{speed: [ 136, 136, 134, 135, 135, 135, 137, 144, 153, 155, 160, 163, 166, 169, 174, 176, 179, 182, 183, 184, 185, 187, 188, 190, 191, 193, 194, 196, 197, 196, 196, 198, 198, 200, 200, 202, 202, 203, 202, 205, 206, 206, 209, 208, 209, 211, 216, 216, 214, 213, 216, 214, 216 ]}
 
-  pot\_lin: [ 527, 527, 524, 525, 525, 524, 532, 564, 597, 611, 629, 635, 641, 651, 669, 671, 691, 699, 693, 707, 715, 723, 720, 735, 743, 748, 748, 751, 767, 760, 770, 778, 787, 782, 801, 802, 805, 808, 813, 822, 816, 825, 823, 844, 847, 851, 862, 866, 868, 865, 863, 861, 856 ]
+  \textcolor{gray}{pot\_lin: [ 527, 527, 524, 525, 525, 524, 532, 564, 597, 611, 629, 635, 641, 651, 669, 671, 691, 699, 693, 707, 715, 723, 720, 735, 743, 748, 748, 751, 767, 760, 770, 778, 787, 782, 801, 802, 805, 808, 813, 822, 816, 825, 823, 844, 847, 851, 862, 866, 868, 865, 863, 861, 856 ]}
   \begin{figure}[H]
     \centering
     \includegraphics[width=0.8\textwidth]{../Photos/Chart/424_MOTOR_CLOCKWISE}
@@ -240,9 +257,9 @@ The specific details are as follows:
 
   \item \textbf{3/4 PWM}
 
-  speed: [ 100, 100, 100, 99, 100, 105, 110, 114, 117, 121, 123, 126, 128, 129, 132, 133, 135, 136, 137, 140, 141, 143, 144, 146, 148, 150, 150, 152, 153, 155, 156, 157, 158, 159, 161, 162, 162, 163, 162, 162, 159, 159, 160 ]
+  \textcolor{gray}{speed: [ 100, 100, 100, 99, 100, 105, 110, 114, 117, 121, 123, 126, 128, 129, 132, 133, 135, 136, 137, 140, 141, 143, 144, 146, 148, 150, 150, 152, 153, 155, 156, 157, 158, 159, 161, 162, 162, 163, 162, 162, 159, 159, 160 ]}
 
-  pot\_lin: [ 522, 520, 520, 520, 521, 547, 576, 602, 620, 637, 649, 661, 676, 681, 695, 703, 707, 711, 714, 725, 730, 739, 745, 750, 759, 770, 770, 773, 790, 804, 802, 815, 820, 828, 835, 844, 851, 858, 858, 858, 844, 845, 850 ]
+  \textcolor{gray}{pot\_lin: [ 522, 520, 520, 520, 521, 547, 576, 602, 620, 637, 649, 661, 676, 681, 695, 703, 707, 711, 714, 725, 730, 739, 745, 750, 759, 770, 770, 773, 790, 804, 802, 815, 820, 828, 835, 844, 851, 858, 858, 858, 844, 845, 850 ]}
   \begin{figure}[H]
     \centering
     \includegraphics[width=0.8\textwidth]{../Photos/Chart/324_MOTOR_CLOCKWISE}
@@ -250,9 +267,9 @@ The specific details are as follows:
 
   \item \textbf{2/4 PWM}
 
-  speed: [ 53, 57, 54, 57, 58, 60, 61, 63, 63, 63, 69, 72, 75, 79, 81, 82, 85, 87, 89, 91, 93, 95, 96, 97, 99, 101, 102, 102, 104, 104, 105, 106, 107, 108, 109, 109, 109, 109, 109, 110, 110, 109, 108 ]
+  \textcolor{gray}{speed: [ 53, 57, 54, 57, 58, 60, 61, 63, 63, 63, 69, 72, 75, 79, 81, 82, 85, 87, 89, 91, 93, 95, 96, 97, 99, 101, 102, 102, 104, 104, 105, 106, 107, 108, 109, 109, 109, 109, 109, 110, 110, 109, 108 ]}
 
-  pot\_lin: [ 539, 529, 542, 538, 533, 552, 419, 416, 403, 395, 441, 467, 499, 532, 565, 578, 601, 620, 639, 655, 675, 695, 707, 725, 743, 750, 751, 759, 765, 767, 775, 781, 786, 795, 799, 805, 806, 806, 807, 805, 819, 837, 839 ]
+  \textcolor{gray}{pot\_lin: [ 539, 529, 542, 538, 533, 552, 419, 416, 403, 395, 441, 467, 499, 532, 565, 578, 601, 620, 639, 655, 675, 695, 707, 725, 743, 750, 751, 759, 765, 767, 775, 781, 786, 795, 799, 805, 806, 806, 807, 805, 819, 837, 839 ]}
   \begin{figure}[H]
     \centering
     \includegraphics[width=0.8\textwidth]{../Photos/Chart/224_MOTOR_CLOCKWISE}
@@ -260,9 +277,9 @@ The specific details are as follows:
 
   \item \textbf{1/4 PWM}
 
-  speed: [ 31, 31, 31, 31, 31, 33, 34, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 47, 48, 49, 50, 50, 51, 51, 52, 53, 53, 54, 54, 55, 55, 54, 54, 54 ]
+  \textcolor{gray}{speed: [ 31, 31, 31, 31, 31, 33, 34, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 47, 48, 49, 50, 50, 51, 51, 52, 53, 53, 54, 54, 55, 55, 54, 54, 54 ]}
 
-  pot\_lin: [ 450, 462, 474, 490, 508, 531, 559, 580, 602, 614, 630, 646, 665, 684, 698, 715, 724, 736, 750, 762, 775, 785, 797, 806, 816, 825, 836, 844, 853, 861, 870, 875, 876, 861, 863, 870 ]
+  \textcolor{gray}{pot\_lin: [ 450, 462, 474, 490, 508, 531, 559, 580, 602, 614, 630, 646, 665, 684, 698, 715, 724, 736, 750, 762, 775, 785, 797, 806, 816, 825, 836, 844, 853, 861, 870, 875, 876, 861, 863, 870 ]}
   \begin{figure}[H]
     \centering
     \includegraphics[width=0.8\textwidth]{../Photos/Chart/124_MOTOR_CLOCKWISE}
@@ -314,5 +331,106 @@ which may introduce certain experimental errors.
 
 2. The rotor of the motor used in this experiment has some sticking issues, 
 which may lead to deviations when we visually observe and record the motor’s rotation.
+
+\newpage
+\section*{Appendix}
+\begin{itemize}
+  \item The code of \textbf{Arduino IDE} to gain data is as follows:\\
+  \begin{lstlisting}[language=C++]
+int enablePin = 11;
+int in1Pin = 10;
+int in2Pin = 9;
+int switchPin = 7;
+int potPin = 0;
+int fixedR = 10000;
+int VCC = 5;
+
+void setup() {
+  // put your setup code here, to run once:
+  pinMode(in1Pin, OUTPUT);
+  pinMode(in2Pin, OUTPUT);
+  pinMode(enablePin, OUTPUT);
+  pinMode(switchPin, INPUT_PULLUP);
+  Serial.begin(9600);
+}
+
+void loop() {
+  // put your main code here, to run repeatedly:
+  int speed = (analogRead(potPin) / 4) * 1 / 4;
+  Serial.print("Speed: ");
+  Serial.print(speed);
+  Serial.print(";\t");
+
+  boolean reverse = digitalRead(switchPin);
+  Serial.print("Sequence: ");
+
+  if(reverse == 1) {
+    Serial.print("Clockwise");
+  } else {
+    Serial.print("Counter-Clockwise");
+  }
+  Serial.print(";\t");
+
+  setMotor(speed, reverse);
+
+  int sensorValue_A0 = analogRead(A0);
+  float Vout = (sensorValue_A0 / 1023.0) * VCC;
+  float Rpot = fixedR * ((VCC - Vout) / Vout);
+  Serial.print("POT-LIN: ");
+  Serial.println(sensorValue_A0);
+
+  delay(1);
+  delay(500);
+}
+
+void setMotor(int speed, boolean reverse) {
+  analogWrite(enablePin, speed);
+  digitalWrite(in1Pin, !reverse);
+  digitalWrite(in2Pin, reverse);
+}
+  \end{lstlisting}
+  
+  \item The code of \textbf{Python} to process data and generate charts is as follows:
+  \begin{lstlisting}[language=Python]
+import numpy as np
+import mlx.core as mx
+import matplotlib.pyplot as plt
+
+speed =  [
+    136, 136, 134, 135, 135, 135, 137, 144, 153, 155, 160, 163, 166, 169, 174,
+    176, 179, 182, 183, 184, 185, 187, 188, 190, 191, 193, 194, 196, 197, 196,
+    196, 198, 198, 200, 200, 202, 202, 203, 202, 205, 206, 206, 209, 208, 209,
+    211, 216, 216, 214, 213, 216, 214, 216
+]
+pot_lin = [
+    527, 527, 524, 525, 525, 524, 532, 564, 597, 611, 629, 635, 641, 651, 669,
+    671, 691, 699, 693, 707, 715, 723, 720, 735, 743, 748, 748, 751, 767, 760,
+    770, 778, 787, 782, 801, 802, 805, 808, 813, 822, 816, 825, 823, 844, 847,
+    851, 862, 866, 868, 865, 863, 861, 856
+]
+
+speed = mx.array(speed)
+pot_lin = mx.array(pot_lin)
+
+poly_degree = 6
+poly_coeffs = np.polyfit(speed, pot_lin, poly_degree)
+poly_func = np.poly1d(poly_coeffs)
+
+speed_dense = mx.linspace(speed.min(), speed.max(), 300)
+pot_lin_dense = poly_func(speed_dense)
+
+plt.figure(figsize=(10, 6))
+plt.plot(speed, pot_lin, 'ro', label='Original Data')
+plt.plot(speed_dense, pot_lin_dense, 'b-', label=f"Fitting Curve (Degree-{poly_degree})")
+
+plt.xlabel("Speed")
+plt.ylabel(r"POT-LIN / $\Omega$")
+plt.title('Speed - POT-LIN (4/4 PWM)')
+plt.grid(True)
+plt.legend()
+
+plt.savefig("./Photos/Chart/424_MOTOR_CLOCKWISE.png", dpi=1200)
+  \end{lstlisting}
+\end{itemize}
 
 \end{document}
