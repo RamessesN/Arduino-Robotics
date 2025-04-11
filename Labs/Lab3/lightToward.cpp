@@ -50,7 +50,7 @@ void Turn(boolean reverse, int Left, int Right, int Gap) {
   if(Gap >= 70) {
     // Turn LEFT
     if(Left < Right) {
-      setLeft(!reverse, 155);
+      setLeft(reverse, 155);
       setRight(reverse, 255);
     }
     // Turn RIGHT
