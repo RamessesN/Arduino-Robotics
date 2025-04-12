@@ -1,11 +1,14 @@
 /* 四引脚 mode */
-int in1Pin = 8;
-int in2Pin = 9;
-int in3Pin = 10;
-int in4Pin = 11;
+int in1Pin = 5;
+int in2Pin = 6;
+int in3Pin = 9;
+int in4Pin = 10;
 
-int leftSpeed = 255;
-int rightSpeed = 75;
+int baseSpeed = 150;
+
+// fluctuating rate
+float leftComp = 1.00;
+float rightComp = 1.00;
 
 void setup() {
   // put your setup code here, to run once:
@@ -13,10 +16,19 @@ void setup() {
   pinMode(in2Pin, OUTPUT);
   pinMode(in3Pin, OUTPUT);
   pinMode(in4Pin, OUTPUT);
+
+  // Initialize
+  analogWrite(in1Pin, 0);
+  analogWrite(in4Pin, 0);
+  digitalWrite(in2Pin, LOW);
+  digitalWrite(in3Pin, LOW);
 }
 
 void loop() {
   // put your main code here, to run repeatedly:
+  int leftSpeed = baseSpeed * leftComp;
+  int rightSpeed = baseSpeed * rightComp;
+
   boolean reverse = 0;
   setLeft(reverse, leftSpeed);
   setRight(reverse, rightSpeed);
@@ -24,12 +36,14 @@ void loop() {
 
 // Left Wheel CONTROL
 void setLeft(boolean reverse, int speed) {
-  analogWrite(in1Pin, reverse ? speed : 0);
-  analogWrite(in2Pin, !reverse ? speed : 0);
+  speed = constrain(speed, 0, 255);
+  digitalWrite(in2Pin, reverse);
+  analogWrite(in1Pin, speed);
 }
 
-// Right Wheel CONTROL
+// Right Wheel CONTR OL
 void setRight(boolean reverse, int speed) {
-  analogWrite(in3Pin, !reverse ? speed : 0);
-  analogWrite(in4Pin, reverse ? speed : 0);
+  speed = constrain(speed, 0, 255);
+  digitalWrite(in3Pin, !reverse);
+  analogWrite(in4Pin, 255 - speed);
 }
