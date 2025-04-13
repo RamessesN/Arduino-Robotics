@@ -65,8 +65,8 @@ void setLeft(boolean reverse, int speed) {
 // Right Wheel CONTROL
 void setRight(boolean reverse, int speed) {
   speed = constrain(speed, 0, 255);
-  digitalWrite(in4Pin, !reverse);
-  analogWrite(in3Pin, 255 - speed);
+  digitalWrite(in3Pin, !reverse);
+  analogWrite(in4Pin, 255 - speed);
 }
 ```
 
@@ -146,8 +146,8 @@ void setLeft(boolean reverse, int speed) {
 // Right Wheel CONTROL
 void setRight(boolean reverse, int speed) {
   speed = constrain(speed, 0, 255);
-  digitalWrite(in4Pin, !reverse);
-  analogWrite(in3in, 255 - speed);
+  digitalWrite(in3Pin, !reverse);
+  analogWrite(in4in, 255 - speed);
 }
 
 // car Turn CONTROL - LIGHT Toward
