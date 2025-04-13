@@ -6,7 +6,7 @@ int in4Pin = 10;
 
 int base_Speed = 120;
 int decelerated_Speed = 110;
-int accelerated_Speed = 135;
+int accelerated_Speed = 200;
 
 // fluctuating rate
 float leftComp = 1.00;

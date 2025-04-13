@@ -95,7 +95,7 @@ int in4Pin = 10;
 
 int base_Speed = 120;
 int decelerated_Speed = 110;
-int accelerated_Speed = 135;
+int accelerated_Speed = 200;
 
 // fluctuating rate
 float leftComp = 1.00;
@@ -147,7 +147,7 @@ void setLeft(boolean reverse, int speed) {
 void setRight(boolean reverse, int speed) {
   speed = constrain(speed, 0, 255);
   digitalWrite(in3Pin, !reverse);
-  analogWrite(in4in, 255 - speed);
+  analogWrite(in4Pin, 255 - speed);
 }
 
 // car Turn CONTROL - LIGHT Toward
