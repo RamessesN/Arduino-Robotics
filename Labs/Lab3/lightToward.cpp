@@ -4,8 +4,9 @@ int in2Pin = 6;
 int in3Pin = 9;
 int in4Pin = 10;
 
-int base_Speed = 130;
-int accelerated_Speed = 150;
+int base_Speed = 120;
+int decelerated_Speed = 110;
+int accelerated_Speed = 135;
 
 // fluctuating rate
 float leftComp = 1.00;
@@ -65,15 +66,15 @@ void Turn(boolean reverse, int Left, int Right, int Gap) {
   if(Gap >= 70) {
     // Turn LEFT
     if(Left < Right) {
-      setLeft(reverse, base_Speed * leftComp);
+      setLeft(reverse, decelerated_Speed * leftComp);
       setRight(reverse, accelerated_Speed * rightComp);
     }
     // Turn RIGHT
     if(Right < Left) {
-      setLeft(reverse, accelerated_Speed * rightComp);
-      setRight(reverse, base_Speed * rightComp);
+      setLeft(reverse, accelerated_Speed * leftComp);
+      setRight(reverse, decelerated_Speed * rightComp);
     }
-  } else if(Gap >= 20 && Gap < 70){
+  } else if(Gap >= 10 && Gap < 70){
     // Go FORWARD
     setLeft(reverse, base_Speed * leftComp);
     setRight(reverse, base_Speed * rightComp);
