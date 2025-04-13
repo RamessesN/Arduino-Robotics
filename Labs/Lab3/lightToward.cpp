@@ -1,9 +1,14 @@
-/* 四引脚 mode */
+/* 4pin - mode */
 int in1Pin = 5;
 int in2Pin = 6;
 int in3Pin = 9;
 int in4Pin = 10;
 
+// tail lights
+int leftLight = 2;
+int rightLight = 8;
+
+// speed setting
 int base_Speed = 120;
 int decelerated_Speed = 110;
 int accelerated_Speed = 200;
@@ -19,12 +24,16 @@ void setup() {
   pinMode(in2Pin, OUTPUT);
   pinMode(in3Pin, OUTPUT);
   pinMode(in4Pin, OUTPUT);
+  pinMode(leftLight, OUTPUT);
+  pinMode(rightLight, OUTPUT);
 
   // Initialize
   analogWrite(in1Pin, 0);
   analogWrite(in4Pin, 0);
   digitalWrite(in2Pin, LOW);
   digitalWrite(in3Pin, LOW);
+  digitalWrite(leftLight, LOW);
+  digitalWrite(rightLight, LOW);
 }
 
 void loop() {
@@ -68,19 +77,27 @@ void Turn(boolean reverse, int Left, int Right, int Gap) {
     if(Left < Right) {
       setLeft(reverse, decelerated_Speed * leftComp);
       setRight(reverse, accelerated_Speed * rightComp);
+      digitalWrite(rightLight, LOW);
+      digitalWrite(leftLight, HIGH);
     }
     // Turn RIGHT
     if(Right < Left) {
       setLeft(reverse, accelerated_Speed * leftComp);
       setRight(reverse, decelerated_Speed * rightComp);
+      digitalWrite(leftLight, LOW);
+      digitalWrite(rightLight, HIGH);
     }
   } else if(Gap >= 10 && Gap < 70){
     // Go FORWARD
     setLeft(reverse, base_Speed * leftComp);
     setRight(reverse, base_Speed * rightComp);
+    digitalWrite(leftLight, HIGH);
+    digitalWrite(rightLight, HIGH);
   } else {
     // STOP
     setLeft(reverse, 0);
     setRight(reverse, 0);
+    digitalWrite(leftLight, LOW);
+    digitalWrite(rightLight, LOW);
   }
 }
