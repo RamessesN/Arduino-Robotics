@@ -1,4 +1,4 @@
-/* 4pin - mode */
+/* 4PIN-MODE */
 int in1Pin = 5;
 int in2Pin = 6;
 int in3Pin = 9;
@@ -11,11 +11,16 @@ int rightLight = 8;
 // speed setting
 int base_Speed = 120;
 int decelerated_Speed = 110;
-int accelerated_Speed = 200;
+int accelerated_Speed = 170;
 
 // fluctuating rate
 float leftComp = 1.00;
 float rightComp = 1.00;
+
+// ldr offset
+int left_offset = 10;
+int right_offset = -20;
+int expect_Gap = left_offset - right_offset;
 
 void setup() {
   // put your setup code here, to run once:
@@ -42,7 +47,7 @@ void loop() {
 
   int sensorValue_LEFT = analogRead(A5);
   int sensorValue_RIGHT = analogRead(A0);
-  int GAP = abs(sensorValue_LEFT - sensorValue_RIGHT);
+  int GAP = abs((sensorValue_LEFT + left_offset) - (sensorValue_RIGHT + right_offset));
 
   Serial.print("LEFT: ");
   Serial.print(sensorValue_LEFT);
@@ -72,29 +77,28 @@ void setRight(boolean reverse, int speed) {
 
 // car Turn CONTROL - LIGHT Toward
 void Turn(boolean reverse, int Left, int Right, int Gap) {
-  if(Gap >= 70) {
-    // Turn LEFT
-    if(Left < Right) {
-      setLeft(reverse, decelerated_Speed * leftComp);
-      setRight(reverse, accelerated_Speed * rightComp);
-      digitalWrite(rightLight, LOW);
-      digitalWrite(leftLight, HIGH);
-    }
-    // Turn RIGHT
-    if(Right < Left) {
-      setLeft(reverse, accelerated_Speed * leftComp);
-      setRight(reverse, decelerated_Speed * rightComp);
-      digitalWrite(leftLight, LOW);
+   // If light exists
+  if(Left < 1019 || Right < 1019) {
+    if(Gap >= expect_Gap) {
+      if(Left < Right) { // Turn LEFT
+        setLeft(reverse, decelerated_Speed * leftComp);
+        setRight(reverse, accelerated_Speed * rightComp);
+        digitalWrite(rightLight, LOW);
+        digitalWrite(leftLight, HIGH);
+      }
+      if(Right < Left) { // Turn RIGHT
+        setLeft(reverse, accelerated_Speed * leftComp);
+        setRight(reverse, decelerated_Speed * rightComp);
+        digitalWrite(leftLight, LOW);
+        digitalWrite(rightLight, HIGH);
+      }
+    } else { // Go FORWARD
+      setLeft(reverse, base_Speed * leftComp);
+      setRight(reverse, base_Speed * rightComp);
+      digitalWrite(leftLight , HIGH);
       digitalWrite(rightLight, HIGH);
     }
-  } else if(Gap >= 10 && Gap < 70){
-    // Go FORWARD
-    setLeft(reverse, base_Speed * leftComp);
-    setRight(reverse, base_Speed * rightComp);
-    digitalWrite(leftLight, HIGH);
-    digitalWrite(rightLight, HIGH);
-  } else {
-    // STOP
+  } else { // STOP
     setLeft(reverse, 0);
     setRight(reverse, 0);
     digitalWrite(leftLight, LOW);

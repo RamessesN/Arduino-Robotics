@@ -1,4 +1,4 @@
-/* 四引脚 mode */
+/* 4PIN-MODE */
 int in1Pin = 5;
 int in2Pin = 6;
 int in3Pin = 9;
