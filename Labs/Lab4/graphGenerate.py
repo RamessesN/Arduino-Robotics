@@ -37,6 +37,8 @@ def graphGenerate():
     plt.plot(altitudeValue, sensorValue, 'ro', label='Original Data')
     plt.plot(altitude_dense, sensor_dense, 'b-', label=f"Fitting Curve (Degree-{poly_degree})")
 
+    plt.xlim(left=0.4)
+
     plt.xlabel("Altitude / cm")
     plt.ylabel("Sensor Value")
     plt.title('Altitude - Sensor Value')
