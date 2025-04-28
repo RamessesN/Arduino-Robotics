@@ -16,7 +16,8 @@ The relationship between the detection values and the height was ultimately repr
   \rowcolors{2}{gray!20}{white}
   \begin{tabularx}{0.8\textwidth}{|Y|Y|Y|Y|Y|}
     \hline
-    \rowcolor{blue!30} \textbf{Altitude}/mm & & \textbf{Data} & & \textbf{Average} \\ 
+    \rowcolor{blue!30} \textbf{Altitude}/mm & 
+    \multicolumn{3}{c|}{\textbf{Data}} & \textbf{Average} \\ 
     \hline
      5 & 33 & 34 & 33 & 33.3 \\ 
     \hline
@@ -59,9 +60,98 @@ Subsequently, we established a recognition criterion:
 when the sensor reading is less than 100, it is marked as “0”; 
 and when the reading approaches 1023, it is marked as “1”. 
 Here, “0” indicates that the sensor has detected a white surface, while “1” indicates that it has detected a black line. 
-Under these conditions, the sensor readings under different scenarios are shown in the figures below ():
+Under these conditions, the sensor readings under different scenarios are shown in the figures below (\ref{fig:000}~\ref{fig:001}~\ref{fig:010}~\ref{fig:011}~\ref{fig:100}~\ref{fig:110}~\ref{fig:111}):
 
+\begin{figure}[H]
+  \centering
+  \begin{minipage}{0.48\textwidth}
+    \includegraphics[width=\linewidth, height=6cm]{../../Photos/actual/000}
+  \end{minipage}
+  \hfill
+  \begin{minipage}{0.48\textwidth}
+    \includegraphics[width=\linewidth, height=6cm]{../../Photos/data/000}
+  \end{minipage}
+  \caption{When the sensor reads 000}
+  \label{fig:000}
+\end{figure}
 
+\begin{figure}[H]
+  \centering
+  \begin{minipage}{0.48\textwidth}
+    \includegraphics[width=\linewidth, height=6cm]{../../Photos/actual/001}
+  \end{minipage}
+  \hfill
+  \begin{minipage}{0.48\textwidth}
+    \includegraphics[width=\linewidth, height=6cm]{../../Photos/data/001}
+  \end{minipage}
+  \caption{When the sensor reads 001}
+  \label{fig:001}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \begin{minipage}{0.48\textwidth}
+    \includegraphics[width=\linewidth, height=6cm]{../../Photos/actual/010}
+  \end{minipage}
+  \hfill
+  \begin{minipage}{0.48\textwidth}
+    \includegraphics[width=\linewidth, height=6cm]{../../Photos/data/010}
+  \end{minipage}
+  \caption{When the sensor reads 010}
+  \label{fig:010}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \begin{minipage}{0.48\textwidth}
+    \includegraphics[width=\linewidth, height=6cm]{../../Photos/actual/011}
+  \end{minipage}
+  \hfill
+  \begin{minipage}{0.48\textwidth}
+    \includegraphics[width=\linewidth, height=6cm]{../../Photos/data/011}
+  \end{minipage}
+  \caption{When the sensor reads 011}
+  \label{fig:011}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \begin{minipage}{0.48\textwidth}
+    \includegraphics[width=\linewidth, height=6cm]{../../Photos/actual/100}
+  \end{minipage}
+  \hfill
+  \begin{minipage}{0.48\textwidth}
+    \includegraphics[width=\linewidth, height=6cm]{../../Photos/data/100}
+  \end{minipage}
+  \caption{When the sensor reads 100}
+  \label{fig:100}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \begin{minipage}{0.48\textwidth}
+    \includegraphics[width=\linewidth, height=6cm]{../../Photos/actual/110}
+  \end{minipage}
+  \hfill
+  \begin{minipage}{0.48\textwidth}
+    \includegraphics[width=\linewidth, height=6cm]{../../Photos/data/110}
+  \end{minipage}
+  \caption{When the sensor reads 110}
+  \label{fig:110}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \begin{minipage}{0.48\textwidth}
+    \includegraphics[width=\linewidth, height=6cm]{../../Photos/actual/111}
+  \end{minipage}
+  \hfill
+  \begin{minipage}{0.48\textwidth}
+    \includegraphics[width=\linewidth, height=6cm]{../../Photos/data/111}
+  \end{minipage}
+  \caption{When the sensor reads 111}
+  \label{fig:111}
+\end{figure}
 
 % Add all appropriate figures and analysis.
 % No formal word count for this section, however
