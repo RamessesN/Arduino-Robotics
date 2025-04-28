@@ -1,4 +1,123 @@
-\section*{Method}
-Describe the technical procedures to collect the results.
-Add figures into this section, where
-each figure and each equation may reduce the number of words you use.
+\section{Method}
+\begin{table}[H]
+  \centering
+  \newcolumntype{Y}{>{\centering\arraybackslash}X}
+  \begin{tabularx}{0.8\textwidth}{Y X}
+    \hline
+    Abridge & Full Name \\ 
+    \hline
+    ADC & Analog-to-Digital Conversion \\
+    IDE & Integrated Development Environment \\
+    IR  & Infrared Transducer \\
+    \hline
+  \end{tabularx}
+\end{table}
+\textbf{Key words: IDE, IR, Variable Control}
+
+\subsection{Experiment 1}
+We measured the changes in the ADC values of the IR sensor at intervals of every 0.5 cm from a white sheet of paper, obtaining a total of 10 sets of data ranging from 0.5 cm to 5 cm.
+
+The program is written using Arduino IDE to obtain the voltage value from analog pin A0 and convert it to a digital value through ADC. 
+The corresponding sensorValue is obtained through the Serial Monitor in the IDE.
+
+\subsection{Experiment 2}
+In this experiment, the sensors were installed at a height of 80 millimeters above the chassis. 
+The program is written using Arduino IDE to obtain the voltage value from analog pin A0 and convert it to a digital value through ADC. 
+The corresponding sensorValue is obtained through the Serial Monitor in the IDE. 
+By reading the sensor values, we can accurately determine whether each sensor is positioned over a white surface or a black line. 
+The sensor readings are as following figures (\ref{fig:000}~\ref{fig:001}~\ref{fig:010}~\ref{fig:011}~\ref{fig:100}~\ref{fig:110}~\ref{fig:111}):
+
+\begin{figure}[H]
+  \centering
+  \begin{minipage}{0.48\textwidth}
+    \includegraphics[width=\linewidth, height=6cm]{../../Photos/actual/000}
+  \end{minipage}
+  \hfill
+  \begin{minipage}{0.48\textwidth}
+    \includegraphics[width=\linewidth, height=6cm]{../../Photos/data/000}
+  \end{minipage}
+  \caption{When the sensor reads 000}
+  \label{fig:000}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \begin{minipage}{0.48\textwidth}
+    \includegraphics[width=\linewidth, height=6cm]{../../Photos/actual/001}
+  \end{minipage}
+  \hfill
+  \begin{minipage}{0.48\textwidth}
+    \includegraphics[width=\linewidth, height=6cm]{../../Photos/data/001}
+  \end{minipage}
+  \caption{When the sensor reads 001}
+  \label{fig:001}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \begin{minipage}{0.48\textwidth}
+    \includegraphics[width=\linewidth, height=6cm]{../../Photos/actual/010}
+  \end{minipage}
+  \hfill
+  \begin{minipage}{0.48\textwidth}
+    \includegraphics[width=\linewidth, height=6cm]{../../Photos/data/010}
+  \end{minipage}
+  \caption{When the sensor reads 010}
+  \label{fig:010}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \begin{minipage}{0.48\textwidth}
+    \includegraphics[width=\linewidth, height=6cm]{../../Photos/actual/011}
+  \end{minipage}
+  \hfill
+  \begin{minipage}{0.48\textwidth}
+    \includegraphics[width=\linewidth, height=6cm]{../../Photos/data/011}
+  \end{minipage}
+  \caption{When the sensor reads 011}
+  \label{fig:011}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \begin{minipage}{0.48\textwidth}
+    \includegraphics[width=\linewidth, height=6cm]{../../Photos/actual/100}
+  \end{minipage}
+  \hfill
+  \begin{minipage}{0.48\textwidth}
+    \includegraphics[width=\linewidth, height=6cm]{../../Photos/data/100}
+  \end{minipage}
+  \caption{When the sensor reads 100}
+  \label{fig:100}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \begin{minipage}{0.48\textwidth}
+    \includegraphics[width=\linewidth, height=6cm]{../../Photos/actual/110}
+  \end{minipage}
+  \hfill
+  \begin{minipage}{0.48\textwidth}
+    \includegraphics[width=\linewidth, height=6cm]{../../Photos/data/110}
+  \end{minipage}
+  \caption{When the sensor reads 110}
+  \label{fig:110}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \begin{minipage}{0.48\textwidth}
+    \includegraphics[width=\linewidth, height=6cm]{../../Photos/actual/111}
+  \end{minipage}
+  \hfill
+  \begin{minipage}{0.48\textwidth}
+    \includegraphics[width=\linewidth, height=6cm]{../../Photos/data/111}
+  \end{minipage}
+  \caption{When the sensor reads 111}
+  \label{fig:111}
+\end{figure}
+
+% Describe the technical procedures to collect the results.
+% Add figures into this section, where
+% each figure and each equation may reduce the number of words you use.

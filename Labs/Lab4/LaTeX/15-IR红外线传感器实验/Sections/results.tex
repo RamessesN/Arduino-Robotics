@@ -1,4 +1,68 @@
-\section*{Results}
-Add all appropriate figures and analysis.
-No formal word count for this section, however
-please keep text as concise as possible.
+\section{Results}
+\subsection{Experiment 1}
+Through experiments and observations from images, it can be seen that when the infrared sensor is placed on a white surface, the infrared light is effectively reflected after being emitted and can be received. 
+At this time, the module outputs a low voltage level, and the output indicator light is illuminated. 
+However, when the infrared sensor is placed on a black surface, black objects almost do not reflect infrared light. 
+Therefore, when the line-following module detects a black line, it outputs a high voltage level, and the output indicator light is turned off. 
+Additionally, when the line-following module is positioned too high above the ground, its detection effect is similar to that when encountering a black line. 
+It will also output a high voltage level, and the indicator light will be turned off. 
+
+We tested three sets of values at different horizontal heights of the sensor above the ground and calculated their average values as the final results~\ref{tab:values}. 
+The relationship between the detection values and the height was ultimately represented by a graph~\ref{fig:graph}.
+
+\begin{table}[H]
+  \centering
+  \newcolumntype{Y}{>{\centering\arraybackslash}X}
+  \rowcolors{2}{gray!20}{white}
+  \begin{tabularx}{0.8\textwidth}{|Y|Y|Y|Y|Y|}
+    \hline
+    \rowcolor{blue!30} \textbf{Altitude}/mm & & \textbf{Data} & & \textbf{Average} \\ 
+    \hline
+     5 & 33 & 34 & 33 & 33.3 \\ 
+    \hline
+    10 & 37 & 38 & 38 & 37.7 \\ 
+    \hline
+    15 & 42 & 43 & 42 & 42.3 \\ 
+    \hline
+    20 & 48 & 49 & 48 & 48.3 \\ 
+    \hline
+    25 & 59 & 54 & 58 & 57.0 \\ 
+    \hline
+    30 & 65 & 70 & 86 & 73.7 \\ 
+    \hline
+    35 & 294 & 275 & 315 & 294.7 \\ 
+    \hline
+    40 & 560 & 465 & 510 & 511.7 \\ 
+    \hline
+    45 & 765 & 680 & 648 & 697.7 \\ 
+    \hline
+    50 & 895 & 800 & 846 & 847.0 \\ 
+    \hline
+  \end{tabularx}
+  \caption{Data and Average Values}
+  \label{tab:values}
+\end{table}
+
+\begin{figure}[H]
+  \centering
+	\includegraphics[width=0.8\linewidth]{../../Photos/lab4_graph}
+  \caption{Altitude - Sensor Value Graph}
+  \label{fig:graph}
+\end{figure}
+
+Based on the data above, it can be seen that when the sensor is 3 cm above the ground, the sensor values undergo a sudden change. 
+Therefore, in order to ensure stability, the sensor must be positioned no more than 3 cm above the ground.
+
+\subsection{Experiment 2}
+Based on the aforementioned experiment, we first recorded the sensor readings. 
+Subsequently, we established a recognition criterion: 
+when the sensor reading is less than 100, it is marked as “0”; 
+and when the reading approaches 1023, it is marked as “1”. 
+Here, “0” indicates that the sensor has detected a white surface, while “1” indicates that it has detected a black line. 
+Under these conditions, the sensor readings under different scenarios are shown in the figures below ():
+
+
+
+% Add all appropriate figures and analysis.
+% No formal word count for this section, however
+% please keep text as concise as possible.
