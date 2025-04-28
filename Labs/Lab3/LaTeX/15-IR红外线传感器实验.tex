@@ -1,0 +1,83 @@
+\documentclass[12pt]{article}
+
+\usepackage{listings}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{ragged2e}
+\usepackage{lipsum}
+\usepackage{newtxtext,newtxmath}
+\usepackage{graphicx}
+\usepackage{titlesec}
+\usepackage{titling}
+\usepackage[top=2.5cm, bottom=2.5cm, left=3cm, right=3cm]{geometry}
+
+\setlength{\emergencystretch}{3em}
+\AtBeginDocument{\RaggedRight}
+
+\setlength{\headheight}{14.5pt}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small\textit{Group 15 -- Lab Report}}
+\fancyhead[R]{\small\textit{\thepage/\pageref{LastPage}}}
+\fancyfoot[C]{\small\thepage}
+
+\newcommand{\wordcount}[1]{\footnotesize\textcolor{gray}{(#1 words)}}
+\renewcommand{\headrulewidth}{1.0pt}
+\setlength{\droptitle}{-3em}
+
+\title{\fontsize{16pt}{18pt}\selectfont{\textbf{Lab$_i$} - XXX}}
+\author{\fontsize{11pt}{13pt}\selectfont{
+    Yuwei Zhao\textsuperscript{1},
+    Haohao Qi\textsuperscript{2},
+    Yilin Zhang\textsuperscript{3} \\
+    \small\textsuperscript{1,2,3}School of Computer Science and Technology, 
+    University of Science \\
+    \small\textsuperscript{1,2,3}Bachelor of Engineering with Honours in Robotics
+}}
+\date{\fontsize{11pt}{13pt}\selectfont{\today}}
+
+\titleformat{\section}[hang]
+{\normalfont\fontsize{14}{16}\bfseries}
+{\thesection}{0.5em}{}
+\titlespacing{\section}{0pt}{2.5ex plus 1ex minus .2ex}{1.5ex plus .2ex}
+
+\titlespacing*{\section}
+    {0pt}
+    {2ex}
+    {1.5ex}
+
+\begin{document}
+
+\maketitle{}
+\thispagestyle{fancy}
+\vspace*{-0.5em}
+
+The word counts suggested here do not need to be strictly adhered to they are for some basic guidance.
+
+\section*{Introduction} \wordcount{150}
+Give a brief description for the aims of the laboratory and a summary of the results collected.
+Please write this as constant prose in a way that a fellow student,
+who does not know anything about the experiment,
+can understand the approach.
+
+\section*{Theory and Technical Background} \wordcount{200}
+Give a brief description of the background theory for the experiment being tackled.
+Please cite appropriate work.
+Feel free to add figures into this section, where
+each figure and each equation may reduce the number of words you use.
+
+\section*{Method} \wordcount{300}
+Describe the technical procedures to collect the results.
+Add figures into this section, where
+each figure and each equation may reduce the number of words you use.
+
+\section*{Results}
+Add all appropriate figures and analysis.
+No formal word count for this section, however
+please keep text as concise as possible.
+
+\section*{Conclusions} \wordcount{100}
+Please give the conclusions from the characterisations including a summary of the results collected.
+
+\end{document}
