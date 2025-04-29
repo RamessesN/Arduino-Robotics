@@ -26,11 +26,11 @@ def graphGenerate():
     sensorValue = mx.array(sensor_average)
     altitudeValue = mx.array(altitude)
 
-    poly_degree = 6
+    poly_degree = 5
     poly_coeffs = np.polyfit(altitudeValue, sensorValue, poly_degree)
     poly_func = np.poly1d(poly_coeffs)
 
-    altitude_dense = mx.linspace(0, 5, 300)
+    altitude_dense = mx.linspace(0, 5, 600)
     sensor_dense = poly_func(altitude_dense)
 
     plt.figure(figsize=(10, 6))
