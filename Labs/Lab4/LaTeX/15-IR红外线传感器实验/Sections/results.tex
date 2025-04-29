@@ -1,5 +1,6 @@
-\section{Results}
-\subsection{Experiment 1}
+\section{Results}\label{sec:results}
+
+\subsection{Experiment 1}\label{subsec:experiment-13}
 Through experiments and observations from images, it can be seen that when the infrared sensor is placed on a white surface, the infrared light is effectively reflected after being emitted and can be received. 
 At this time, the module outputs a low voltage level, and the output indicator light is illuminated. 
 However, when the infrared sensor is placed on a black surface, black objects almost do not reflect infrared light. 
@@ -7,7 +8,8 @@ Therefore, when the line-following module detects a black line, it outputs a hig
 Additionally, when the line-following module is positioned too high above the ground, its detection effect is similar to that when encountering a black line. 
 It will also output a high voltage level, and the indicator light will be turned off. 
 
-We tested three sets of values at different horizontal heights of the sensor above the ground and calculated their average values as the final results~\ref{tab:values}. 
+We tested three sets of values at different horizontal heights of the sensor above the ground and calculated their average values as the final results~\ref{tab:values}.
+
 The relationship between the detection values and the height was ultimately represented by a graph~\ref{fig:graph}.
 
 \begin{table}[H]
@@ -54,12 +56,12 @@ The relationship between the detection values and the height was ultimately repr
 Based on the data above, it can be seen that when the sensor is 3 cm above the ground, the sensor values undergo a sudden change. 
 Therefore, in order to ensure stability, the sensor must be positioned no more than 3 cm above the ground.
 
-\subsection{Experiment 2}
+\subsection{Experiment 2}\label{subsec:experiment-23}
 Based on the aforementioned experiment, we first recorded the sensor readings. 
 Subsequently, we established a recognition criterion: 
-when the sensor reading is less than 100, it is marked as “0”; 
-and when the reading approaches 1023, it is marked as “1”. 
-Here, “0” indicates that the sensor has detected a white surface, while “1” indicates that it has detected a black line. 
+when the sensor reading is less than 100, it is marked as \"0\";
+and when the reading approaches 1023, it is marked as \"1\".
+Here, \"0\" indicates that the sensor has detected a white surface, while \"1\" indicates that it has detected a black line.
 Under these conditions, the sensor readings under different scenarios are shown in the figures (\ref{fig:000}~\ref{fig:001}~\ref{fig:010}~\ref{fig:011}~\ref{fig:100}~\ref{fig:110}~\ref{fig:111}) below:
 
 \begin{figure}[H]
