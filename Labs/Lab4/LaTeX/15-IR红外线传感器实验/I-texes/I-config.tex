@@ -1,8 +1,14 @@
 \setmainfont{Times New Roman}
-\setlength{\headheight}{14.5pt}
+\setlength{\headheight}{15pt}
 \setlength{\parindent}{0pt}
 
 \pagestyle{fancy}
+\fancyhf{}
+
+\fancyhead[L]{Group \# 15}
+\fancyhead[R]{Page \thepage\ of\ \pageref{LastPage}}
+
+\fancyfoot[C]{\thepage}
 
 \RaggedRight
 
@@ -10,12 +16,13 @@
   language=C,
   basicstyle=\ttfamily\small,
   keywordstyle=\color{blue},
-  commentstyle=\color{gray},
+  commentstyle=\color{green},
   stringstyle=\color{olive},
-  numberstyle=\color{red},
+  numberstyle=\color{gray},
   numbers=left,
-  numberstyle=\tiny\color{gray},
   frame=single,
   breaklines=true,
-  tabsize=2
+  tabsize=2,
+  showspaces=false,
+  showstringspaces=false
 }

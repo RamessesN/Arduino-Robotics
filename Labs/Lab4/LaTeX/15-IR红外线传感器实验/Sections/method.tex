@@ -1,29 +1,29 @@
-\section{Method}
+\section{Method}\label{sec:method}
 \begin{table}[H]
   \centering
   \newcolumntype{Y}{>{\centering\arraybackslash}X}
   \begin{tabularx}{0.8\textwidth}{Y X}
-    \hline
+    \Xhline{1pt}
     Abridge & Full Name \\ 
-    \hline
+    \Xhline{1pt}
     ADC & Analog-to-Digital Conversion \\
     IDE & Integrated Development Environment \\
     IR  & Infrared Transducer \\
-    \hline
-  \end{tabularx}
+    \Xhline{1pt}
+  \end{tabularx}\label{tab:table}
 \end{table}
-\textbf{Keywords: IDE, IR, Variable Control}
+\textbf{Keywords: IDE, IR, Variable Control}\label{subsec:keywords:-ide-ir-variable-control}
 
-\subsection{Experiment 1}
+\subsection{Experiment 1}\label{subsec:experiment-1}
 We measured the changes in the ADC values of the IR sensor at intervals of every 0.5 cm from a white sheet of paper, obtaining a total of 10 sets of data ranging from 0.5 cm to 5 cm.
 
 The program is written using Arduino IDE to obtain the voltage value from analog pin A0 and convert it to a digital value through ADC\@.
-The corresponding sensorValue is obtained through the Serial Monitor in the IDE.
+The corresponding sensorValue is obtained through the Serial Monitor in the IDE\@.
 
-\subsection{Experiment 2}
+\subsection{Experiment 2}\label{subsec:experiment-2}
 In this experiment, the sensors were installed at a height of 80 millimeters above the chassis. 
-The program is written using Arduino IDE to obtain the voltage value from analog pin A0 and convert it to a digital value through ADC. 
-The corresponding sensorValue is obtained through the Serial Monitor in the IDE. 
+The program is written using Arduino IDE to obtain the voltage value from analog pin A0 and convert it to a digital value through ADC\@.
+The corresponding sensorValue is obtained through the Serial Monitor in the IDE\@.
 By reading the sensor values, we can accurately determine whether each sensor is positioned over a white surface or a black line. 
 The sensor readings are as following figures (\ref{fig:000_}~\ref{fig:001_}~\ref{fig:010_}~\ref{fig:011_}~\ref{fig:100_}~\ref{fig:110_}~\ref{fig:111_}):
 
