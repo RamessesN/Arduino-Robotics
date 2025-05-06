@@ -1,12 +1,12 @@
 /* 4pin - mode */
-int in1Pin = 5;
-int in2Pin = 6;
-int in3Pin = 9;
-int in4Pin = 10;
+int in1Pin = 4;
+int in2Pin = 5;
+int in3Pin = 8;
+int in4Pin = 9;
 
 // Tail Lights
 int leftLight = 2;
-int rightLight = 8;
+int rightLight = 7;
 
 // Speed Setting
 int base_Speed = 180;
@@ -17,10 +17,7 @@ int accelerated_Speed_big = 250;
 
 // Fluctuating Rate
 float leftComp = 1.00;
-float rightComp = 1.00;
-
-// Offset between Go Forward and Turn
-int offset = 20;
+float rightComp = 0.94;
 
 void setup() {
   // put your setup code here, to run once:
@@ -46,7 +43,7 @@ void setup() {
 
 void loop() {
   // put your main code here, to run repeatedly:
-  boolean reverse = false;
+  bool reverse = false;
 
   int sensorValue_LEFT = getSmoothedValue(A4);
   delay(2);
@@ -83,10 +80,9 @@ int getSmoothedValue(int pin) {
 // Left Wheel CONTROL
 void setLeft(bool reverse, int speed) {
   speed = constrain(speed, 0, 255);
-  digitalWrite(in2Pin, !reverse);
-  analogWrite(in1Pin, 255 - speed);
+  digitalWrite(in1Pin, reverse);
+  analogWrite(in2Pin, speed);
   digitalWrite(leftLight, HIGH);
-  delay(2);
 }
 
 // Right Wheel CONTROL
@@ -95,7 +91,6 @@ void setRight(bool reverse, int speed) {
   digitalWrite(in3Pin, reverse);
   analogWrite(in4Pin, speed);
   digitalWrite(rightLight, HIGH);
-  delay(2);
 }
 
 /**
