@@ -1,44 +1,52 @@
+import numpy as np
 import pandas as pd
-import mlx.core as mx
 import matplotlib.pyplot as plt
 
-file_paths = [f"./DataAverage/{i}cm_average_data.xlsx" for i in range(0, 401, 40)]
+file_name = "./DataAverage/120cm_average_data.xlsx"
 
-distance_steps = mx.arange(0, 400, 40)
-angle_steps = mx.arange(45, 136)
-data_matrix = mx.zeros((len(distance_steps), len(angle_steps)))
+df = pd.read_excel(file_name)
+angles = df["Angle"].values
+distances = df["Distance / cm"].values
 
-for idx, file_path in enumerate(file_paths):
-    df = pd.read_excel(file_path)
-    for _, row in df.iterrows():
-        angle = int(row["Angle"])
-        distance = row["Distance / cm"]
-        if 45 <= angle <= 135:
-            angle_idx = angle - 45
-            data_matrix[idx, angle_idx] = distance
+valid_indices = distances > 0
+angles = angles[valid_indices]
+distances = distances[valid_indices]
 
-angles = mx.degrees(angle_steps)
-distances = distance_steps
-theta, r = mx.meshgrid(angles, distances)
+theta = np.deg2rad(angles)
 
 fig, ax = plt.subplots(subplot_kw={'projection': 'polar'}, figsize=(8, 8))
-cmap = plt.cm.Oranges
-heatmap = ax.pcolor(theta, r, data_matrix, cmap=cmap, shading='auto')
 
+cmap = plt.cm.YlOrRd
+vmin = 0
+vmax = max(distances)
+norm = plt.Normalize(vmin=vmin, vmax=vmax)
+colors = cmap(norm(distances))
+
+for i in range(len(theta)):
+    ax.bar(
+        theta[i],
+        distances[i],
+        width=np.deg2rad(1),
+        color=colors[i],
+        edgecolor="none",
+        alpha=1.0
+    )
+
+sm = plt.cm.ScalarMappable(cmap=cmap, norm=norm)
+sm.set_array([])
 cbar = plt.colorbar(
-    heatmap,
-    ax=ax,
-    orientation='vertical',
-    pad=0.1,
-    shrink=0.7
-)
+   sm,
+      ax=ax,
+      orientation='vertical',
+      pad=0.1,
+      shrink=0.6
+  )
 cbar.set_label("Distance / cm", fontsize=12)
 
-ax.set_title("Heatmap of \"Angle - Distance\"", va="bottom", fontsize=14)
+ax.set_title("Angle - Distance", va="bottom", fontsize=14)
 ax.set_thetamin(45)
 ax.set_thetamax(135)
-ax.set_rticks(distance_steps)
-ax.set_rlabel_position(90)
+ax.set_theta_zero_location("E")
 
-plt.savefig("./Photos/ang&dis_graph.png", dpi=1200)
+plt.savefig("./Photos/angle2distance.png", dpi=1200)
 plt.show()
