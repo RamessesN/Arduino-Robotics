@@ -8,6 +8,8 @@ int enginePin = 3;
 int ultrasound_TrigPin = 10;
 int ultrasound_EchoPin = 11;
 
+int counter = 0;
+
 void setup() {
   // put your setup code here, to run once:
   Serial.begin(9600);
@@ -20,17 +22,22 @@ void setup() {
 
 void loop() {
   // put your main code here, to run repeatedly:
-  engineTurn();
+  if(counter < 6) {
+    engineTurn();
+  } else if(engine.attached()) {
+    engine.detach();
+    Serial.println("STOP!!!");
+  }
 }
 
-int angle = 0;
+int angle = 90;
 int step = 1;
 unsigned long previousMillis = 0;
 
 void engineTurn() {
   unsigned long currentMillis = millis();
 
-  if (currentMillis - previousMillis >= 20) {
+  if(currentMillis - previousMillis >= 20) {
     previousMillis = currentMillis;
 
     engine.write(angle);
@@ -40,8 +47,14 @@ void engineTurn() {
     angle += step;
 
     // Change the direction when arrive the boundary
-    if (angle >= 180 || angle <= 0) {
+    if(angle >= 135) {
+      angle = 135;
       step = -step;
+      counter++;
+    } else if(angle <= 45) {
+      angle = 45;
+      step = -step;
+      counter++;
     }
   }
 }
@@ -50,7 +63,7 @@ float duration, distance;
 
 void ultrasoundControl() {
   digitalWrite(ultrasound_TrigPin, LOW);
-  delayMicroseconds(5);
+  delayMicroseconds(2);
   digitalWrite(ultrasound_TrigPin, HIGH);
   delayMicroseconds(10);
   digitalWrite(ultrasound_TrigPin, LOW);
