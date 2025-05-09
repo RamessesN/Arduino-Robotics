@@ -30,7 +30,7 @@ cbar = plt.colorbar(
     ax=ax,
     orientation='vertical',
     pad=0.1,
-    shrink=0.7
+    shrink=0.6
 )
 cbar.set_label("Distance / cm", fontsize=12)
 

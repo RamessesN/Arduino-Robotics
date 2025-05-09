@@ -22,190 +22,117 @@
 </p>
 
 ### 5. 测量数据
-- 0cm: [
-Angle: 90°; Distance: 2.44 cm
-Angle: 91°; Distance: 2.44 cm
-Angle: 92°; Distance: 3.74 cm
-Angle: 93°; Distance: 0.00 cm
-Angle: 94°; Distance: 0.00 cm
-Angle: 95°; Distance: 0.00 cm
-Angle: 96°; Distance: 0.00 cm
-Angle: 97°; Distance: 0.00 cm
-Angle: 98°; Distance: 0.00 cm
-Angle: 99°; Distance: 0.00 cm
-Angle: 100°; Distance: 0.00 cm
-Angle: 101°; Distance: 0.00 cm
-Angle: 102°; Distance: 0.00 cm
-Angle: 103°; Distance: 0.00 cm
-Angle: 104°; Distance: 0.00 cm
-Angle: 105°; Distance: 0.00 cm
-Angle: 106°; Distance: 0.00 cm
-Angle: 107°; Distance: 0.00 cm
-Angle: 108°; Distance: 0.00 cm
-Angle: 109°; Distance: 0.00 cm
-Angle: 110°; Distance: 0.00 cm
-Angle: 111°; Distance: 0.00 cm
-Angle: 112°; Distance: 0.00 cm
-Angle: 113°; Distance: 0.00 cm
-Angle: 114°; Distance: 0.00 cm
-Angle: 115°; Distance: 0.00 cm
-Angle: 116°; Distance: 0.00 cm
-Angle: 117°; Distance: 0.00 cm
-Angle: 118°; Distance: 0.00 cm
-Angle: 119°; Distance: 0.00 cm
-Angle: 120°; Distance: 0.00 cm
-Angle: 121°; Distance: 0.00 cm
-Angle: 122°; Distance: 0.00 cm
-Angle: 123°; Distance: 0.00 cm
-Angle: 124°; Distance: 0.00 cm
-Angle: 125°; Distance: 0.00 cm
-Angle: 126°; Distance: 0.00 cm
-Angle: 127°; Distance: 0.00 cm
-Angle: 128°; Distance: 0.00 cm
-Angle: 129°; Distance: 0.00 cm
-Angle: 130°; Distance: 0.00 cm
-Angle: 131°; Distance: 0.00 cm
-Angle: 132°; Distance: 0.00 cm
-Angle: 133°; Distance: 0.00 cm
-Angle: 134°; Distance: 0.00 cm
-Angle: 135°; Distance: 4.39 cm
-Angle: 134°; Distance: 16.43 cm
-Angle: 133°; Distance: 16.43 cm
-Angle: 132°; Distance: 16.43 cm
-Angle: 131°; Distance: 16.43 cm
-Angle: 130°; Distance: 4.39 cm
-Angle: 129°; Distance: 5.92 cm
-Angle: 128°; Distance: 4.72 cm
-Angle: 127°; Distance: 4.61 cm
-Angle: 126°; Distance: 8.95 cm
-Angle: 125°; Distance: 3.31 cm
-Angle: 124°; Distance: 27.20 cm
-Angle: 123°; Distance: 23.02 cm
-Angle: 122°; Distance: 6.35 cm
-Angle: 121°; Distance: 3.64 cm
-Angle: 120°; Distance: 3.74 cm
-Angle: 119°; Distance: 3.74 cm
-Angle: 118°; Distance: 60.87 cm
-Angle: 117°; Distance: 3.74 cm
-Angle: 116°; Distance: 3.74 cm
-Angle: 115°; Distance: 3.74 cm
-Angle: 114°; Distance: 49.60 cm
-Angle: 113°; Distance: 49.60 cm
-Angle: 112°; Distance: 2.76 cm
-Angle: 111°; Distance: 2.76 cm
-Angle: 110°; Distance: 2.76 cm
-Angle: 109°; Distance: 2.76 cm
-Angle: 108°; Distance: 9.57 cm
-Angle: 107°; Distance: 0.00 cm
-Angle: 106°; Distance: 0.00 cm
-Angle: 105°; Distance: 0.00 cm
-Angle: 104°; Distance: 0.00 cm
-Angle: 103°; Distance: 0.00 cm
-Angle: 102°; Distance: 0.00 cm
-Angle: 101°; Distance: 0.00 cm
-Angle: 100°; Distance: 0.00 cm
-Angle: 99°; Distance: 0.00 cm
-Angle: 98°; Distance: 0.00 cm
-Angle: 97°; Distance: 0.00 cm
-Angle: 96°; Distance: 0.00 cm
-Angle: 95°; Distance: 0.00 cm
-Angle: 94°; Distance: 0.00 cm
-Angle: 93°; Distance: 0.00 cm
-Angle: 92°; Distance: 0.00 cm
-Angle: 91°; Distance: 0.00 cm
-Angle: 90°; Distance: 0.00 cm
-  ]
-- 40cm:
-- 80cm:
-- 120cm:
-- 160cm:
-- 200cm:
-- 240cm:
-- 280cm:
-- 320cm:
-- 360cm:
-- 400cm:
+> 0cm:
+>> ```0cm_data_01```: (详见 [# 0cm_DATA_01](./DataProcessing/0cm/0cm_data_01.xlsx))  
+>> Angle: 135°; Distance: 4.39 cm  
+>> Angle: 134°; Distance: 16.43 cm   
+>> ...  
+>> Angle: 46°; Distance: 45.93 cm  
+>> Angle: 45°; Distance: 3.41 cm
+>
+>> ```0cm_data_02```: (详见 [# 0cm_DATA_02](./DataProcessing/0cm/0cm_data_02.xlsx))  
+>> Angle: 135°; Distance: 4.39 cm  
+>> Angle: 134°; Distance: 16.41 cm   
+>> ...  
+>> Angle: 46°; Distance: 45.91 cm  
+>> Angle: 45°; Distance: 3.41 cm 
+>
+>> ```0cm_data_03```: (详见 [# 0cm_DATA_03](./DataProcessing/0cm/0cm_data_03.xlsx))  
+>> Angle: 135°; Distance: 4.13 cm  
+>> Angle: 134°; Distance: 16.41 cm   
+>> ...  
+>> Angle: 46°; Distance: 45.62 cm  
+>> Angle: 45°; Distance: 3.42 cm
 
-### 6. “距离 - 角度” 扇形雷达图
-### 7. 附录: 代码
-```cpp {.line-numbers}
-#include <Servo.h>
-Servo engine;
+> 40cm:
+>> ```40cm_data_01```: (详见 [# 40cm_DATA_01](./DataProcessing/40cm/40cm_data_01.xlsx))  
+>> Angle: 135°; Distance: 56.69 cm  
+>> Angle: 134°; Distance: 56.61 cm   
+>> ...  
+>> Angle: 46°; Distance: 183.45 cm  
+>> Angle: 45°; Distance: 260.37 cm
+>
+>> ```40cm_data_02```: (详见 [# 40cm_DATA_02](./DataProcessing/40cm/40cm_data_02.xlsx))  
+>> Angle: 135°; Distance: 56.63 cm  
+>> Angle: 134°; Distance: 56.63 cm   
+>> ...  
+>> Angle: 46°; Distance: 138.02 cm  
+>> Angle: 45°; Distance: 209.69 cm 
+>
+>> ```40cm_data_03```: (详见 [# 40cm_DATA_03](./DataProcessing/40cm/40cm_data_03.xlsx))  
+>> Angle: 135°; Distance: 56.23 cm  
+>> Angle: 134°; Distance: 56.51 cm   
+>> ...  
+>> Angle: 46°; Distance: 83.4 cm  
+>> Angle: 45°; Distance: 209.7 cm
 
-// steering gear
-int enginePin = 3;
+> 80cm:
+>> ```80cm_data_01```: (详见 [# 80cm_DATA_01](./DataProcessing/80cm/80cm_data_01.xlsx))
+>
+>> ```80cm_data_02```: (详见 [# 80cm_DATA_02](./DataProcessing/80cm/80cm_data_02.xlsx))
+>
+>> ```80cm_data_03```: (详见 [# 80cm_DATA_03](./DataProcessing/80cm/80cm_data_03.xlsx))
 
-// ultrasonic sensor
-int ultrasound_TrigPin = 10;
-int ultrasound_EchoPin = 11;
+> 120cm:
+>> ```120cm_data_01```: (详见 [# 120cm_DATA_01](./DataProcessing/120cm/120cm_data_01.xlsx))
+>
+>> ```120cm_data_02```: (详见 [# 120cm_DATA_02](./DataProcessing/120cm/120cm_data_02.xlsx))
+>
+>> ```120cm_data_03```: (详见 [# 120cm_DATA_03](./DataProcessing/120cm/120cm_data_03.xlsx))  
 
-int counter = 0;
+> 160cm: ...
 
-void setup() {
-  // put your setup code here, to run once:
-  Serial.begin(9600);
-  // Engine Driver
-  engine.attach(enginePin);
-  // Ultrasound Driver
-  pinMode(ultrasound_TrigPin, OUTPUT);
-  pinMode(ultrasound_EchoPin, INPUT);
-}
+> 200cm: ...
 
-void loop() {
-  // put your main code here, to run repeatedly:
-  if(counter < 6) {
-    engineTurn();
-  } else if(engine.attached()) {
-    engine.detach();
-    Serial.println("STOP!!!");
-  }
-}
+> 240cm: ...
 
-int angle = 90;
-int step = 1;
-unsigned long previousMillis = 0;
+> 280cm: ...
 
-void engineTurn() {
-  unsigned long currentMillis = millis();
+> 320cm: ...  
 
-  if(currentMillis - previousMillis >= 20) {
-    previousMillis = currentMillis;
+> 360cm: ...
 
-    engine.write(angle);
+> 400cm: ...
 
-    ultrasoundControl();
+### 6. 三组数据取平均值后数据
+详见 [# Average_DATA](./DataAverage)
 
-    angle += step;
+### 7. “距离 - 角度” 扇形雷达图
+<p align="center">
+  <img src="./Photos/RadarGraph.png" alt="RadarGraph.png" width="400">
+</p>
 
-    // Change the direction when arrive the boundary
-    if(angle >= 135) {
-      angle = 135;
-      step = -step;
-      counter++;
-    } else if(angle <= 45) {
-      angle = 45;
-      step = -step;
-      counter++;
-    }
-  }
-}
+### 8. 0 ~ 400cm 每 40cm 划分的 “距离 - 角度” 扇形雷达图
+<p align="center">
+  <img src="./Photos/angle-distance/0cm.png" alt="0cm.png" width="80">
+  <img src="./Photos/angle-distance/40cm.png" alt="40cm.png" width="80">
+  <img src="./Photos/angle-distance/80cm.png" alt="80cm.png" width="80">
+  <img src="./Photos/angle-distance/120cm.png" alt="120cm.png" width="80">
+  <img src="./Photos/angle-distance/160cm.png" alt="160cm.png" width="80">
+  <br>
+  <img src="./Photos/angle-distance/200cm.png" alt="200cm.png" width="80">
+  <img src="./Photos/angle-distance/240cm.png" alt="240cm.png" width="80">
+  <img src="./Photos/angle-distance/280cm.png" alt="280cm.png" width="80">
+  <img src="./Photos/angle-distance/320cm.png" alt="320cm.png" width="80">
+  <img src="./Photos/angle-distance/360cm.png" alt="360cm.png" width="80">
+  <img src="./Photos/angle-distance/400cm.png" alt="400cm.png" width="80">
+</p>
 
-float duration, distance;
+### 9. 0 ~ 400cm 每 40cm 划分的分布热力图
+<p align="center">
+  <img src="./Photos/heatmap.png" alt="heatmap.png" width="400">
+</p>
 
-void ultrasoundControl() {
-  digitalWrite(ultrasound_TrigPin, LOW);
-  delayMicroseconds(2);
-  digitalWrite(ultrasound_TrigPin, HIGH);
-  delayMicroseconds(10);
-  digitalWrite(ultrasound_TrigPin, LOW);
-
-  duration = pulseIn(ultrasound_EchoPin, HIGH, 25000);
-  distance = (duration * 0.0343) / 2;
-
-  Serial.print("Angle: ");
-  Serial.print(angle);
-  Serial.print("°; Distance: ");
-  Serial.print(distance);
-  Serial.println(" cm");
-}
-```
+### 10. 附录: 代码
+1. Arduino IDE Code  
+详见 [# Arduino IDE](./distanceDetect.cpp)
+2. 原始数据通过pandas库提取到excel自动化脚本  
+详见 [# DataExtraction](./DataExtraction.py)
+3. 基于excel数据通过三次数据取平均的自动化脚本  
+详见 [# DataAverage](./DataAverage.py)
+4. Code of 黑白雷达测距图  
+详见 [# Black&White Ladar](./Black&White.py)
+5. Code of "0 ~ 400cm 每 40cm 划分的 '距离 - 角度' 扇形雷达图"  
+详见 [# GraphPer10](./GraphGenerate.py)
+6. Code of 热力图
+详见 [# Heatmap](./HeatmapGenerate.py)

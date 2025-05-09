@@ -2,7 +2,7 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 
-file_name = "./DataAverage/120cm_average_data.xlsx"
+file_name = "./DataAverage/280cm_average_data.xlsx"
 
 df = pd.read_excel(file_name)
 angles = df["Angle"].values
@@ -34,19 +34,11 @@ for i in range(len(theta)):
 
 sm = plt.cm.ScalarMappable(cmap=cmap, norm=norm)
 sm.set_array([])
-cbar = plt.colorbar(
-   sm,
-      ax=ax,
-      orientation='vertical',
-      pad=0.1,
-      shrink=0.6
-  )
-cbar.set_label("Distance / cm", fontsize=12)
 
-ax.set_title("Angle - Distance", va="bottom", fontsize=14)
+ax.set_title("280cm", va="bottom", fontsize=14)
 ax.set_thetamin(45)
 ax.set_thetamax(135)
 ax.set_theta_zero_location("E")
 
-plt.savefig("./Photos/angle2distance.png", dpi=1200)
+plt.savefig("./Photos/angle-distance/280cm.png", dpi=1200)
 plt.show()
