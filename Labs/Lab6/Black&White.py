@@ -2,7 +2,7 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 
-file_paths = [f"./DataRestoration/{i}cm_average_data.xlsx" for i in range(0, 401, 40)]
+file_paths = [f"./DataRestoration/{i}cm_0&1_data.xlsx" for i in range(0, 401, 40)]
 
 distance_steps = np.arange(0, 401, 40)
 angle_steps = np.arange(45, 136)
