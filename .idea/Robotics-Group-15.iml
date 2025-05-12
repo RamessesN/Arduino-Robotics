@@ -3,6 +3,8 @@
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$">
       <excludeFolder url="file://$MODULE_DIR$/.venv" />
+      <excludeFolder url="file://$MODULE_DIR$/Labs/Lab4/LaTeX/Heriot_Watt_Thesis_Template-main" />
+      <excludeFolder url="file://$MODULE_DIR$/Labs/Lab4/LaTeX/OUC-LaTex-master-main" />
     </content>
     <orderEntry type="jdk" jdkName="Python 3.9 (Robotics-Group-15)" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
