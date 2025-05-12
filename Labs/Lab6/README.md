@@ -120,7 +120,7 @@
 
 ### 9. 0 ~ 400cm 每 40cm 划分的分布热力图
 <p align="center">
-  <img src="./Photos/heatmap.png" alt="heatmap.png" width="400">
+  <img src="./Photos/heatmap(deprecated).png" alt="heatmap.png" width="400">
 </p>
 
 ### 10. 附录: 代码
