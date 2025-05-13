@@ -99,28 +99,28 @@
 
 ### 7. “距离 - 角度” 扇形雷达图
 <p align="center">
-  <img src="./Photos/RadarGraph.png" alt="RadarGraph.png" width="400">
+  <img src="./Photos/RadarGraph Medium.png" alt="RadarGraph.png" width="400">
 </p>
 
 ### 8. 0 ~ 400cm 每 40cm 划分的 “距离 - 角度” 扇形雷达图
 <p align="center">
-  <img src="./Photos/angle-distance/0cm.png" alt="0cm.png" width="80">
-  <img src="./Photos/angle-distance/40cm.png" alt="40cm.png" width="80">
-  <img src="./Photos/angle-distance/80cm.png" alt="80cm.png" width="80">
-  <img src="./Photos/angle-distance/120cm.png" alt="120cm.png" width="80">
-  <img src="./Photos/angle-distance/160cm.png" alt="160cm.png" width="80">
+  <img src="./Photos/angle-distance/0cm Medium.jpeg" alt="0cm.jpeg" width="80">
+  <img src="./Photos/angle-distance/40cm Medium.jpeg" alt="40cm.jpeg" width="80">
+  <img src="./Photos/angle-distance/80cm Medium.jpeg" alt="80cm.jpeg" width="80">
+  <img src="./Photos/angle-distance/120cm Medium.jpeg" alt="120cm.jpeg" width="80">
+  <img src="./Photos/angle-distance/160cm Medium.jpeg" alt="160cm.jpeg" width="80">
   <br>
-  <img src="./Photos/angle-distance/200cm.png" alt="200cm.png" width="80">
-  <img src="./Photos/angle-distance/240cm.png" alt="240cm.png" width="80">
-  <img src="./Photos/angle-distance/280cm.png" alt="280cm.png" width="80">
-  <img src="./Photos/angle-distance/320cm.png" alt="320cm.png" width="80">
-  <img src="./Photos/angle-distance/360cm.png" alt="360cm.png" width="80">
-  <img src="./Photos/angle-distance/400cm.png" alt="400cm.png" width="80">
+  <img src="./Photos/angle-distance/200cm Medium.jpeg" alt="200cm.jpeg" width="80">
+  <img src="./Photos/angle-distance/240cm Medium.jpeg" alt="240cm.jpeg" width="80">
+  <img src="./Photos/angle-distance/280cm Medium.jpeg" alt="280cm.jpeg" width="80">
+  <img src="./Photos/angle-distance/320cm Medium.jpeg" alt="320cm.jpeg" width="80">
+  <img src="./Photos/angle-distance/360cm Medium.jpeg" alt="360cm.jpeg" width="80">
+  <img src="./Photos/angle-distance/400cm Medium.jpeg" alt="400cm.jpeg" width="80">
 </p>
 
 ### 9. 0 ~ 400cm 每 40cm 划分的分布热力图
 <p align="center">
-  <img src="./Photos/heatmap(deprecated).png" alt="heatmap.png" width="400">
+  <img src="./Photos/heatmap Medium.png" alt="heatmap.png" width="400">
 </p>
 
 ### 10. 附录: 代码
