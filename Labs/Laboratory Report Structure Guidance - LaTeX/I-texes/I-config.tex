@@ -19,3 +19,31 @@
   showspaces=false,
   showstringspaces=false
 }
+
+%% define length and scaling for baseline
+\newcommand{\headingBaseline}{12}
+\newcommand{\headingBaselineDiv}{10}
+\newlength{\sectionFontSize}
+\newlength{\subsectionFontSize}
+\newlength{\sectionBaseline}
+\newlength{\subsectionBaseline}
+
+%% change those value if you want to change the chapter/section/subsection font size
+\setlength{\sectionFontSize}{12pt}
+\setlength{\subsectionFontSize}{12pt}
+
+%% automatic computation for baseline, rule of thumb is 1.2
+\setlength{\sectionBaseline}{ \sectionFontSize * \headingBaseline / \headingBaselineDiv}
+\setlength{\subsectionBaseline}{ \subsectionFontSize * \headingBaseline / \headingBaselineDiv}
+
+%% Section, 12-point
+\titleformat{\section}[hang]
+    {\normalfont\bfseries\fontsize{\sectionFontSize}{\sectionBaseline}\selectfont}{\thesection}{5pt}{}
+%% left|above|below
+\titlespacing{\section}{0pt}{25pt}{15pt}
+
+%% Subsection, 12-point, italic
+\titleformat{\subsection}[hang]
+    {\normalfont\bfseries\itshape\fontsize{\subsectionFontSize}{\subsectionBaseline}\selectfont}{\thesubsection}{5pt}{}
+%% left|above|below
+\titlespacing{\subsection}{0pt}{20pt}{10pt}
