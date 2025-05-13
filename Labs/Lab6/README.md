@@ -10,6 +10,10 @@
 详见 [# SG90 舵机](https://blog.csdn.net/weixin_42645653/article/details/112210095)
 
 ### 2. 实验过程
+<p align="center">
+  <img src="./Photos/workflow.png" alt="workflow.jpg" height="300">
+</p>
+
 ### 3. 实物图
 <p align="center">
   <img src="./Photos/actual/front.jpg" alt="front.jpg" height="250">
@@ -134,5 +138,5 @@
 详见 [# Black&White Ladar](./Black&White.py)
 5. Code of "0 ~ 400cm 每 40cm 划分的 '距离 - 角度' 扇形雷达图"  
 详见 [# GraphPer10](./GraphGenerate.py)
-6. Code of 热力图
+6. Code of 热力图  
 详见 [# Heatmap](./HeatmapGenerate.py)
