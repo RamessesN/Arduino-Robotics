@@ -1,33 +1,61 @@
+%% Give a brief description of the background theory for the experiment being tackled.
+%% Please cite appropriate work.
+%% Feel free to add figures into this section, where
+%% each figure and each equation may reduce the number of words you use.
+
 \section{Theory and Technical Background}
 \label{sec:theory-and-technical-background}
-To achieve ultrasonic distance
-measurement, the main components we use are the HC-SR04 ultrasonic distance
-measurement module and the SG90 servo motor.
+To achieve ultrasonic distance measurement, the main components we use are
+the \textbf{HC-SR04} ultrasonic distance measurement module and
+the \textbf{SG90} servo motor.
 
-The HC-SR04 (Figure~\ref{fig:hc-sr04}) ultrasonic distance measurement module consists of an ultrasonic transmitter and a receiver.
-The transmitter sends ultrasonic waves in a specific direction.
-When the ultrasonic waves encounter an obstacle, they are reflected back, and the receiver captures the reflected waves.
-By calculating the time difference between the emission and reception of the ultrasonic waves, combined with the speed of sound, the distance can be determined.
-When the ultrasonic wave is emitted, the Echo pin becomes high.
-When the ultrasonic wave is received by the receiver, the Echo pin becomes low.
-By measuring the duration of the high state of the Echo pin, the time of ultrasonic wave propagation can be obtained.
+\subsection{HC-SR04 ultrasonic distance measurement module}
+
+The \textbf{HC-SR04} (Figure~\ref{fig:hc-sr04}) ultrasonic distance measurement module
+consists of an ultrasonic transmitter and a receiver.
+There are two important pins.
+\textbf{Trig pin}: In fact, it is trigger, which means to trigger or cause.
+At that time, only a high level of 10 μ s needs to be applied to this pin, and
+HC-SR04 will automatically emit 8 square waves of 40KHz (that is, ultrasonic waves).
+\textbf{Echo pin}: echo actually means echo.
+When the HC-SR04 successfully emits ultrasonic waves outward,
+this pin will become a high level,
+and the high level will continue until the HC-SR04 receives the echo.
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.6\linewidth]{Figures/HC-SR04}
+  \includegraphics[width=0.5\linewidth]{Figures/HC-SR04}
   \rule{35em}{0.5pt}
   \caption{HC-SR04 ultrasonic distance measurement module}
   \label{fig:hc-sr04}
 \end{figure}
 
-The SG90 (Figure~\ref{fig:sg90}) servo motor is a position (angle) servo driver, suitable for control systems that
+The transmitter sends ultrasonic waves in a specific direction.
+\begin{itemize}
+  \item When the ultrasonic waves encounter an obstacle, they are reflected back, and
+    the receiver captures the reflected waves.
+    By calculating the time difference between the emission and reception of the ultrasonic waves,
+    combined with the speed of sound, the distance can be determined.
+  \item When the ultrasonic wave is emitted, the Echo pin becomes high.
+  \item When the ultrasonic wave is received by the receiver, the Echo pin becomes low.
+\end{itemize}
+By measuring the duration of the high state of the Echo pin,
+the time of ultrasonic wave propagation can be obtained.
+
+\subsection{SG90 servo motor}
+
+The SG90 (Figure~\ref{fig:sg90}) servo motor is a position (angle) servo driver,
+suitable for control systems that
 require continuous angle changes and the ability to maintain a specific angle.
 It is mainly composed of a casing, circuit board, DC motor, gear reduction set,
 and position detection element (control circuit), forming an automatic (closed-loop) control device.
 
+The data cable of the servo should be connected to the \textbf{PWM} pin, thus,
+the PWM value can be correctly passed in.
+
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.6\linewidth]{Figures/SG90}
+  \includegraphics[width=0.5\linewidth]{Figures/SG90}
   \rule{35em}{0.5pt}
   \caption{SG90 servo motor}
   \label{fig:sg90}

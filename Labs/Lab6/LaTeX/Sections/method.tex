@@ -1,11 +1,16 @@
+%% Describe the technical procedures to collect the results.
+%% Add figures into this section, where
+%% each figure and each equation may reduce the number of words you use.
+
 \section{Method}
 \label{sec:method}
+
 \begin{table}[H]
   \centering
   \newcolumntype{Y}{>{\centering\arraybackslash}X}
   \begin{tabularx}{\linewidth}{Y X}
     \Xhline{1pt}
-    Abridge & Full Name \\
+    \textbf{Abridge} & \textbf{Full Name} \\
     \Xhline{1pt}
     ADC & Analog-to-Digital Conversion \\
     IDE & Integrated Development Environment \\
@@ -15,8 +20,9 @@
 \end{table}
 \textbf{Keywords}: ``distance-angle'' radar chart, ADC, control variable, Ultrasonic distance measurement
 
-\subsection*{Experient: Measurement of the maximum distance that can be measured to an obstacle at different angles}
-To achieve the function, we have carefully designed the following circuit diagram (Figure~\ref{fig:circuit-diagram}):
+\textbf{Experient: Measurement of the maximum distance that can be measured to an obstacle at different angles}
+
+To achieve the function, we have carefully designed the following circuit diagram~\eqref{fig:circuit-diagram}:
 
 \begin{figure}[H]
   \centering
@@ -27,7 +33,7 @@ To achieve the function, we have carefully designed the following circuit diagra
 \end{figure}
 
 In accordance with the designed circuit diagram,
-the actual wiring (Figure~\ref{fig:actual-wiring}) of our vehicle (front and above) is as follows:
+the actual wiring figures~\eqref{fig:actual-wiring} of our vehicle (front and above) are as follows:
 
 \begin{figure}[H]
   \centering
@@ -37,9 +43,15 @@ the actual wiring (Figure~\ref{fig:actual-wiring}) of our vehicle (front and abo
   \label{fig:actual-wiring}
 \end{figure}
 
-After selecting the obstacle, measurements are taken at intervals of 40 centimeters within a range of 0 to 400 centimeters from the obstacle.
-The measurement angles span from 0 to 180 degrees, with the direction directly in front of the vehicle's nose defined as 90 degrees.
-The formulas~\ref{eq:distance} used are as follows:
+We divide the laboratory into 3 steps.
+
+\subsection{Data Acquisition}
+Raw data is collected via Arduino IDE with triplicate measurements per group~\eqref{lst:distance-detect}.
+After selecting the obstacle, measurements are taken at intervals of 40 centimeters
+within a range of 0 to 400 centimeters from the obstacle.
+The measurement angles span from 0 to 180 degrees,
+with the direction directly in front of the vehicle's nose defined as 90 degrees.
+The formulas~\eqref{eq:distance} used are as follows:
 
 \begin{equation}
   Distance = Velocity \times Time
@@ -50,5 +62,19 @@ In the experimental environment, where the air is dry and the temperature is 20 
 the speed of sound is approximately 343 meters per second, which is equivalent to 34,300 centimeters per second.
 Since the ultrasonic wave travels twice the distance from the transmitter to the target and back to the receiver,
 the actual distance measurement is related to the time difference as follows:
-a distance of 1 centimeter corresponds to a time difference of 58.3 microseconds, which
+\textit{a distance of 1 centimeter corresponds to a time difference of 58.3 microseconds}, which
 can be approximated to 58 microseconds for simplified calculations.
+
+\subsection{Extraction and Production}
+Several Python scripts are used in this step.
+
+Firstly, We design a simple Python program \texttt{DataExtraction.py}~\eqref{lst:data-extraction}.
+The Python code is based on \texttt{pandas}, and
+it extracts those raw data and automatedly store them into an \textit{Excel} file.
+Additionally, there are three pieces of values.
+We make another Python script \texttt{DataAverage.py}~\eqref{lst:data-average} to calculate the average value.
+
+\subsection{Radar Chart Drawing}
+Finally, through \texttt{Black\&White.py}~\eqref{lst:black-and-white},
+a monochrome radar chart is drawn as required.
+A \textit{black} and \textit{white} design are used to offer a better a view experience.

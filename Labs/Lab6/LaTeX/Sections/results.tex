@@ -1,8 +1,8 @@
 \section{Results}
 \label{sec:results}
 We measured three sets of data every 40cm within the range of 0 to 400cm,
-calculated the average of the three sets of data, and
-plotted them into an average radar chart (Figure~\ref{fig:distance-angle}),as shown in appendix.
+calculated the average of the three sets of data~\eqref{lst:graph-generate}, and
+plotted them into an average radar chart (Figure~\ref{fig:distance-angle}).
 
 \begin{figure}[ht]
   \centering
@@ -56,23 +56,24 @@ plotted them into an average radar chart (Figure~\ref{fig:distance-angle}),as sh
 \end{figure}
 
 By integrating the data from angles ranging from 0 to 180 degrees and distances ranging from 0 to 400cm,
-we have created the following radar chart (Figure~\ref{fig:heatmap}).
+we have created the following radar chart (Figure~\ref{fig:heatmap}) using \texttt{HeatmapGenerate.py}~\eqref{lst:graph-generate}.
 It illustrates how far obstacles can be detected at different angles when the forward linear distance is the same.
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.8\linewidth]{../Photos/heatmap Medium}
+  \includegraphics[width=0.5\linewidth]{../Photos/heatmap Medium}
   \rule{35em}{0.5pt}
   \caption{A distribution heatmap divided every 40cm within the range of 0 to 400cm}
   \label{fig:heatmap}
 \end{figure}
 
 Taking all the data into account, we have integrated the data from 0 to 180 degrees and 0 to 400cm, and
-created the following radar chart (Figure~\ref{fig:sector-radar-chart}) to illustrate the maximum distance at which obstacles can be detected at each angle.
+created the following radar chart (Figure~\ref{fig:sector-radar-chart}) using \texttt{Black\&White.py}~\eqref{lst:black-and-white}
+to illustrate the maximum distance at which obstacles can be detected at each angle.
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.6\linewidth]{../Photos/RadarGraph Medium}
+  \includegraphics[width=0.8\linewidth]{../Photos/RadarGraph Medium}
   \rule{35em}{0.5pt}
   \caption{``Distance-Angle'' Sector Radar Chart}
   \label{fig:sector-radar-chart}
