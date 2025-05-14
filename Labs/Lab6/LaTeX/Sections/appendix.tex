@@ -1,66 +1,7 @@
 \section{Appendix}
 \label{sec:appendix}
-\subsection{Figure in Results: A ``distance-angle'' radar chart divided every 40cm within the range of 0 to 400cm}
 
-\begin{figure}[H]
-  \centering
-  \begin{subfigure}[b]{0.3\linewidth}
-    \includegraphics[width=\linewidth]{../Photos/angle-distance/0cm Medium}
-  \end{subfigure}
-  \hfill
-  \begin{subfigure}[b]{0.3\linewidth}
-    \includegraphics[width=\linewidth]{../Photos/angle-distance/40cm Medium}
-  \end{subfigure}
-  \hfill
-  \begin{subfigure}[b]{0.3\linewidth}
-    \includegraphics[width=\linewidth]{../Photos/angle-distance/80cm Medium}
-  \end{subfigure}
-  \label{fig:distance-angle1}
-\end{figure}
-
-\begin{figure}[H]
-  \begin{subfigure}[b]{0.3\linewidth}
-    \includegraphics[width=\linewidth]{../Photos/angle-distance/120cm Medium}
-  \end{subfigure}
-  \hfill
-  \begin{subfigure}[b]{0.3\linewidth}
-    \includegraphics[width=\linewidth]{../Photos/angle-distance/160cm Medium}
-  \end{subfigure}
-  \hfill
-  \begin{subfigure}[b]{0.3\linewidth}
-    \includegraphics[width=\linewidth]{../Photos/angle-distance/200cm Medium}
-  \end{subfigure}
-  \label{fig:distance-angle2}
-\end{figure}
-
-\begin{figure}[H]
-  \begin{subfigure}[b]{0.3\linewidth}
-    \includegraphics[width=\linewidth]{../Photos/angle-distance/240cm Medium}
-  \end{subfigure}
-  \hfill
-  \begin{subfigure}[b]{0.3\linewidth}
-    \includegraphics[width=\linewidth]{../Photos/angle-distance/280cm Medium}
-  \end{subfigure}
-  \hfill
-  \begin{subfigure}[b]{0.3\linewidth}
-    \includegraphics[width=\linewidth]{../Photos/angle-distance/320cm Medium}
-  \end{subfigure}
-  \label{fig:distance-angle3}
-\end{figure}
-
-\begin{figure}[H]
-  \begin{subfigure}[b]{0.4\linewidth}
-    \includegraphics[width=\linewidth]{../Photos/angle-distance/360cm Medium}
-  \end{subfigure}
-  \hfill
-  \begin{subfigure}[b]{0.4\linewidth}
-    \includegraphics[width=\linewidth]{../Photos/angle-distance/400cm Medium}
-  \end{subfigure}
-  \label{fig:distance-angle4}
-\end{figure}
-
-\subsection{Code}
-\textbf{Python Code of Black and White}
+\subsection{Python Code of Black and White}
 \begin{lstlisting}[language=Python]
 import pandas as pd
 import numpy as np
@@ -104,7 +45,7 @@ plt.savefig("./Photos/RadarGraph.png", dpi=1200)
 plt.show()
 \end{lstlisting}
 
-\textbf{Python Code of Data Average}
+\subsection{Python Code of Data Average}
 \begin{lstlisting}[language=Python]
 import pandas as pd
 
@@ -125,7 +66,7 @@ output_file = "./DataAverage/280cm_average_data.xlsx"
 average_data.to_excel(output_file, index=False)
 \end{lstlisting}
 
-\textbf{Python Code of Data Extraction}
+\subsection{Python Code of Data Extraction}
 \begin{lstlisting}[language=Python]
 import pandas as pd
 
@@ -241,7 +182,7 @@ df = pd.DataFrame(extracted_data)
 df.to_excel("./DataProcessing/360cm/360cm_data_03.xlsx", index=False)
 \end{lstlisting}
 
-\textbf{Python Code of Graph Generate}
+\subsection{Python Code of Graph Generate}
 \begin{lstlisting}[language=Python]
 import numpy as np
 import pandas as pd
@@ -289,7 +230,7 @@ plt.savefig("./Photos/angle-distance/280cm.png", dpi=1200)
 plt.show()
 \end{lstlisting}
 
-\textbf{Python Code of Heatmap Generate}
+\subsection{Python Code of Heatmap Generate}
 \begin{lstlisting}[language=Python]
 import pandas as pd
 import mlx.core as mx
@@ -337,7 +278,7 @@ plt.savefig("./Photos/heatmap.png", dpi=1200)
 plt.show()
 \end{lstlisting}
 
-\textbf{C code of Distance Detect}
+\subsection{C code of Distance Detect}
 \begin{lstlisting}[language=C++]
 #include <Servo.h>
 Servo engine;
