@@ -1,8 +1,6 @@
 \setlength{\headheight}{14.5pt}
 \setlength{\parindent}{0pt}
 
-\pagestyle{fancy}
-
 \RaggedRight
 
 \lstset{
@@ -19,6 +17,18 @@
   showstringspaces=false
 }
 
+%% chapter/classic text style
+\fancypagestyle{chapter}{
+  %% title of the chapter, left header, no uppercase, 10 pt, italics, no bold
+  \fancyhead[L]{\normalfont\itshape\fontsize{10pt}{12pt}\selectfont\nouppercase{\leftmark}}
+  \fancyhead[R]{}
+
+  \fancyfoot[C]{\thepage}
+  \renewcommand{\headrulewidth}{0.4pt}
+  \renewcommand{\footrulewidth}{0pt}
+  \pagenumbering{arabic}
+}
+
 %% define length and scaling for baseline
 \newcommand{\headingBaseline}{12}
 \newcommand{\headingBaselineDiv}{10}
@@ -28,7 +38,7 @@
 \newlength{\subsectionBaseline}
 
 %% change those value if you want to change the chapter/section/subsection font size
-\setlength{\sectionFontSize}{12pt}
+\setlength{\sectionFontSize}{14pt}
 \setlength{\subsectionFontSize}{12pt}
 
 %% automatic computation for baseline, rule of thumb is 1.2
@@ -37,14 +47,23 @@
 
 %% Section, 12-point
 \titleformat{\section}[hang]
-    {\normalfont\bfseries\fontsize{\sectionFontSize}{\sectionBaseline}\selectfont}{\thesection}{5pt}{}
+  {\normalfont\bfseries\fontsize{\sectionFontSize}{\sectionBaseline}\selectfont}{\thesection}{5pt}{}
 %% left|above|below
 \titlespacing{\section}{0pt}{25pt}{15pt}
 
 %% Subsection, 12-point, italic
 \titleformat{\subsection}[hang]
-    {\normalfont\bfseries\itshape\fontsize{\subsectionFontSize}{\subsectionBaseline}\selectfont}{\thesubsection}{5pt}{}
+  {\normalfont\bfseries\itshape\fontsize{\subsectionFontSize}{\subsectionBaseline}\selectfont}{\thesubsection}{5pt}{}
 %% left|above|below
 \titlespacing{\subsection}{0pt}{20pt}{10pt}
 
-\setstretch{1.2}
+%% hyperref setup
+\hypersetup{
+  colorlinks = true,
+  linkcolor = blue, % normal internal links, like ref, can be black tbh
+  citecolor = blue, % bibliographical links
+  urlcolor = blue, % linked urls
+  filecolor = black % url which open local files
+}
+
+\setstretch{1.1}
