@@ -1,11 +1,11 @@
-#include "motion.h"
-#include "engineControl.h"
-#include "ultrasonicDetect.h"
+#include "motion_setting.h"
+#include "motion_control.h"
+#include "engine_control.h"
+#include "ultrasound_control.h"
 
 int baseSpeed = 150;
 
 void setup() {
-  // put your setup code here, to run once:
   Serial.begin(9600);
   // Wheel Driver
   pinMode(in1Pin, OUTPUT);
@@ -27,7 +27,6 @@ float leftDist = 0;
 float rightDist = 0;
 
 void loop() {
-  // put your main code here, to run repeatedly:
   bool reverse = false;
 
   int angle = servoRotate();
@@ -50,4 +49,6 @@ void loop() {
       Serial.println(rightDist);
       break;
   }
+
+  carDrive(leftDist, frontDist, rightDist);
 }
