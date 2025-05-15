@@ -12,13 +12,14 @@
     \Xhline{1pt}
     \textbf{Abridge} & \textbf{Full Name} \\
     \Xhline{1pt}
-    ADC & Analog-to-Digital Conversion \\
     IDE & Integrated Development Environment \\
+    PWM & Pulse-Width Modulation \\
+    Trig & Trigger \\
     \Xhline{1pt}
   \end{tabularx}
   \label{tab:table}
 \end{table}
-\textbf{Keywords}: ``distance-angle'' radar chart, ADC, control variable, Ultrasonic distance measurement
+\textbf{Keywords}: "distance-angle" radar chart, ADC, control variable, Ultrasonic distance measurement
 
 \textbf{Experient: Measurement of the maximum distance that can be measured to an obstacle at different angles}
 
@@ -43,7 +44,15 @@ the actual wiring figures~\eqref{fig:actual-wiring} of our vehicle (front and ab
   \label{fig:actual-wiring}
 \end{figure}
 
-We divide the laboratory into 3 steps.
+We divide the laboratory into 3 steps and the workflow figure~\eqref{fig:workflow} is as follows:
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.4\linewidth]{Figures/workflow}
+  \rule{35em}{0.5pt}
+  \caption{WorkFlow}
+  \label{fig:workflow}
+\end{figure}
 
 \subsection{Data Acquisition}
 Raw data is collected via Arduino IDE with triplicate measurements per group~\eqref{lst:distance-detect}.

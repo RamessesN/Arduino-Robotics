@@ -4,24 +4,31 @@
 \RaggedRight
 
 \lstset{
-  basicstyle=\ttfamily\small,
-  keywordstyle=\color{blue},
-  commentstyle=\color{gray},
-  stringstyle=\color{olive},
-  numberstyle=\color{orange},
+  basicstyle=\ttfamily\footnotesize,
+  keywordstyle=\bfseries\color{NavyBlue},
+  numberstyle=\scriptsize\color{gray},
   numbers=left,
   frame=single,
+  framesep=1em,
   breaklines=true,
   tabsize=2,
   showspaces=false,
-  showstringspaces=false
+  showstringspaces=false,
+  commentstyle=\itshape\color{PineGreen},
+  stringstyle=\bfseries\color{PineGreen!90!black},
+  columns=flexible,
+  numbersep=2em,
+  emph={data,print,input,len,str,println,write,attach,attached,set_label,set_title,set_thetamin,set_thetamax,
+  set_rticks,set_rlabel_position,colorbar,detach,split,append,to_excel},
+  emphstyle=\bfseries\color{Rhodamine},
+  literate={°}{{\textdegree}}1
 }
 
 %% chapter/classic text style
 \fancypagestyle{chapter}{
   %% title of the chapter, left header, no uppercase, 10 pt, italics, no bold
-  \fancyhead[L]{\normalfont\itshape\fontsize{10pt}{12pt}\selectfont\nouppercase{\leftmark}}
-  \fancyhead[R]{}
+  \fancyhead[L]{Group \# 15}
+  \fancyhead[R]{Page\ \thepage\ of\ \pageref{LastPage}}
 
   \fancyfoot[C]{\thepage}
   \renewcommand{\headrulewidth}{0.4pt}

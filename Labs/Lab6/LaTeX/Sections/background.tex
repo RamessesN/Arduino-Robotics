@@ -9,9 +9,17 @@ To achieve ultrasonic distance measurement, the main components we use are
 the \textbf{HC-SR04} ultrasonic distance measurement module and
 the \textbf{SG90} servo motor.
 
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\linewidth]{Figures/HC-SR04_SG90}
+  \rule{35em}{0.5pt}
+  \caption{HC-SR04 ultrasonic distance measurement module}
+  \label{fig:hc-sr04_sg90}
+\end{figure}
+
 \subsection{HC-SR04 ultrasonic distance measurement module}
 
-The \textbf{HC-SR04} (Figure~\ref{fig:hc-sr04}) ultrasonic distance measurement module
+The \textbf{HC-SR04} (Figure~\ref{fig:hc-sr04_sg90}) ultrasonic distance measurement module
 consists of an ultrasonic transmitter and a receiver.
 There are two important pins.
 \textbf{Trig pin}: In fact, it is trigger, which means to trigger or cause.
@@ -21,14 +29,6 @@ HC-SR04 will automatically emit 8 square waves of 40KHz (that is, ultrasonic wav
 When the HC-SR04 successfully emits ultrasonic waves outward,
 this pin will become a high level,
 and the high level will continue until the HC-SR04 receives the echo.
-
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=0.5\linewidth]{Figures/HC-SR04}
-  \rule{35em}{0.5pt}
-  \caption{HC-SR04 ultrasonic distance measurement module}
-  \label{fig:hc-sr04}
-\end{figure}
 
 The transmitter sends ultrasonic waves in a specific direction.
 \begin{itemize}
@@ -44,7 +44,7 @@ the time of ultrasonic wave propagation can be obtained.
 
 \subsection{SG90 servo motor}
 
-The SG90 (Figure~\ref{fig:sg90}) servo motor is a position (angle) servo driver,
+The SG90 (Figure~\ref{fig:hc-sr04_sg90}) servo motor is a position (angle) servo driver,
 suitable for control systems that
 require continuous angle changes and the ability to maintain a specific angle.
 It is mainly composed of a casing, circuit board, DC motor, gear reduction set,
@@ -52,11 +52,3 @@ and position detection element (control circuit), forming an automatic (closed-l
 
 The data cable of the servo should be connected to the \textbf{PWM} pin, thus,
 the PWM value can be correctly passed in.
-
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=0.5\linewidth]{Figures/SG90}
-  \rule{35em}{0.5pt}
-  \caption{SG90 servo motor}
-  \label{fig:sg90}
-\end{figure}
