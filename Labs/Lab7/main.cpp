@@ -1,9 +1,17 @@
 #include "motion_setting.h"
 #include "motion_control.h"
-#include "engine_control.h"
+#include "servo_control.h"
 #include "ultrasound_control.h"
 
-int baseSpeed = 150;
+#define ANGLE_INTERVAL 30
+
+float leftDist = 0;
+float frontDist = 0;
+float rightDist = 0;
+
+unsigned long lastAngleTime = 0;
+
+bool isWaiting = false;
 
 void setup() {
   Serial.begin(9600);
@@ -22,33 +30,38 @@ void setup() {
   pinMode(echoPin, INPUT);
 }
 
-float frontDist = 0;
-float leftDist = 0;
-float rightDist = 0;
-
 void loop() {
-  bool reverse = false;
-
   int angle = servoRotate();
   int distance = distanceDetect();
 
-  switch(angle) {
-    case 0:
-      leftDist = distance;
-      Serial.print("Left: ");
-      Serial.println(leftDist);
-      break;
-    case 90:
-      frontDist = distance;
-      Serial.print("Front: ");
-      Serial.println(frontDist);
-      break;
-    case 180:
-      rightDist = distance;
-      Serial.print("Right: ");
-      Serial.println(rightDist);
-      break;
-  }
+  unsigned long currentAngleTime = millis();
 
-  carDrive(leftDist, frontDist, rightDist);
+  if(!isWaiting) {
+    switch(angle) {
+      case 0:
+        leftDist = distance;
+        Serial.print("Left: ");
+        Serial.println(leftDist);
+        isWaiting = true;
+        lastAngleTime = currentAngleTime;
+        break;
+      case 90:
+        frontDist = distanceDetect();
+        Serial.print("Front: ");
+        Serial.println(frontDist);
+        isWaiting = true;
+        lastAngleTime = currentAngleTime;
+        break;
+      case 180:
+        rightDist = distance;
+        Serial.print("Right: ");
+        Serial.println(rightDist);
+        isWaiting = true;
+        lastAngleTime = currentAngleTime;
+        break;
+    }
+    carDrive(leftDist, frontDist, rightDist);
+  } else if(currentAngleTime - lastAngleTime >= ANGLE_INTERVAL) {
+    isWaiting = false;
+  }
 }

@@ -12,14 +12,14 @@ int leftLightPin = 2;
 int rightLightPin = 8;
 
 float leftComp = 1.00;
-float rightComp = 0.94;
+float rightComp = 1.00;
 
 // Left Wheel CONTROl
 void setLeft(bool reverse, int speed) {
   speed = constrain(speed, 0, 255);
   digitalWrite(in1Pin, reverse);
   analogWrite(in2Pin, speed);
-  digitalWrite(leftLightPin, HIGH);
+  digitalWrite(leftLightPin, reverse ? LOW: HIGH);
 }
 
 // Right Wheel CONTROL
@@ -27,11 +27,11 @@ void setRight(bool reverse, int speed) {
   speed = constrain(speed, 0, 255);
   digitalWrite(in3Pin, reverse);
   analogWrite(in4Pin, speed);
-  digitalWrite(rightLightPin, HIGH);
+  digitalWrite(rightLightPin, reverse ? LOW: HIGH);
 }
 
 // STOP
-void fullStop(bool reverse) {
+void fullStop() {
   digitalWrite(in1Pin, LOW);
   analogWrite(in2Pin, 0);
   digitalWrite(in3Pin, LOW);
@@ -41,9 +41,9 @@ void fullStop(bool reverse) {
 }
 
 // Go STRAIGHT
-void goStraight(bool reverse, int speed) {
-  setLeft(reverse, speed * leftComp);
-  setRight(reverse, speed * rightComp);
+void goStraight(bool reverse, int leftSpeed, int rightSpeed) {
+  setLeft(reverse, leftSpeed);
+  setRight(reverse, rightSpeed);
 }
 
 // Go BACK
