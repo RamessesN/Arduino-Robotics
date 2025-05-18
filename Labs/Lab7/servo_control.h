@@ -3,7 +3,7 @@
 
 #include <Servo.h>
 
-#define SERVO_INTERVAL 300
+#define SERVO_INTERVAL 150
 
 Servo MyServo;
 

@@ -24,7 +24,7 @@ void setup() {
   pinMode(leftLightPin, OUTPUT);
   pinMode(rightLightPin, OUTPUT);
   // Engine Driver
-  MyServo.attach(9);
+  MyServo.attach(10);
   // Ultrasound Driver
   pinMode(trigPin, OUTPUT);
   pinMode(echoPin, INPUT);

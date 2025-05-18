@@ -2,161 +2,113 @@
 #define MotionControl_h
 
 #define front_border_VALUE 30
-#define side_border_VALUE 45
+#define side_border_VALUE 30
+#define corner_safe_VALUE 25
 
-enum CarState {
-  IDLE,
-  BACKING,
-  TURNING_RIGHT,
-  TURNING_LEFT,
-  BUFFERING,
-  JUST_TURNED
-};
-
-CarState carState = IDLE;
-
-int baseSpeed = 130;
+int baseSpeed = 150;
 int turnSpeed = 100;
 int deceleratedSpeed = 110;
 
 bool reverse = false;
 
-unsigned long stepStartTime = 0;
-unsigned long backDuration = 500;
-unsigned long turnDuration = 400;
-unsigned long bufferDuration = 50;
-unsigned long shortBackDuration = 200;
-unsigned long shortTurnDuration = 200;
+enum ActionStep {
+  STEP_IDLE,
+  STEP_BACK,
+  STEP_TURN_RIGHT_90,
+  STEP_TURN_LEFT_90,
+  STEP_DONE
+};
 
-float lastLeft = 0, lastFront = 0, lastRight = 0;
+ActionStep currentStep = STEP_IDLE;
+unsigned long actionStartTime = 0;
 
 void carDrive(float leftDist, float frontDist, float rightDist) {
-  unsigned long currentMillis = millis();
+  static bool inAction = false;
 
-  switch (carState) {
-    case IDLE:
-      fullStop();
-
-      if (leftDist < side_border_VALUE && frontDist < front_border_VALUE && rightDist < side_border_VALUE) { // 000
-        if (leftDist < 30 || rightDist < 30) {
-          goBack(reverse, baseSpeed);
-          stepStartTime = currentMillis;
-          carState = BACKING;
+  if (inAction) {
+    unsigned long now = millis();
+    switch (currentStep) {
+      case STEP_BACK:
+        if (now - actionStartTime < 300) {
+          goBack(reverse, deceleratedSpeed);
         } else {
-          goBack(reverse, baseSpeed);
-          stepStartTime = currentMillis;
-          backDuration = 500;
-          carState = BACKING;
+          currentStep = STEP_TURN_RIGHT_90;
+          actionStartTime = now;
         }
-      }
-      else if (leftDist < side_border_VALUE && frontDist < front_border_VALUE && rightDist > side_border_VALUE) { // 001
-        if (leftDist < 30 || rightDist < 30) {
-          goBack(reverse, baseSpeed);
-          stepStartTime = currentMillis;
-          carState = BACKING;
-        } else {
-          goBack(reverse, baseSpeed);
-          stepStartTime = currentMillis;
-          backDuration = 500;
-          carState = BACKING;
-        }
-      }
-      else if (leftDist > side_border_VALUE && frontDist < front_border_VALUE && rightDist < side_border_VALUE) { // 100
-        if (leftDist < 30 || rightDist < 30) {
-          goBack(reverse, baseSpeed);
-          stepStartTime = currentMillis;
-          carState = BACKING;
-        } else {
-          goBack(reverse, baseSpeed);
-          stepStartTime = currentMillis;
-          backDuration = 500;
-          carState = BACKING;
-        }
-      }
-      else if (leftDist > side_border_VALUE && frontDist < front_border_VALUE && rightDist > side_border_VALUE) { // 101
-        if (leftDist < 30 || rightDist < 30) {
-          goBack(reverse, baseSpeed);
-          stepStartTime = currentMillis;
-          carState = BACKING;
-        } else {
-          goBack(reverse, baseSpeed);
-          stepStartTime = currentMillis;
-          backDuration = 500;
-          carState = BACKING;
-        }
-      }
-      else { // 直线速度补偿机制
-        if (leftDist >= side_border_VALUE && leftDist <= 80 && rightDist > 80) {
-          goStraight(reverse, deceleratedSpeed, 1.1 * deceleratedSpeed);
-        }
-        else if (leftDist < side_border_VALUE) {
-          fullStop();
-          stepStartTime = currentMillis;
-          carState = BUFFERING;
-        }
-        else if (rightDist >= side_border_VALUE && rightDist <= 80 && leftDist > 80) {
-          goStraight(reverse, 1.1 * deceleratedSpeed, deceleratedSpeed);
-        }
-        else if (rightDist < side_border_VALUE) {
-          fullStop();
-          stepStartTime = currentMillis;
-          carState = BUFFERING;
-        }
-        else {
-          goStraight(reverse, baseSpeed, baseSpeed);
-        }
-      }
+        return;
 
-      lastLeft = leftDist;
-      lastFront = frontDist;
-      lastRight = rightDist;
-      break;
-
-    case BACKING:
-      if (currentMillis - stepStartTime >= backDuration) {
-        fullStop();
-        stepStartTime = currentMillis;
-
-        if (lastLeft < 50) {
+      case STEP_TURN_RIGHT_90:
+        if (now - actionStartTime < 250) {
           turnRight(reverse, turnSpeed);
-          carState = TURNING_RIGHT;
-        } else if (lastRight < 50) {
-          turnLeft(reverse, turnSpeed);
-          carState = TURNING_LEFT;
-        } else { // 右转优先
-          if (lastRight > side_border_VALUE) {
-            turnRight(reverse, turnSpeed);
-            carState = TURNING_RIGHT;
-          } else {
-            turnLeft(reverse, turnSpeed);
-            carState = TURNING_LEFT;
-          }
+        } else {
+          inAction = false;
+          currentStep = STEP_IDLE;
         }
-        stepStartTime = currentMillis;
-        turnDuration = 400;
-      }
-      break;
+        return;
 
-    case TURNING_RIGHT:
-    case TURNING_LEFT:
-      if (currentMillis - stepStartTime >= turnDuration) {
+      case STEP_TURN_LEFT_90:
+        if (now - actionStartTime < 250) {
+          turnLeft(reverse, turnSpeed);
+        } else {
+          inAction = false;
+          currentStep = STEP_IDLE;
+        }
+        return;
+
+      default:
         fullStop();
-        carState = JUST_TURNED;
-      }
-      break;
+        inAction = false;
+        currentStep = STEP_IDLE;
+        return;
+    }
+  }
 
-    case BUFFERING:
-      if (currentMillis - stepStartTime >= bufferDuration) {
-        goBack(reverse, deceleratedSpeed);
-        stepStartTime = currentMillis;
-        backDuration = shortBackDuration;
-        carState = BACKING;
-      }
-      break;
+  float leftSafeDist = (leftDist * frontDist) / sqrt(pow(leftDist, 2) + pow(frontDist, 2));
+  float rightSafeDist = (rightDist * frontDist) / sqrt(pow(rightDist, 2) + pow(frontDist, 2));
 
-    case JUST_TURNED:
-      carState = IDLE;
-      break;
+  fullStop();
+
+  if (leftSafeDist <= corner_safe_VALUE || rightSafeDist <= corner_safe_VALUE) {
+    if (leftSafeDist <= corner_safe_VALUE && rightSafeDist <= corner_safe_VALUE) { // 00 - 卡墙角
+      currentStep = STEP_BACK;
+      inAction = true;
+      actionStartTime = millis();
+      return;
+    } else if (leftSafeDist <= corner_safe_VALUE && rightSafeDist > corner_safe_VALUE) { // 01
+      inAction = true;
+      actionStartTime = millis();
+      return;
+    } else if (leftSafeDist > corner_safe_VALUE && rightSafeDist <= corner_safe_VALUE) { // 10
+      inAction = true;
+      actionStartTime = millis();
+      return;
+    } else if (leftSafeDist > corner_safe_VALUE && rightSafeDist > corner_safe_VALUE) { // 11
+      goStraight(reverse, deceleratedSpeed, deceleratedSpeed);
+      return;
+    } else {
+      fullStop();
+      return;
+    }
+  } else {
+    if (leftDist <= side_border_VALUE && frontDist <= front_border_VALUE && rightDist <= side_border_VALUE) { // 000
+      currentStep = STEP_BACK;
+      inAction = true;
+      actionStartTime = millis();
+      currentStep = STEP_TURN_RIGHT_90;
+      return;
+    } else if (leftDist <= side_border_VALUE && frontDist <= front_border_VALUE && rightDist > side_border_VALUE) { // 001
+      inAction = true;
+      actionStartTime = millis();
+      currentStep = STEP_TURN_RIGHT_90;
+      return;
+    } else if (leftDist > side_border_VALUE && frontDist <= front_border_VALUE && rightDist <= side_border_VALUE) { // 100
+      inAction = true;
+      actionStartTime = millis();
+      currentStep = STEP_TURN_LEFT_90;
+      return;
+    } else { // 010, 011, 101, 110, 111
+      goStraight(reverse, baseSpeed, baseSpeed);
+    }
   }
 }
 
