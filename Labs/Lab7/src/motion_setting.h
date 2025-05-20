@@ -41,9 +41,9 @@ void fullStop() {
 }
 
 // Go STRAIGHT
-void goStraight(bool reverse, int leftSpeed, int rightSpeed) {
-  setLeft(reverse, leftSpeed);
-  setRight(reverse, rightSpeed);
+void goStraight(bool reverse, int speed) {
+  setLeft(reverse, speed);
+  setRight(reverse, speed);
 }
 
 // Go BACK
