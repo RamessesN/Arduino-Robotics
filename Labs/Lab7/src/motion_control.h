@@ -22,19 +22,24 @@ enum ActionStep {
 ActionStep currentStep = STEP_IDLE;
 unsigned long actionStartTime = 0;
 unsigned long lastActionEndTime = 0;
+bool inAction = false;
+bool recentlyAvoidedCorner = false;
 
 void carDrive(float leftDist, float frontDist, float rightDist) {
-  static bool inAction = false;
-
-  if (!inAction && millis() - lastActionEndTime < 300) {
-    return;
+  if (!inAction) {
+    if(recentlyAvoidedCorner && millis() - lastActionEndTime < 800) {
+      fullStop();
+      return;
+    } else {
+      recentlyAvoidedCorner = false;
+    }
   }
 
   if (inAction) {
     unsigned long now = millis();
     switch (currentStep) {
       case STEP_BACK:
-        if (now - actionStartTime < 300) {
+        if (now - actionStartTime < 100) {
           goBack(reverse, deceleratedSpeed);
         } else {
           if (rightDist <= side_border_VALUE) {
@@ -47,7 +52,7 @@ void carDrive(float leftDist, float frontDist, float rightDist) {
         return;
 
       case STEP_BACK_EXTRA:
-        if (now - actionStartTime < 300) {
+        if (now - actionStartTime < 100) {
           goBack(reverse, deceleratedSpeed);
         } else {
           currentStep = STEP_TURN_RIGHT_90;
@@ -56,7 +61,7 @@ void carDrive(float leftDist, float frontDist, float rightDist) {
         return;
 
       case STEP_TURN_RIGHT_90:
-        if (now - actionStartTime < 250) {
+        if (now - actionStartTime < 300) {
           turnRight(reverse, turnSpeed);
         } else {
           currentStep = STEP_DONE;
@@ -69,6 +74,7 @@ void carDrive(float leftDist, float frontDist, float rightDist) {
         inAction = false;
         currentStep = STEP_IDLE;
         lastActionEndTime = millis();
+        recentlyAvoidedCorner = true;
         return;
 
       default:
