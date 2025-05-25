@@ -64,16 +64,10 @@ void turnRight(bool reverse, int speed) {
   setRight(reverse, LOW);
 }
 
-// Cross Turn LEFT
-void crossLeft(bool reverse, int speed) {
-  setLeft(!reverse, speed * leftComp);
-  setRight(reverse, speed * rightComp);
-}
-
-// Cross Turn RIGHT
-void crossRight(bool reverse, int speed) {
-  setLeft(reverse, speed * leftComp);
-  setRight(!reverse, speed * rightComp);
+// 差速控制行驶函数（推荐代替 turnLeft/turnRight 用于微调）
+void goWithDiffSpeed(bool reverse, int leftSpeed, int rightSpeed) {
+  setLeft(reverse, leftSpeed * leftComp);
+  setRight(reverse, rightSpeed * rightComp);
 }
 
 #endif
