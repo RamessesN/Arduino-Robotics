@@ -1,6 +1,9 @@
 #ifndef MotionSetting_h
 #define MotionSetting_h
 
+#define leftComp 0.99
+#define rightComp 1.0
+
 /* 4pin - mode */
 int in1Pin = 4;
 int in2Pin = 5;
@@ -10,9 +13,6 @@ int in4Pin = 6;
 // tail lights
 int leftLightPin = 2;
 int rightLightPin = 8;
-
-float leftComp = 1.00;
-float rightComp = 1.00;
 
 // Left Wheel CONTROl
 void setLeft(bool reverse, int speed) {
@@ -42,26 +42,38 @@ void fullStop() {
 
 // Go STRAIGHT
 void goStraight(bool reverse, int speed) {
-  setLeft(reverse, speed);
-  setRight(reverse, speed);
+  setLeft(reverse, speed * leftComp);
+  setRight(reverse, speed * rightComp);
 }
 
 // Go BACK
 void goBack(bool reverse, int speed) {
-  setLeft(!reverse, 255 - speed * leftComp);
-  setRight(!reverse, 255 - speed * rightComp);
+  setLeft(!reverse, (255 - speed) * leftComp);
+  setRight(!reverse, (255 - speed) * rightComp);
 }
 
 // Turn LEFT
 void turnLeft(bool reverse, int speed) {
-  setLeft(reverse, 0);
+  setLeft(reverse, LOW);
   setRight(reverse, speed * rightComp);
 }
 
 // Turn RIGHT
 void turnRight(bool reverse, int speed) {
   setLeft(reverse, speed * leftComp);
-  setRight(reverse, 0);
+  setRight(reverse, LOW);
+}
+
+// Cross Turn LEFT
+void crossLeft(bool reverse, int speed) {
+  setLeft(!reverse, speed * leftComp);
+  setRight(reverse, speed * rightComp);
+}
+
+// Cross Turn RIGHT
+void crossRight(bool reverse, int speed) {
+  setLeft(reverse, speed * leftComp);
+  setRight(!reverse, speed * rightComp);
 }
 
 #endif
