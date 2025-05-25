@@ -3,7 +3,7 @@
 #include "dataTrans.h"
 
 #define I2C_ADDRESS 0x48
-#define INTERVAL 10
+#define INTERVAL 0
 
 ADS1115_WE adc = ADS1115_WE(I2C_ADDRESS);
 
@@ -15,6 +15,7 @@ void setup() {
     Serial.println("ERROR: ADS1115 connected failed!");
   }
 
+  adc.setConvRate(ADS1115_860_SPS);
   adc.setVoltageRange_mV(ADS1115_RANGE_6144);
   adc.setMeasureMode(ADS1115_CONTINUOUS);
 
