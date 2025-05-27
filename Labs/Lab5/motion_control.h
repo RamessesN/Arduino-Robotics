@@ -6,10 +6,9 @@
 #define THRESHOLD 1.0
 
 float cal_error(IRStatus);
-bool big_error(float, float);
 float calculate_pid(float);
 void motor_control(float);
-void lostLineHandling(IRStatus);
+void lostLineHandling(float);
 
 const int baseSpeed = 85;
 const float max_pid = 50.0;
@@ -20,6 +19,8 @@ float Kd = 0;
 
 int lostCount = 0;
 const int lostThreshold = 10;
+
+float last_valid_error = 0;
 
 IRStatus old_status, new_status;
 
@@ -32,7 +33,7 @@ void carDrive() {
   if(error == 666) {
     lostCount++;
     if(lostCount >= lostThreshold) { // 超过10帧检测到离线触发
-      lostLineHandling(old_status);
+      lostLineHandling(last_valid_error);
       lostCount = 0;
     }
   } else {
@@ -45,9 +46,15 @@ void carDrive() {
   Serial.println(error);
 }
 
-void lostLineHandling(IRStatus old_status) {
+void lostLineHandling(float last_error) {
   unsigned long startTime = millis();
-  const unsigned long timeout = 500;
+  const unsigned long timeout = 800;
+
+  if (last_error < 0) {
+    turnLeft(false, true, 80, 155);
+  } else {
+    turnRight(true, false, 155, 80);
+  }
 
   while (millis() - startTime < timeout) {
     IRStatus current = statusDetect();
@@ -56,16 +63,6 @@ void lostLineHandling(IRStatus old_status) {
       fullStop();
       return;
     }
-
-    if (old_status.left <= THRESHOLD && old_status.right > THRESHOLD) {
-      turnRight(true, false, (255 - 65), 65);
-    } else if (old_status.right <= THRESHOLD && old_status.left > THRESHOLD) {
-      turnLeft(false, true, 65, (255 - 65));
-    } else {
-      turnRight(false, true, 65, (255 - 65));
-    }
-
-    delay(50);
   }
 
   fullStop();
@@ -85,27 +82,20 @@ float cal_error(IRStatus status) {
   return error;
 }
 
-bool big_error(float error, float max_error) {
-  if (error > max_error) {
-    motor_control(max_pid);
-    return true;
-  }
-  if (error < -max_error) {
-    motor_control(-max_pid);
-    return true;
-  }
-  return false;
-}
-
 float calculate_pid(float error) {
-  float P = 0, I = 0, D = 0, PID_value = 0, previous_error = 0;
+  static float I = 0;
+  static float previous_error = 0;
 
-  P = error;
+  if (error != 666) {
+    last_valid_error = error;
+  }
+
+  float P = error;
   I += error;
   I = constrain(I, -25, 25);
-  D = error - previous_error;
+  float D = error - previous_error;
 
-  PID_value = (Kp * P) + (Ki * I) + (Kd * D);
+  float PID_value = (Kp * P) + (Ki * I) + (Kd * D);
 
   previous_error = error;
 
