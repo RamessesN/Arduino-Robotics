@@ -2,7 +2,7 @@
 #define MotionSetting_h
 
 #define leftComp 0.99
-#define rightComp 1.0
+#define rightComp 1.00
 
 /* 4pin - mode */
 int in1Pin = 4;
@@ -41,33 +41,21 @@ void fullStop() {
 }
 
 // Go STRAIGHT
-void goStraight(bool reverse, int speed) {
-  setLeft(reverse, speed * leftComp);
-  setRight(reverse, speed * rightComp);
-}
-
-// Go BACK
-void goBack(bool reverse, int speed) {
-  setLeft(!reverse, (255 - speed) * leftComp);
-  setRight(!reverse, (255 - speed) * rightComp);
+void goStraight(bool reverse, int leftSpeed, int rightSpeed) {
+  setLeft(reverse, leftSpeed * leftComp);
+  setRight(reverse, rightSpeed * rightComp);
 }
 
 // Turn LEFT
-void turnLeft(bool reverse, int speed) {
-  setLeft(reverse, LOW);
-  setRight(reverse, speed * rightComp);
+void turnLeft(bool leftReverse, bool rightReverse, int leftSpeed, int rightSpeed) {
+  setLeft(leftReverse, leftSpeed * leftComp);
+  setRight(rightReverse, rightSpeed * rightComp);
 }
 
 // Turn RIGHT
-void turnRight(bool reverse, int speed) {
-  setLeft(reverse, speed * leftComp);
-  setRight(reverse, LOW);
-}
-
-// 差速控制行驶函数（推荐代替 turnLeft/turnRight 用于微调）
-void goWithDiffSpeed(bool reverse, int leftSpeed, int rightSpeed) {
-  setLeft(reverse, leftSpeed * leftComp);
-  setRight(reverse, rightSpeed * rightComp);
+void turnRight(bool leftReverse, bool rightReverse, int leftSpeed, int rightSpeed) {
+  setLeft(leftReverse, leftSpeed * leftComp);
+  setRight(rightReverse, rightSpeed * rightComp);
 }
 
 #endif

@@ -3,7 +3,6 @@
 #include "dataTrans.h"
 
 #define I2C_ADDRESS 0x48
-#define INTERVAL 0
 
 ADS1115_WE adc = ADS1115_WE(I2C_ADDRESS);
 
@@ -29,15 +28,6 @@ void setup() {
   pinMode(rightLightPin, OUTPUT);
 }
 
-unsigned long lastUpdate = 0;
-
 void loop() {
-  if(millis() - lastUpdate >= INTERVAL) {
-    lastUpdate = millis();
-
-    IRStatus status = statusDetect();
-    carDrive(status.left, status.middle, status.right);
-  } else {
-    fullStop();
-  }
+  carDrive();
 }
