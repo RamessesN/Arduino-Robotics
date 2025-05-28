@@ -18,21 +18,17 @@ float Ki = 0;
 float Kd = 0;
 
 int lostCount = 0;
-const int lostThreshold = 10;
 
 float last_valid_error = 0;
 
-IRStatus old_status, new_status;
-
 void carDrive() {
-  old_status = new_status;
-  new_status = statusDetect();
+  IRStatus status = statusDetect();
 
-  float error = cal_error(new_status);
+  float error = cal_error(status);
 
   if(error == 666) {
     lostCount++;
-    if(lostCount >= lostThreshold) { // 超过10帧检测到离线触发
+    if(lostCount >= 10) { // 超过10帧检测到离线触发
       lostLineHandling(last_valid_error);
       lostCount = 0;
     }
@@ -48,15 +44,14 @@ void carDrive() {
 
 void lostLineHandling(float last_error) {
   unsigned long startTime = millis();
-  const unsigned long timeout = 800;
 
   if (last_error < 0) {
-    turnLeft(false, true, 80, 155);
+    turnLeft(false, true, 65, 140);
   } else {
-    turnRight(true, false, 155, 80);
+    turnRight(true, false, 140, 65);
   }
 
-  while (millis() - startTime < timeout) {
+  while (millis() - startTime < 800) {
     IRStatus current = statusDetect();
 
     if (current.middle > THRESHOLD || current.left > THRESHOLD || current.right > THRESHOLD) {
