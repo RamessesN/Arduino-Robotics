@@ -10,12 +10,12 @@ float calculate_pid(float);
 void motor_control(float);
 void lostLineHandling(float);
 
-const int baseSpeed = 100;
+const int baseSpeed = 105;
 const float max_pid = 60.0;
 
-float Kp = 5;
+float Kp = 5.6;
 float Ki = 0;
-float Kd = 4.5;
+float Kd = 5;
 
 int lostCount = 0;
 
