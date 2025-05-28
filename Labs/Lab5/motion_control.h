@@ -10,12 +10,12 @@ float calculate_pid(float);
 void motor_control(float);
 void lostLineHandling(float);
 
-const int baseSpeed = 85;
-const float max_pid = 50.0;
+const int baseSpeed = 100;
+const float max_pid = 60.0;
 
-float Kp = 5.0;
+float Kp = 5;
 float Ki = 0;
-float Kd = 0;
+float Kd = 4.5;
 
 int lostCount = 0;
 
@@ -46,12 +46,12 @@ void lostLineHandling(float last_error) {
   unsigned long startTime = millis();
 
   if (last_error < 0) {
-    turnLeft(false, true, 65, 140);
+    turnLeft(false, true, 55, 115);
   } else {
-    turnRight(true, false, 140, 65);
+    turnRight(true, false, 115, 55);
   }
 
-  while (millis() - startTime < 800) {
+  while (millis() - startTime < 100) {
     IRStatus current = statusDetect();
 
     if (current.middle > THRESHOLD || current.left > THRESHOLD || current.right > THRESHOLD) {
