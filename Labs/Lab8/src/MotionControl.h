@@ -1,17 +1,17 @@
 #ifndef MotionControl_H
 #define MotionControl_H
 
+#include "MotionSetting.h"
+
 bool reverse = false;
 
-int baseSpeed = 0;
+const int baseSpeed = 150;
+
+float lastTime = 0;
 
 void carDrive(float altitude) {
-  if(altitude <= 0.05) {
-    fullStop();
-  }
-
-  while(altitude += 0.1) {
-    goStraight(reverse, baseSpeed += 10);
+  if(millis() - lastTime >= 100) {
+    
   }
 }
 

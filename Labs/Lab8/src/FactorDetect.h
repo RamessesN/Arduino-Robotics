@@ -1,40 +1,37 @@
 #ifndef FactorDetect_H
 #define FactorDetect_H
 
-#include <Wire.h>
-#include <Adafruit_Sensor.h>
 #include <Adafruit_BME280.h>
+#include <Adafruit_Sensor.h>
 
 #define SEALEVELPRESSURE_HPA (1013.25)
 
 extern Adafruit_BME280 bme;
 
-void tempGet() {
-  Serial.print("Temprature: ");
-  Serial.print(bme.readTemperature());
-  Serial.print(" *C");
+float getTemperature() {
+  return bme.readTemperature();
 }
 
-void presGet() {
-  Serial.print("Air Pressure: ");
-  Serial.print(bme.readPressure() / 100.0F);
-  Serial.print(" hPa");
+float getHumidity() {
+  return bme.readHumidity();
 }
 
-float altGet() {
-  float altitude = bme.readAltitude(SEALEVELPRESSURE_HPA);
-
-  Serial.print("Altitude: ");
-  Serial.print(altitude);
-  Serial.print(" m");
-
-  return altitude;
+float getPressure() {
+  return bme.readPressure() / 100.0F;
 }
 
-void humGet() {
-  Serial.print("Humidity: ");
-  Serial.print(bme.readHumidity());
-  Serial.print(" %");
+void bmePrint() {
+  Serial.println("----------------------------- BME280 ------------------------------");
+
+  float temp = getTemperature();
+  float hum = getHumidity();
+  float pres = getPressure();
+
+  Serial.print("| Temprature: "); Serial.print(temp); Serial.print("℃");
+  Serial.print(", Humidity: "); Serial.print(hum); Serial.print("%");
+  Serial.print(", Air pressure: "); Serial.print(pres); Serial.println("hPa |");
+  
+  Serial.println("-------------------------------------------------------------------");
 }
 
 #endif
