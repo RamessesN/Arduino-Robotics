@@ -30,8 +30,10 @@ void setup() {
 
 void loop() {
   bmePrint();
-  mpuPrint(); Serial.println();
-  // goStraight(false, 150);
+  mpuPrint();
+  Serial.println();
+
+  carDrive();
 
   delay(1000);
 }
