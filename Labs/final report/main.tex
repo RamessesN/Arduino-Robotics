@@ -1,6 +1,6 @@
 %! Author = haohao, yilin
 
-\documentclass[12pt,a4paper]{article}
+\documentclass[12pt,a4paper]{report}
 
 \input{I-texes/I-packages}
 \input{I-texes/I-config}
@@ -12,14 +12,14 @@
 \input{Preliminaries/titlepage}
 \clearpage
 
-\pagestyle{chapter}
-% \input{Preliminaries/abstract}
+\pagestyle{preliminary}
+\input{Preliminaries/abstract}
+\clearpage
 
-\input{Sections/introduction}
-\input{Sections/background}
-\input{Sections/method}
-\input{Sections/results}
-\input{Sections/conclusions}
+\pagestyle{chapter}
+\subfile{Chapters/1_introduction}
+\subfile{Chapters/2_experiments.tex}
+\subfile{Chapters/3_conclusions.tex}
 
 \appendix
 \clearpage
