@@ -4,8 +4,6 @@
 #include <Adafruit_BME280.h>
 #include <Adafruit_Sensor.h>
 
-#define SEALEVELPRESSURE_HPA (1013.25)
-
 extern Adafruit_BME280 bme;
 
 float getTemperature() {

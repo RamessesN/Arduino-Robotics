@@ -46,16 +46,4 @@ void goStraight(bool reverse, int speed) {
   setRight(reverse, speed * rightComp);
 }
 
-// Turn LEFT
-void turnLeft(bool reverse,int speed) {
-  setLeft(!reverse, speed * leftComp);
-  setRight(reverse, speed * rightComp);
-}
-
-// Turn RIGHT
-void turnRight(bool reverse,int speed) {
-  setLeft(reverse, speed * leftComp);
-  setRight(!reverse, speed * rightComp);
-}
-
 #endif

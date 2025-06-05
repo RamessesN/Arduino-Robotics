@@ -28,12 +28,26 @@ void setup() {
   pinMode(rightLightPin, OUTPUT);
 }
 
+variables accData;
+variables gyroData;
+
+unsigned long lastPrintTime = 0;
+
 void loop() {
-  bmePrint();
-  mpuPrint();
-  Serial.println();
+  static unsigned long lastPrintTime = 0;
+  bool stateChanged = carDrive();
 
-  carDrive();
+  unsigned long currentTime = millis();
 
-  delay(1000);
+  if(stateChanged) {
+    bmePrint();
+    mpuPrint();
+    Serial.println();
+    lastPrintTime = currentTime;
+  } else if(currentTime - lastPrintTime >= 2000) {
+    bmePrint();
+    mpuPrint();
+    Serial.println();
+    lastPrintTime = currentTime;
+  }
 }
