@@ -9,9 +9,34 @@
 %% can understand the approach.
 \chapter{Introduction}
 \label{ch:introduction}
-Give a brief description for the aims of the laboratory and a summary of the results collected.
-Please write this as constant prose in a way that a fellow student,
-who does not know anything about the experiment,
-can understand the approach.
+
+\section{Four aims of the laboratory}
+
+The aim of this laboratory is to build our own robotic car.
+It is named as ``\textbf{Super Ultra Hyper Mega Advanced Senior Superior Elite Lobster}'',
+short as ``\textbf{Lobster}''.
+We have done \textbf{4} contributions to Lobster, which are recorded in
+lab3-light seeking, lab5-line following, lab7-Obstacle avoiding and lab8-environment measurement.
+Thus, Lobster could have the following functionalities:
+
+\begin{enumerate}
+\item Follow the light on the floor and turn its direction to wherever the light is.
+\item Follow a 1 to 3 cm wide black line on the floor.
+The line could be straight, bent or quarter.
+\item Go straight and avoid obstacles.
+When reaches obstacles such as walls, Lobster will turn to another direction to avoid crashing.
+\item Measure temperature, humidity and atmospheric pressure,
+print them and set a motor speed dependently.
+\end{enumerate}
+
+If Lobster has installed light seeking module, then it cannot track lines any more,
+same as the other two functionalities.
+In short, only one of these four modules works at a time.
+
+\section{Results summary}
+
+Basic approaches of the four experiment are completed.
+We used two light-dependent resistors (LDR) to receive light change.
+The car can recognize white light in the front within 15 cm. % TODO
 
 \end{document}
