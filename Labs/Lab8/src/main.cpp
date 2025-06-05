@@ -1,30 +1,39 @@
 #include "FactorDetect.h"
+#include "MotionDetect.h"
 #include "MotionSetting.h"
 #include "MotionControl.h"
 
+#include <Wire.h>
+
 Adafruit_BME280 bme;
+Adafruit_MPU6050 mpu;
 
 void setup() {
-  // put your setup code here, to run once:
-  Serial.begin(9600);
-  if(!bme.begin(0x76)) {
-    Serial.println("ERROR: BME280 Read Failed!");
-    while(1);
-  }
+  Wire.begin();
+  Serial.begin(115200);
+  while(!Serial);
+
+  delay(1000);
+
+  bme.begin(0x76);
+  mpu.begin(0x68, &Wire);
+
+  // Wheel Driver
+  pinMode(in1Pin, OUTPUT);
+  pinMode(in2Pin, OUTPUT);
+  pinMode(in3Pin, OUTPUT);
+  pinMode(in4Pin, OUTPUT);
+  // Light Driver
+  pinMode(leftLightPin, OUTPUT);
+  pinMode(rightLightPin, OUTPUT);
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
-  float altitude = basicPrint();
+  bmePrint();
+  mpuPrint();
+  Serial.println();
 
-  carDrive(altitude);
-}
+  carDrive();
 
-float basicPrint() {
-  tempGet();
-  presGet();
-  float altitude = altGet();
-  humGet();
-
-  return altitude;
+  delay(1000);
 }

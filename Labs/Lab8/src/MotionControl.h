@@ -1,17 +1,34 @@
 #ifndef MotionControl_H
 #define MotionControl_H
 
+#include "MotionSetting.h"
+
 bool reverse = false;
+int baseSpeed = 150;
 
-int baseSpeed = 0;
+bool isLifted = false;
 
-void carDrive(float altitude) {
-  if(altitude <= 0.05) {
-    fullStop();
-  }
+unsigned long lastCheckTime = 0;
 
-  while(altitude += 0.1) {
-    goStraight(reverse, baseSpeed += 10);
+void carDrive() {
+  unsigned long now = millis();
+  if(now - lastCheckTime >= 100) {
+    lastCheckTime = now;
+
+    variables acc, gyro;
+    getVariables(acc, gyro);
+
+    float acc_z = acc.z;
+
+    if(!isLifted && acc_z < 7.0) { // Up
+      isLifted = true;
+      Serial.println("UP!!!");
+      goStraight(reverse, baseSpeed);
+    } else if(isLifted && acc_z > 7.0) { // Down
+      isLifted = false;
+      Serial.println("Down!!!");
+      fullStop();
+    }
   }
 }
 
