@@ -78,19 +78,23 @@
 \newlength{\chapterFontSize}
 \newlength{\sectionFontSize}
 \newlength{\subsectionFontSize}
+\newlength{\subsubsectionFontSize}
 \newlength{\chapterBaseline}
 \newlength{\sectionBaseline}
 \newlength{\subsectionBaseline}
+\newlength{\subsubsectionBaseline}
 
 %% change those value if you want to change the chapter/section/subsection font size
 \setlength{\chapterFontSize}{14pt}
 \setlength{\sectionFontSize}{12pt}
 \setlength{\subsectionFontSize}{12pt}
+\setlength{\subsubsectionFontSize}{12pt}
 
 %% automatic computation for baseline, rule of thumb is 1.2
 \setlength{\chapterBaseline}{ \chapterFontSize * \headingBaseline / \headingBaselineDiv}
 \setlength{\sectionBaseline}{ \sectionFontSize * \headingBaseline / \headingBaselineDiv}
 \setlength{\subsectionBaseline}{ \subsectionFontSize * \headingBaseline / \headingBaselineDiv}
+\setlength{\subsubsectionBaseline}{ \subsectionFontSize * \headingBaseline / \headingBaselineDiv}
 
 %% headings
 %% Chapter, 14-point, bold
@@ -113,6 +117,12 @@
     {\normalfont\bfseries\itshape\fontsize{\subsectionFontSize}{\subsectionBaseline}\selectfont}{\thesubsection}{5pt}{}
 %% left|above|below
 \titlespacing{\subsection}{0pt}{20pt}{10pt}
+
+%% Subsubsection, 12-point, italic
+\titleformat{\subsubsection}[hang]
+    {\normalfont\bfseries\itshape\fontsize{\subsubsectionFontSize}{\subsubsectionBaseline}\selectfont}{\thesubsubsection}{5pt}{}
+%% left|above|below
+\titlespacing{\subsubsection}{0pt}{15pt}{5pt}
 
 %% table of content
 \renewcommand{\contentsname}{Table of Contents}
