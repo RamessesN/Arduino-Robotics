@@ -10,33 +10,58 @@
 \chapter{Introduction}
 \label{ch:introduction}
 
-\section{Four aims of the laboratory}
+\section{Our Car Lobster}
 
-The aim of this laboratory is to build our own robotic car.
-It is named as ``\textbf{Super Ultra Hyper Mega Advanced Senior Superior Elite Lobster}'',
-short as ``\textbf{Lobster}''.
-We have done \textbf{4} contributions to Lobster, which are recorded in
-lab3-light seeking, lab5-line following, lab7-Obstacle avoiding and lab8-environment measurement.
+The main aim of this laboratory is to build our own robotic car named
+``\textbf{Super Ultra Hyper Mega Advanced Senior Superior Elite Lobster}'',
+abbreviated as ``\textbf{Lobster}''.
+Its name comes from the shape, which in our opinion is a good sigh of strength and speed.
+Haohao Qi is responsible for our car's shape and color design.
+She measures its internal dimensions and builds a 3D model using Blender.
+Yuwei Zhao operates a 3D printer with permission from his club.
+
+In southern China, lobsters are considered a delicious delicacy.
+When harvesting them in the fields, locals find them difficult to catch due to their speed.
+Similarly, we hope our robotic car, Lobster, will be fast and robust.
+
+\section{Four Aims of the Laboratory}
+
+We have done four contributions to it, which are recorded in
+Lab 3 (light seeking), Lab 5 (line following), Lab 7 (obstacles avoiding) and Lab 8 (environment measurement).
 Thus, Lobster could have the following functionalities:
 
 \begin{enumerate}
-\item Follow the light on the floor and turn its direction to wherever the light is.
+\item Follow the light on the floor and adjust its direction toward the light source.
 \item Follow a 1 to 3 cm wide black line on the floor.
-The line could be straight, bent or quarter.
-\item Go straight and avoid obstacles.
-When reaches obstacles such as walls, Lobster will turn to another direction to avoid crashing.
+The line can be straight, curved, or quarter-shaped.
+\item Move straight and avoid obstacles.
+When reaches obstacles such as walls, Lobster will turn to another direction to avoid collisions.
 \item Measure temperature, humidity and atmospheric pressure,
-print them and set a motor speed dependently.
+display the readings and adjust motor speed accordingly.
 \end{enumerate}
 
 If Lobster has installed light seeking module, then it cannot track lines any more,
-same as the other two functionalities.
+and the same applies to the other two functionalities.
 In short, only one of these four modules works at a time.
 
-\section{Results summary}
+\section{Result Summary}
 
-Basic approaches of the four experiment are completed.
-We used two light-dependent resistors (LDR) to receive light change.
-The car can recognize white light in the front within 15 cm. % TODO
+Basic approaches of the four experiments have been successfully completed.
+
+We used two light-dependent resistors (LDRs) to detect changes in light intensity.
+Lobster can recognize a straight white light in the front of it within 15 cm long and 10 cm wide.
+
+Proportional-integral-derivative control (PID) was creatively applied in line tracking.
+We used infrared (IR) sensor feedback to distinguish between black and non-black surfaces on the ground.
+Interestingly, we found that sensor feedback exhibits a linear response while in the middle of black and white,
+which enabled the implementation of PID control.
+As a result, Lobster is able to move at a speed of 0.5 m/s in straight lines, and 0.3 m/s in curved ones.
+
+For obstacle avoidance, Lobster was placed in a \(3 \times 3 \, \text{m}^2\) square place with walls around.
+HC-SR04 ultrasonic distance sensor was used in this experiment to measure mainly front distance.
+We also used a SG90 servo motor to change HC-SR04's direction to avoid a side crash.
+Lobster passes a 1-minute test in is square place without any collisions.
+
+%% TODO: Lab 8
 
 \end{document}

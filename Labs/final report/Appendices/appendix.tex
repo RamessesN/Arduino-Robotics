@@ -9,8 +9,8 @@
 %% corresponding subsection numbering, which must be entered in the table of contents.
 %% Alternatively, short appendices may be attached to individual chapters,
 %% as an extra section with a heading of style 3.7 Appendix
-\chapter{Appendix}
-\label{ch:appendix}
+\chapter{Contribution Statement}
+\label{ch:contribution-statement}
 
 Appendices, labelled A, B etc., should be treated as additional chapters and should normally follow the main text.
 Appendices may consist of supporting material of considerable length or of
@@ -21,7 +21,6 @@ corresponding subsection numbering, which must be entered in the table of conten
 Alternatively, short appendices may be attached to individual chapters,
 as an extra section with a heading of style 3.7 Appendix
 
-\section{Contribution Statement}
 The contributions of each team member are as follows:
 
 -- Yuwei Zhao: Responsible for data processing and experiment implementation.
@@ -30,15 +29,68 @@ The contributions of each team member are as follows:
 
 -- Haohao Qi: Wrote the final report and participated in experiment implementation.
 
-\section{Source Code}
-\label{sec:source-code}
+\chapter{Source Code}
+\label{ch:source-code}
 
 %% enable package ``listings''
 %\begin{lstlisting}[language=C++]
 %
 %\end{lstlisting}
 
-%% enable package ``minted''
-\inputminted{python}{src/example.py}
+\section{Lab 3: Light Seeking}
+
+\subsection{carDrive.cpp}
+\inputminted{cpp}{src/3-light/carDrive.cpp}
+
+\subsection{lightToward.cpp}
+\inputminted{cpp}{src/3-light/lightToward.cpp}
+
+\section{Lab 4: Line Following}
+
+\subsection{dataTrans.h}
+\inputminted{cpp}{src/5-line/dataTrans.h}
+
+\subsection{motion\_setting.h}
+\inputminted{cpp}{src/5-line/motion_setting.h}
+
+\subsection{motion\_control.h}
+\inputminted{cpp}{src/5-line/motion_control.h}
+
+\subsection{main.cpp}
+\inputminted{cpp}{src/5-line/main.cpp}
+
+\section{Lab 7: Obstacles Avoiding}
+
+\subsection{motion\_setting.h}
+\inputminted{cpp}{src/7-obstacles/motion_setting.h}
+
+\subsection{motion\_control.h}
+\inputminted{cpp}{src/7-obstacles/motion_control.h}
+
+\subsection{servo\_control.h}
+\inputminted{cpp}{src/7-obstacles/servo_control.h}
+
+\subsection{ultrasound\_control.h}
+\inputminted{cpp}{src/7-obstacles/ultrasound_control.h}
+
+\subsection{main.cpp}
+\inputminted{cpp}{src/7-obstacles/main.cpp}
+
+\section{Lab 8: Environment Measurement}
+
+\subsection{MotionDetect.h}
+\inputminted{cpp}{src/8-environment/MotionDetect.h}
+
+\subsection{MotionSetting.h}
+\inputminted{cpp}{src/8-environment/MotionSetting.h}
+
+\subsection{MotionControl.h}
+\inputminted{cpp}{src/8-environment/MotionControl.h}
+
+\subsection{FactorDetect.h}
+\inputminted{cpp}{src/8-environment/FactorDetect.h}
+
+\subsection{main.cpp}
+\inputminted{cpp}{src/8-environment/main.cpp}
 
 \end{document}
