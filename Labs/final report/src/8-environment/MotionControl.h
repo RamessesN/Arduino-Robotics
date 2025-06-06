@@ -8,27 +8,53 @@ int baseSpeed = 150;
 
 bool isLifted = false;
 
-unsigned long lastCheckTime = 0;
+const float LIFT_THRESHOLD = 8.5f;
+const float GROUND_THRESHOLD = 10.0f;
+const unsigned long DEBOUNCE_TIME = 250;
 
 void carDrive() {
-  unsigned long now = millis();
-  if(now - lastCheckTime >= 100) {
-    lastCheckTime = now;
+  getVariables();
+  static unsigned long lastStateChangeTime = 0;
+  static bool stableState = false;
 
-    variables acc, gyro;
-    getVariables(acc, gyro);
+  float acc = sqrt(pow(accData.x, 2) + pow(accData.y, 2) + pow(accData.z, 2));
 
-    float acc_z = acc.z;
+  bool stateChanged = false;
+  unsigned long currentTime = millis();
 
-    if(!isLifted && acc_z < 7.0) { // Up
-      isLifted = true;
-      Serial.println("UP!!!");
-      goStraight(reverse, baseSpeed);
-    } else if(isLifted && acc_z > 7.0) { // Down
-      isLifted = false;
-      Serial.println("Down!!!");
-      fullStop();
+  if (stableState) {
+    if (acc >= GROUND_THRESHOLD) {
+      if (lastStateChangeTime == 0) {
+        lastStateChangeTime = currentTime;
+      } else if (currentTime - lastStateChangeTime >= DEBOUNCE_TIME) {
+        stableState = false;
+        isLifted = false;
+        stateChanged = true;
+        lastStateChangeTime = 0;
+      }
+    } else {
+      lastStateChangeTime = 0;
     }
+  } else {
+    if (acc <= LIFT_THRESHOLD) {
+      if (lastStateChangeTime == 0) {
+        lastStateChangeTime = currentTime;
+      }
+      else if (currentTime - lastStateChangeTime >= DEBOUNCE_TIME) {
+        stableState = true;
+        isLifted = true;
+        stateChanged = true;
+        lastStateChangeTime = 0;
+      }
+    } else {
+      lastStateChangeTime = 0;
+    }
+  }
+
+  if(isLifted) {
+    goStraight(reverse, baseSpeed);
+  } else {
+    fullStop();
   }
 }
 

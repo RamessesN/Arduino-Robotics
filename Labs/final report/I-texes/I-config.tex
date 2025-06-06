@@ -10,46 +10,21 @@
 \setlength{\topmargin}{-60pt}
 \setlength{\headheight}{20pt}
 \setlength{\headsep}{25pt}
-
 \setlength{\footskip}{30pt}
 
 %% width
 %% 72 + 32 + 10 = 114pt = 40mm
-\setlength{\oddsidemargin}{32pt}
-\setlength{\evensidemargin}{32pt}
-\setlength{\marginparsep}{10pt}
+\setlength{\oddsidemargin}{-6pt}
+\setlength{\evensidemargin}{-6pt}
+\setlength{\marginparsep}{0pt}
+\setlength{\marginparwidth}{0pt}
 
 %% size text
-\setlength{\textheight}{728pt}
-\setlength{\textwidth}{425pt}
+\setlength{\textheight}{728pt} % 842 - 60 - 20 - 25 - 30 = 707?
+\setlength{\textwidth}{464pt}
 
 %% if you need global ``\noindent''
 %\setlength{\parindent}{0pt}
-
-%% prefer same space width
-\RaggedRight
-
-%% enable package ``listings''
-%\lstset{
-%  basicstyle=\ttfamily\footnotesize,
-%  keywordstyle=\bfseries\color{NavyBlue},
-%  numberstyle=\scriptsize\color{gray},
-%  numbers=left,
-%  frame=single,
-%  framesep=1em,
-%  breaklines=true,
-%  tabsize=2,
-%  showspaces=false,
-%  showstringspaces=false,
-%  commentstyle=\itshape\color{PineGreen},
-%  stringstyle=\bfseries\color{PineGreen!90!black},
-%  columns=flexible,
-%  numbersep=2em,
-%  emph={data,print,input,len,str,println,write,attach,attached,set_label,set_title,set_thetamin,set_thetamax,
-%  set_rticks,set_rlabel_position,colorbar,detach,split,append,to_excel},
-%  emphstyle=\bfseries\color{Rhodamine},
-%  literate={°}{{\textdegree}}1
-%}
 
 %% style
 %% preliminary, just roman pagination + empty header
@@ -78,31 +53,24 @@
 \newlength{\chapterFontSize}
 \newlength{\sectionFontSize}
 \newlength{\subsectionFontSize}
-\newlength{\subsubsectionFontSize}
 \newlength{\chapterBaseline}
 \newlength{\sectionBaseline}
 \newlength{\subsectionBaseline}
-\newlength{\subsubsectionBaseline}
 
 %% change those value if you want to change the chapter/section/subsection font size
 \setlength{\chapterFontSize}{14pt}
 \setlength{\sectionFontSize}{12pt}
 \setlength{\subsectionFontSize}{12pt}
-\setlength{\subsubsectionFontSize}{12pt}
 
 %% automatic computation for baseline, rule of thumb is 1.2
 \setlength{\chapterBaseline}{ \chapterFontSize * \headingBaseline / \headingBaselineDiv}
 \setlength{\sectionBaseline}{ \sectionFontSize * \headingBaseline / \headingBaselineDiv}
 \setlength{\subsectionBaseline}{ \subsectionFontSize * \headingBaseline / \headingBaselineDiv}
-\setlength{\subsubsectionBaseline}{ \subsectionFontSize * \headingBaseline / \headingBaselineDiv}
 
 %% headings
-%% Chapter, 14-point, bold
+%% Chapter, 14-point, bold, capitalised initial letter,
 \titleformat{\chapter}[display]
-    {\normalfont\bfseries\fontsize{\chapterFontSize}{\chapterBaseline}\selectfont}{\chaptertitlename\ \thechapter}{14pt}{}
-%% capitalised initial letter,
-% \titleformat{\chapter}[display]
-%     {\normalfont\bfseries\fontsize{\chapterFontSize}{\chapterBaseline}\selectfont}{\chaptertitlename\ \thechapter}{14pt}{\capitalisewords}
+    {\normalfont\bfseries\fontsize{\chapterFontSize}{\chapterBaseline}\selectfont}{\chaptertitlename\ \thechapter}{14pt}{\capitalisewords}
 %% left|above|below
 \titlespacing{\chapter}{0pt}{10pt}{25pt}
 
@@ -117,12 +85,6 @@
     {\normalfont\bfseries\itshape\fontsize{\subsectionFontSize}{\subsectionBaseline}\selectfont}{\thesubsection}{5pt}{}
 %% left|above|below
 \titlespacing{\subsection}{0pt}{20pt}{10pt}
-
-%% Subsubsection, 12-point, italic
-\titleformat{\subsubsection}[hang]
-    {\normalfont\bfseries\itshape\fontsize{\subsubsectionFontSize}{\subsubsectionBaseline}\selectfont}{\thesubsubsection}{5pt}{}
-%% left|above|below
-\titlespacing{\subsubsection}{0pt}{15pt}{5pt}
 
 %% table of content
 \renewcommand{\contentsname}{Table of Contents}
@@ -146,3 +108,51 @@
 
 %% line spacing
 \setstretch{1.5}
+
+%% prefer same space width
+%\RaggedRight
+
+%% hyphenation
+\hyphenpenalty = 100       % 控制断字频率（值越低越积极断字）
+\exhyphenpenalty = 50      % 对已包含连字符单词的断字控制
+\tolerance = 1000          % 允许更大的行内间距变化
+\emergencystretch = 3em    % 允许临时拉伸空间避免溢出
+
+%% enable package ``listings''
+%\lstset{
+%  basicstyle=\ttfamily\footnotesize,
+%  keywordstyle=\bfseries\color{NavyBlue},
+%  numberstyle=\scriptsize\color{gray},
+%  numbers=left,
+%  frame=single,
+%  framesep=1em,
+%  breaklines=true,
+%  tabsize=2,
+%  showspaces=false,
+%  showstringspaces=false,
+%  commentstyle=\itshape\color{PineGreen},
+%  stringstyle=\bfseries\color{PineGreen!90!black},
+%  columns=flexible,
+%  numbersep=2em,
+%  emph={data,print,input,len,str,println,write,attach,attached,set_label,set_title,set_thetamin,set_thetamax,
+%  set_rticks,set_rlabel_position,colorbar,detach,split,append,to_excel},
+%  emphstyle=\bfseries\color{Rhodamine},
+%  literate={°}{{\textdegree}}1
+%}
+
+%% enable package ``minted''
+\setminted{
+    breaklines=true,          % 自动换行
+    breaksymbolleft=,         % 移除换行箭头符号（节省空间）
+    baselinestretch=0.9,      % 行距压缩到85%（小于1的值）
+    fontsize=\footnotesize,   % 使用更小的字号
+    frame=leftline,           % 仅保留左侧竖线（节省空间）
+    framesep=2pt,             % 边框间距压缩到2pt
+    rulecolor=gray!30,        % 浅灰色边框（更低调）
+    autogobble=true,          % 自动对齐代码缩进
+    xleftmargin=5pt,          % 左侧缩进减少
+    xrightmargin=0pt,         % 右侧无缩进
+    numbersep=3pt,            % 行号间距减少
+    linenos=true,             % 关闭行号（节省空间）
+    bgcolor=white,            % 白色背景（移除灰色背景节省视觉空间）
+}

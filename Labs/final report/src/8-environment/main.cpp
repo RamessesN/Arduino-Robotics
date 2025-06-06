@@ -1,4 +1,5 @@
 #include "FactorDetect.h"
+#include "LCDDemonstrate.h"
 #include "MotionDetect.h"
 #include "MotionSetting.h"
 #include "MotionControl.h"
@@ -7,6 +8,7 @@
 
 Adafruit_BME280 bme;
 Adafruit_MPU6050 mpu;
+LiquidCrystal_I2C lcd(0x27, 16, 2);
 
 void setup() {
   Wire.begin();
@@ -17,6 +19,8 @@ void setup() {
 
   bme.begin(0x76);
   mpu.begin(0x68, &Wire);
+  lcd.init();
+  lcd.backlight();
 
   // Wheel Driver
   pinMode(in1Pin, OUTPUT);
@@ -28,12 +32,32 @@ void setup() {
   pinMode(rightLightPin, OUTPUT);
 }
 
-void loop() {
-  bmePrint();
-  mpuPrint();
-  Serial.println();
+variables accData;
+variables gyroData;
 
+unsigned long lastPrintTime = 0;
+
+void loop() {
   carDrive();
 
-  delay(1000);
+  static bool basicShown = false;
+  if (!basicShown) {
+    basicDemonstrate();
+    basicShown = true;
+    delay(2500);
+    lcd.clear();
+  }
+
+  bmeDemonstrate();
+  mpuDemonstrate();
+
+  static unsigned long lastPrintTime = 0;
+  unsigned long currentTime = millis();
+  if(currentTime - lastPrintTime >= 2000) {
+    bmePrint();
+    mpuPrint();
+    Serial.println();
+
+    lastPrintTime = currentTime;
+  }
 }

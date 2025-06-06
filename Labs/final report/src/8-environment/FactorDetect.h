@@ -4,8 +4,6 @@
 #include <Adafruit_BME280.h>
 #include <Adafruit_Sensor.h>
 
-#define SEALEVELPRESSURE_HPA (1013.25)
-
 extern Adafruit_BME280 bme;
 
 float getTemperature() {
@@ -20,12 +18,17 @@ float getPressure() {
   return bme.readPressure() / 100.0F;
 }
 
-void bmePrint() {
-  Serial.println("----------------------------- BME280 ------------------------------");
+void getBMEData(float &temp, float &hum, float &pres) {
+  temp = getTemperature();
+  hum = getHumidity();
+  pres = getPressure();
+}
 
-  float temp = getTemperature();
-  float hum = getHumidity();
-  float pres = getPressure();
+void bmePrint() {
+  float temp, hum, pres;
+  getBMEData(temp, hum, pres);
+
+  Serial.println("----------------------------- BME280 ------------------------------");
 
   Serial.print("| Temprature: "); Serial.print(temp); Serial.print("℃");
   Serial.print(", Humidity: "); Serial.print(hum); Serial.print("%");

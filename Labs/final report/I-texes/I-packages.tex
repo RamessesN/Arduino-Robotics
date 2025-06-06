@@ -2,9 +2,10 @@
 %\usepackage[acronym,nonumberlist]{glossaries} % https://www.overleaf.com/learn/latex/Glossaries
 \usepackage[export]{adjustbox}  % 提供图形调整和导出选项
 %% if we need simple page style
-%\usepackage[margins=2cm,left=4cm]{geometry} % 设置页面边距
+%\usepackage[margins=2cm,left=4cm]{geometry} % print
 \usepackage[T1]{fontenc} % font
 \usepackage[dvipsnames,table]{xcolor} % 支持颜色定义，特别是表格和预定义颜色
+\usepackage[english]{babel} % 启用英语断字规则
 %\usepackage{subcaption} % 子图标题支持
 \usepackage{fancyhdr}   % layout
 \usepackage{graphicx}   % include graphics
@@ -21,6 +22,7 @@
 \usepackage{titlesec}   % 自定义章节标题
 \usepackage{amsmath}    % 高级数学公式
 \usepackage{courier}    % 等宽字体
+\usepackage{fvextra}    % minted auto next line
 \usepackage{slantsc}    % 斜体小型大写字母
 \usepackage{minted}     % 更现代的代码排版
 \usepackage{float}      % 改进的浮动体控制
