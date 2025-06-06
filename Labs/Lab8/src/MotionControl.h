@@ -10,9 +10,9 @@ bool isLifted = false;
 
 const float LIFT_THRESHOLD = 8.5f;
 const float GROUND_THRESHOLD = 10.0f;
-const unsigned long DEBOUNCE_TIME = 200;
+const unsigned long DEBOUNCE_TIME = 250;
 
-bool carDrive() {
+void carDrive() {
   getVariables();
   static unsigned long lastStateChangeTime = 0;
   static bool stableState = false;
@@ -56,8 +56,6 @@ bool carDrive() {
   } else {
     fullStop();
   }
-
-  return false;
 }
 
 #endif
