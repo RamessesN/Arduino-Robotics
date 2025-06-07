@@ -5,6 +5,7 @@
 \input{I-texes/I-packages}
 \input{I-texes/I-config}
 \input{I-texes/I-info}
+\input{I-texes/I-glossary}
 
 \begin{document}
 
@@ -15,7 +16,16 @@
 \pagestyle{preliminary}
 \input{Preliminaries/abstract}
 \clearpage
-\input{Preliminaries/contents}
+{
+    \setstretch{1}
+    \hypersetup{linkcolor=black}
+    \tableofcontents
+    %% this is to include all acronym
+    %% You can do a sort of citation for acronym and include only the one you use,
+    %% Look at the glossary package for details.
+    \glsaddall
+    \printnoidxglossary[type=\acronymtype, title=Glossary] % optional
+}
 \clearpage
 
 \pagestyle{chapter}
@@ -24,5 +34,15 @@
 \subfile{Chapters/3_conclusions.tex}
 \appendix
 \subfile{Appendices/appendix}
+\clearpage
+
+%\stepcounter{chapter}
+\printbibliography[title={References}, heading=bibintoc, resetnumbers=true]
+%% sorted by alphabetical order, using author name
+\begin{refsection}
+\DeclareFieldFormat{labelnumberwidth}{#1}
+\nocite{*}
+\printbibliography[title={Bibliography}, notcategory=cited, omitnumbers=true, heading=bibintoc]
+\end{refsection}
 
 \end{document}

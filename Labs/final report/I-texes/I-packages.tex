@@ -1,12 +1,13 @@
-%% if we need glossaries
-%\usepackage[acronym,nonumberlist]{glossaries} % https://www.overleaf.com/learn/latex/Glossaries
+\usepackage[acronym,nonumberlist]{glossaries} % https://www.overleaf.com/learn/latex/Glossaries
 \usepackage[export]{adjustbox}  % 提供图形调整和导出选项
+\usepackage[defernumbers=true, sorting=none]{biblatex}
 %% if we need simple page style
 %\usepackage[margins=2cm,left=4cm]{geometry} % print
 \usepackage[T1]{fontenc} % font
 \usepackage[dvipsnames,table]{xcolor} % 支持颜色定义，特别是表格和预定义颜色
 \usepackage[english]{babel} % 启用英语断字规则
 %\usepackage{subcaption} % 子图标题支持
+\usepackage{microtype}  % better font
 \usepackage{fancyhdr}   % layout
 \usepackage{graphicx}   % include graphics
 \usepackage{hyperref}   % 超链接和PDF书签 https://ctan.org/pkg/hyperref

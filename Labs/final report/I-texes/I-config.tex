@@ -91,6 +91,17 @@
 \setcounter{tocdepth}{2}
 \setcounter{secnumdepth}{2}
 
+%% init gloassaries
+%% noidx cause otherwise we have to do a normal glossary, compile, then remove it so it is cached
+%% because we only use acronym
+\makenoidxglossaries
+
+%% bibliography config
+%% https://tex.stackexchange.com/a/6977
+\DeclareBibliographyCategory{cited}
+\AtEveryCitekey{\addtocategory{cited}{\thefield{entrykey}}}
+\addbibresource{Appendices/bibliography.bib}
+
 %% hyperref setup
 \hypersetup{
   colorlinks = true,
@@ -118,33 +129,11 @@
 \tolerance = 1000          % 允许更大的行内间距变化
 \emergencystretch = 3em    % 允许临时拉伸空间避免溢出
 
-%% enable package ``listings''
-%\lstset{
-%  basicstyle=\ttfamily\footnotesize,
-%  keywordstyle=\bfseries\color{NavyBlue},
-%  numberstyle=\scriptsize\color{gray},
-%  numbers=left,
-%  frame=single,
-%  framesep=1em,
-%  breaklines=true,
-%  tabsize=2,
-%  showspaces=false,
-%  showstringspaces=false,
-%  commentstyle=\itshape\color{PineGreen},
-%  stringstyle=\bfseries\color{PineGreen!90!black},
-%  columns=flexible,
-%  numbersep=2em,
-%  emph={data,print,input,len,str,println,write,attach,attached,set_label,set_title,set_thetamin,set_thetamax,
-%  set_rticks,set_rlabel_position,colorbar,detach,split,append,to_excel},
-%  emphstyle=\bfseries\color{Rhodamine},
-%  literate={°}{{\textdegree}}1
-%}
-
 %% enable package ``minted''
 \setminted{
     breaklines=true,          % 自动换行
     breaksymbolleft=,         % 移除换行箭头符号（节省空间）
-    baselinestretch=0.9,      % 行距压缩到85%（小于1的值）
+    baselinestretch=0.9,      % 行距压缩到小于1的值
     fontsize=\footnotesize,   % 使用更小的字号
     frame=leftline,           % 仅保留左侧竖线（节省空间）
     framesep=2pt,             % 边框间距压缩到2pt

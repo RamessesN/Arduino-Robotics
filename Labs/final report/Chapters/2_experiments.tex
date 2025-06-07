@@ -18,22 +18,6 @@
 \chapter{Experiments}
 \label{ch:experiments}
 
-\begin{table}[H]
-  \centering
-  \newcolumntype{Y}{>{\centering\arraybackslash}X}
-  \begin{tabularx}{\linewidth}{YX}
-    \Xhline{1pt}
-    \textbf{Abridge} & \textbf{Full Name} \\
-    \Xhline{1pt}
-    Lobster & Super Ultra Hyper Mega Advanced Senior Superior Elite Lobster \\
-    LDR     & Light-Dependent Resistor \\
-    PID     & Proportional-Integral-Derivative \\
-    IR      & Infrared Transducer \\
-    \Xhline{1pt}
-  \end{tabularx}
-  \label{tab:abridge}
-\end{table}
-
 \section{Light Seeking}
 
 \subsection{Theory and Technical Background}
@@ -59,10 +43,30 @@ please keep text as concise as possible.
 
 \subsection{Theory and Technical Background}
 
-Give a brief description of the background theory for the experiment being tackled.
-Please cite appropriate work.
-Feel free to add figures into this section, where
-each figure and each equation may reduce the number of words you use.
+\textit{TCRT5000} is the most importent IR sensor in this experiment as shown in \fref{fig:TCRT5000}.
+It mainly includes an IR Tx (transmitter) and IR Rx (receiver),
+the former of which is a Photodiode while the latter is a Phototransistor.\cite{TCRT5000L_datasheet}
+It is capable of detecting changes in light intensity.
+The infrared-emitting diode of this device continuously emits infrared light.
+When the emitted infrared light is not reflected or the reflected intensity is insufficient,
+the phototransistor remains in the cut-off state.
+The module's output terminal is at a low voltage level, and the indicator diode stays off.
+When an object to be detected enters the detection range,
+the infrared light is reflected back with sufficient intensity.
+The phototransistor then enters the saturation state,
+its module's output terminal switches to a high voltage level, and
+the indicator diode is illuminated.
+
+\begin{figure}[h!tbp]
+  \centering
+  \includegraphics[width=0.6\linewidth]{Figures/TCRT5000-IR-Sensor-Module}
+  \rule{35em}{0.5pt}
+  \caption[TCRT5000 IR Sensor Module]{
+    A TCRT5000 IR Sensor Module mainly includes parts like
+    TCRT5000 IR sensor, power LED, reflective sensor, adjustment of sensitivity, and output LED
+  }
+  \label{fig:TCRT5000}
+\end{figure}
 
 \subsection{Method}
 
