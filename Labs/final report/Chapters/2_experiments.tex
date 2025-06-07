@@ -41,7 +41,7 @@ please keep text as concise as possible.
 
 \section{Line following}
 
-\subsection{Theory and Technical Background}
+\subsection{Theory and Technical Background} %% TODO: needs re-writing
 
 \textit{TCRT5000} is the most important IR sensor in this experiment as shown in \fref{fig:TCRT5000}.
 It mainly includes an IR Tx (transmitter) and IR Rx (receiver),
@@ -70,9 +70,103 @@ the indicator diode is illuminated.
 
 \subsection{Method}
 
-Describe the technical procedures to collect the results.
-Add figures into this section, where
-each figure and each equation may reduce the number of words you use.
+The IR sensor voltage coming back was measured as
+$4.15 \pm 0.1 \, \text{V}$ on black lines, and $0.15 \pm 0.1\,\text{V}$ on white ground.
+We observed a
+We found a linear transition region that in the middle of black and white surfaces,
+enabling analog position detection.
+Therefore, we realized that it can be applied under PID control.
+
+The linear voltage gradient permits error quantification for PID control.
+PID control is a combined method of proportional, integral and derivative control.
+To implement PID control, there should be a standard, standing for adjustment goal.
+The most recent value should be measured and then calculate the \textit{error} between them.
+Simply proportional adjustment is the quickest and easiest way,
+which is just a proportional coefficient (\(Kp\)) times error,
+described as \eref{eq:p-control}.
+
+\begin{equation}
+  P = Kp * error
+  \label{eq:p-control}
+\end{equation}
+
+Integral control is similar.
+Its difference is that each time the integral coefficient (\(Ki\)) times
+the total sum of all errors calculated in the history,
+described as \eref{eq:i-control}.
+
+\begin{equation}
+  I = Ki * \int_0^t error * dt
+  \label{eq:i-control}
+\end{equation}
+
+And derivative control, as its name suggests, is
+a derivative coefficient (\(Kd\)) times the deviation between this error and the last error.
+It can be described as \eref{eq:d-control1} where dt refers to the time offset.
+
+\begin{equation}
+  D = Kd * \frac{error}{dt}
+  \label{eq:d-control1}
+\end{equation}
+
+The total PID control is all three adjustments added together.
+All equations above are described mathematically, but are challenging for computers to understand.
+In coding environment, they need to be changed \textit{discretely},
+which, in total, can be described as \eref{eq:pid-control}, where
+\(e(k)\)= position error related to time \(t\).
+In car situations, PD control is better than full PID control because
+integral term accumulates historical error causes overshoot.
+
+\begin{equation}
+  \text{PID Output} = K_p e(k) + K_i \sum_{\tau=0}^k e(\tau) + K_d (e(k) - e(k-1))
+  \label{eq:pid-control}
+\end{equation}
+
+%% TODO
+Left, middle, right (needs a figure here \fref{fig:v-x_before}).
+We turn left upside down, thus in the middle it is linear.
+Process very left and very right such that linear width is longer \fref{fig:v-x_after}.
+
+\begin{figure}[h!tbp]
+  \centering
+  \includegraphics[width=0.6\linewidth]{Figures/v-x_before}
+  \rule{35em}{0.5pt}
+  \caption[V-x graph before]{A voltage-position graph with three TCRT5000's data on it}
+  \label{fig:v-x_before}
+\end{figure}
+
+\begin{figure}[h!tbp]
+  \centering
+  \includegraphics[width=0.6\linewidth]{Figures/v-x_after}
+  \rule{35em}{0.5pt}
+  \caption[V-x graph after]{Processed the graph such that it shows a linear line}
+  \label{fig:v-x_after}
+\end{figure}
+
+
+Also applied a not-found-line process.
+It stores the last direction of deviation, and
+keeps rotating at the same place until Lobster find a black line.
+
+PID and no-line-process both need to adjust parameters.
+
+**3. Sensor Array Configuration**
+Three IR sensors (Left/Middle/Right) provide directional data:
+- *Left/Right*: Mounted inverted to extend linear range (Fig. X)
+- *Signal Processing*: Voltage thresholds dynamically adjusted to maximize usable linear width
+
+**4. Line-Loss Recovery Protocol**
+Upon losing track:
+1. Recall last deviation direction (e.g., "right-trending")
+2. Execute in-place rotation toward memorized direction
+3. Terminate when any sensor detects black line
+
+**5. Parameter Optimization**
+Critical tuning targets:
+- PD gains ($K_p$, $K_d$)
+- Line-loss rotation speed
+- Signal acceptance thresholds
+
 
 \subsection{Results}
 
