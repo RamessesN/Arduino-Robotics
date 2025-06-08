@@ -22,16 +22,44 @@
 
 \subsection{Theory and Technical Background}
 
-Give a brief description of the background theory for the experiment being tackled.
-Please cite appropriate work.
-Feel free to add figures into this section, where
-each figure and each equation may reduce the number of words you use.
+The operating principle of light-dependent resistors (LDRs) is rooted in
+the photoelectric properties of semiconductor compounds.
+When exposed to light, materials like cadmium sulfide (CdS) undergo photon absorption
+that generates electron-hole pairs within their crystalline structure.
+As illumination intensifies,
+this photogeneration effect produces a greater number of charge carriers, thereby
+enhancing the material's conductivity.
+Consequently, LDRs exhibit an inverse relationship between incident light intensity and
+electrical resistance-a characteristic that makes them valuable for light-sensing applications.
+This nonlinear response proves particularly sensitive in the 10--100 lux range, where
+a 20\% increase in light intensity causes approximately 60\% resistance drop.
 
-\subsection{Method}
+\begin{figure}[h!tbp]
+  \centering
+  \includegraphics[width=0.6\linewidth]{Figures/i-r_curve}
+  \rule{35em}{0.5pt}
+  \caption{LDRs' Intensity-Resistance curves}
+\end{figure}
 
-Describe the technical procedures to collect the results.
-Add figures into this section, where
-each figure and each equation may reduce the number of words you use.
+LDRs in our system demonstrate a measurable resistance range
+from $1\,\text{k}\Omega$ under direct sunlight to $1.5\,\text{M}\Omega$ in complete darkness,
+as recorded by our multimeter.
+
+These characteristics directly influence Lobster's light-seeking behavior.
+
+\begin{figure}[h!tbp]
+  \centering
+  \includegraphics[width=0.5\linewidth]{Figures/LDR}
+  \rule{35em}{0.5pt}
+  \caption{Photoresistors}
+\end{figure}
+
+\subsection{Method} %% TODO
+
+0 - 1023.
+If no light (over 1000), stop.
+Otherwise, calculate the difference between left and right, then
+turn toward the smaller direction.
 
 \subsection{Results}
 
@@ -151,8 +179,7 @@ we mirror the outermost sensor data to artificially extend the linear region.
 
 Lobster successfully completed the line-following test with 100\% accuracy,
 as demonstrated in \fref{fig:line-test}.
-The robot maintained a tracking speed of 0.3 m/s on curved paths and 0.5 m/s on straight segments
-(see Section~\ref{sec:methods} for PID parameters).
+The robot maintained a tracking speed of 0.3 m/s on curved paths and 0.5 m/s on straight segments.
 
 \begin{figure}[h!tbp]
   \centering
