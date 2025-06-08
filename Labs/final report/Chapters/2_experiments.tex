@@ -41,21 +41,16 @@ please keep text as concise as possible.
 
 \section{Line following}
 
-\subsection{Theory and Technical Background} %% TODO: needs re-writing
+\subsection{Theory and Technical Background}
 
-\textit{TCRT5000} is the most important IR sensor in this experiment as shown in \fref{fig:TCRT5000}.
-It mainly includes an IR Tx (transmitter) and IR Rx (receiver),
-the former of which is a Photodiode while the latter is a Phototransistor.\cite{TCRT5000L_datasheet}
-It is capable of detecting changes in light intensity.
-The infrared-emitting diode of this device continuously emits infrared light.
-When the emitted infrared light is not reflected or the reflected intensity is insufficient,
-the phototransistor remains in the cut-off state.
-The module's output terminal is at a low voltage level, and the indicator diode stays off.
-When an object to be detected enters the detection range,
-the infrared light is reflected back with sufficient intensity.
-The phototransistor then enters the saturation state,
-its module's output terminal switches to a high voltage level, and
-the indicator diode is illuminated.
+Shown in \fref{fig:TCRT5000}, \textit{TCRT5000} serves as the cornerstone in this experiment.
+This reflective optoelectronic device integrates
+both an infrared emitter (950nm photodiode) and receiver (NPN phototransistor) in a compact 4-pin package,
+distinguished by its blue emitter and black receiver components.
+
+During operation, the photodiode transmits modulated infrared signals while
+the phototransistor detects reflected radiation.
+The sensor's daylight-blocking optical filter ensures reliable operation under ambient lighting conditions.
 
 \begin{figure}[h!tbp]
   \centering
@@ -72,40 +67,43 @@ the indicator diode is illuminated.
 
 The IR sensor voltage coming back was measured as
 $4.15 \pm 0.1 \, \text{V}$ on black lines, and $0.15 \pm 0.1\,\text{V}$ on white ground.
-We observed a
-We found a linear transition region that in the middle of black and white surfaces,
-enabling analog position detection.
-Therefore, we realized that it can be applied under PID control.
+We observed a linear transition region that in the middle of black and white surfaces,
+enabling analog position detection suitable for PID control.
 
 The linear voltage gradient permits error quantification for PID control.
-PID control is a combined method of proportional, integral and derivative control.
-To implement PID control, there should be a standard, standing for adjustment goal.
-The most recent value should be measured and then calculate the \textit{error} between them.
+PID combines proportional (P), integral (I) and derivative (D) components.
+To implement PID control,
+there should be a reference value (setpoint) as the control target, standing for adjustment goal.
+Continuous measurement of the process variable to get the most recent value and then
+calculate the \textit{error} between the setpoint and this value.
+
+Proportional control (P) applies a correction proportional to the current error.
 Simply proportional adjustment is the quickest and easiest way,
 which is just a proportional coefficient (\(Kp\)) times error,
 described as \eref{eq:p-control}.
 
 \begin{equation}
-  P = Kp * error
+  P = Kp \cdot error
   \label{eq:p-control}
 \end{equation}
 
-Integral control is similar.
+Integral control (I) is similar; it accounts for accumulated past errors.
 Its difference is that each time the integral coefficient (\(Ki\)) times
 the total sum of all errors calculated in the history,
 described as \eref{eq:i-control}.
 
 \begin{equation}
-  I = Ki * \int_0^t error * dt
+  I = Ki \cdot \int_0^t error \cdot dt
   \label{eq:i-control}
 \end{equation}
 
-And derivative control, as its name suggests, is
+And derivative control (D), as its name suggests, is
 a derivative coefficient (\(Kd\)) times the deviation between this error and the last error.
-It can be described as \eref{eq:d-control1} where dt refers to the time offset.
+It responds to the error rate of change,
+described as \eref{eq:d-control1} where dt refers to the time offset.
 
 \begin{equation}
-  D = Kd * \frac{error}{dt}
+  D = Kd \cdot \frac{error}{dt}
   \label{eq:d-control1}
 \end{equation}
 
@@ -118,56 +116,53 @@ In car situations, PD control is better than full PID control because
 integral term accumulates historical error causes overshoot.
 
 \begin{equation}
-  \text{PID Output} = K_p e(k) + K_i \sum_{\tau=0}^k e(\tau) + K_d (e(k) - e(k-1))
+  u(k) = K_p e(k) + K_i \sum_{\tau=0}^k e(\tau) + K_d (e(k) - e(k-1))
   \label{eq:pid-control}
 \end{equation}
 
-%% TODO
-Left, middle, right (needs a figure here \fref{fig:v-x_before}).
-We turn left upside down, thus in the middle it is linear.
-Process very left and very right such that linear width is longer \fref{fig:v-x_after}.
+With only PID control, Lobster is still easy to veere off-track.
+We also applied a not-found-line function to overcome this issue.
+The function keeps recalling the last direction of deviation, and
+once Lobster loses its direction,
+it keeps rotating toward the memorized direction until any sensor detects a black line.
+
+On Lobster, three TCRT5000 IR sensors are mounted in parallel with a 1.2 cm inter-sensor spacing.
+The voltage response of a single sensor exhibits a piecewise-linear characteristic,
+combining two distinct linear segments.
+Therefore, we construct a voltage-position graph \fref{fig:v-x-graph} to analyze the sensor behavior.
+
+The Left sensor's voltage minus the right yields a short linear segment around the origin $o$.
+The middle sensor's data verifies the peak values detected by the left/right sensors.
+Once the middle sensor cannot see black lines,
+we mirror the outermost sensor data to artificially extend the linear region.
 
 \begin{figure}[h!tbp]
   \centering
   \includegraphics[width=0.6\linewidth]{Figures/v-x_graph/v-x_graph}
   \rule{35em}{0.5pt}
-  \caption[V-x graph before]{
-    Print three TCRT5000 IR sensors' data onto a voltage-position graph,
-    and mirror the line such that it becomes a linear line.
+  \caption[Voltage-Position Characteristics]{
+    Voltage-position relationship of three TCRT5000 IR sensors.
+    Dashed lines show the mirrored extension for linearity enhancement.
   }
-  \label{fig:v-x_before}
+  \label{fig:v-x-graph}
 \end{figure}
-
-
-Also applied a not-found-line process.
-It stores the last direction of deviation, and
-keeps rotating at the same place until Lobster find a black line.
-
-PID and no-line-process both need to adjust parameters.
-
-**3. Sensor Array Configuration**
-Three IR sensors (Left/Middle/Right) provide directional data:
-- *Left/Right*: Mounted inverted to extend linear range (Fig. X)
-- *Signal Processing*: Voltage thresholds dynamically adjusted to maximize usable linear width
-
-**4. Line-Loss Recovery Protocol**
-Upon losing track:
-1. Recall last deviation direction (e.g., "right-trending")
-2. Execute in-place rotation toward memorized direction
-3. Terminate when any sensor detects black line
-
-**5. Parameter Optimization**
-Critical tuning targets:
-- PD gains ($K_p$, $K_d$)
-- Line-loss rotation speed
-- Signal acceptance thresholds
-
 
 \subsection{Results}
 
-Add all appropriate figures and analysis.
-No formal word count for this section, however,
-please keep text as concise as possible.
+Lobster successfully completed the line-following test with 100\% accuracy,
+as demonstrated in \fref{fig:line-test}.
+The robot maintained a tracking speed of 0.3 m/s on curved paths and 0.5 m/s on straight segments
+(see Section~\ref{sec:methods} for PID parameters).
+
+\begin{figure}[h!tbp]
+  \centering
+  \includegraphics[width=0.6\linewidth]{Figures/line-test}
+  \rule{35em}{0.5pt}
+  \caption[Actual photo of test]{
+    Lobster autonomously tracking a 3-cm-wide black line during the test.
+  }
+  \label{fig:line-test}
+\end{figure}
 
 \section{Obstacle avoiding}
 

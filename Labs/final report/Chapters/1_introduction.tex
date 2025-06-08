@@ -49,20 +49,22 @@ In short, only one of these four modules works at a time.
 Basic approaches of the four experiments have been successfully completed.
 
 We used two light-dependent resistors (LDRs) to detect changes in light intensity.
-Lobster can recognize a straight white light in the front of it within 15 cm long and 10 cm wide.
+Lobster can recognize a straight white light in the front of it within \textbf{15 cm} long and \testbf{10 cm} wide.
 
 Proportional-integral-derivative control (PID) was creatively applied in line tracking.
-We used \textbf{TCRT5000} infrared (IR) sensor feedback to distinguish between black and non-black surfaces on the ground.
+We used TCRT5000 infrared (IR) sensor feedback to distinguish between black and non-black surfaces on the ground.
 Interestingly, we found that sensor feedback exhibits a linear response while in the middle of black and white,
 which enabled the implementation of PID control.
-As a result, Lobster is able to move at a speed of 0.5 m/s in straight lines, and 0.3 m/s in curved ones.
+As a result, Lobster is able to move at a speed of
+\textbf{0.5 m/s} in straight lines, and \textbf{0.3 m/s} in curved ones.
 
 For obstacle avoidance, Lobster was placed in a \(3 \times 3 \, \text{m}^2\) square place with walls around.
-\textbf{HC-SR04} ultrasonic distance sensor was used in this experiment to measure mainly front distance.
-We also used a \textbf{SG90} servo motor to change HC-SR04's direction to avoid a side crash.
-Lobster passes a 1-minute test in is square place without any collisions.
+HC-SR04 ultrasonic distance sensor was used in this experiment to measure mainly front distance.
+Additionally, SG90 servo motor was applied to change HC-SR04's direction to avoid a side crash.
+Lobster passes a \textbf{1-minute} test in is square place without any collisions.
 
-In the eighth laboratory experiment, we used a \textbf{BME280} sensor to measure humidity, atmospheric pressure, and temperature.
+In the eighth laboratory experiment, we used a BME280 sensor to measure
+humidity, atmospheric pressure, and temperature.
 The collected data is displayed on a small screen mounted on Lobster's back.
 Based on these measurements, Lobster can determine whether it is on the ground or in the air.
 Accordingly, its wheel rotation speed is adjusted based on the detected state.
