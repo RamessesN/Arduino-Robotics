@@ -22,14 +22,14 @@
 
 \subsection{Theory and Technical Background}
 
-The operating principle of light-dependent resistors (LDRs) is rooted in
+The operating principle of \gls{ldr}s is rooted in
 the photoelectric properties of semiconductor compounds.
 When exposed to light, materials like cadmium sulfide (CdS) undergo photon absorption
 that generates electron-hole pairs within their crystalline structure.
 As illumination intensifies,
 this photogeneration effect produces a greater number of charge carriers, thereby
 enhancing the material's conductivity.
-Consequently, LDRs exhibit an inverse relationship between incident light intensity and
+Consequently, \gls{ldr}s exhibit an inverse relationship between incident light intensity and
 electrical resistance-a characteristic that makes them valuable for light-sensing applications.
 This nonlinear response proves particularly sensitive in the 10--100 lux range, where
 a 20\% increase in light intensity causes approximately 60\% resistance drop.
@@ -39,9 +39,10 @@ a 20\% increase in light intensity causes approximately 60\% resistance drop.
   \includegraphics[width=0.6\linewidth]{Figures/i-r_curve}
   \rule{35em}{0.5pt}
   \caption{LDRs' Intensity-Resistance curves}
+  \label{fig:i-r-curve}
 \end{figure}
 
-LDRs in our system demonstrate a measurable resistance range
+\gls{ldr}s in our system demonstrate a measurable resistance range
 from $1\,\text{k}\Omega$ under direct sunlight to $1.5\,\text{M}\Omega$ in complete darkness,
 as recorded by our multimeter.
 
@@ -52,10 +53,12 @@ These characteristics directly influence Lobster's light-seeking behavior.
   \includegraphics[width=0.5\linewidth]{Figures/LDR}
   \rule{35em}{0.5pt}
   \caption{Photoresistors}
+  \label{fig:figure}
 \end{figure}
 
 \subsection{Method} %% TODO
 
+We placed two \gls{ldr}s on the left and right side in the front of Lobster.
 0 - 1023.
 If no light (over 1000), stop.
 Otherwise, calculate the difference between left and right, then
@@ -96,11 +99,11 @@ The sensor's daylight-blocking optical filter ensures reliable operation under a
 The IR sensor voltage coming back was measured as
 $4.15 \pm 0.1 \, \text{V}$ on black lines, and $0.15 \pm 0.1\,\text{V}$ on white ground.
 We observed a linear transition region that in the middle of black and white surfaces,
-enabling analog position detection suitable for PID control.
+enabling analog position detection suitable for \gls{pid} control.
 
 The linear voltage gradient permits error quantification for PID control.
-PID combines proportional (P), integral (I) and derivative (D) components.
-To implement PID control,
+\gls{pid} combines proportional (P), integral (I) and derivative (D) components.
+To implement \gls{pid} control,
 there should be a reference value (setpoint) as the control target, standing for adjustment goal.
 Continuous measurement of the process variable to get the most recent value and then
 calculate the \textit{error} between the setpoint and this value.
@@ -135,12 +138,12 @@ described as \eref{eq:d-control1} where dt refers to the time offset.
   \label{eq:d-control1}
 \end{equation}
 
-The total PID control is all three adjustments added together.
+The total \gls{pid} control is all three adjustments added together.
 All equations above are described mathematically, but are challenging for computers to understand.
 In coding environment, they need to be changed \textit{discretely},
 which, in total, can be described as \eref{eq:pid-control}, where
 \(e(k)\)= position error related to time \(t\).
-In car situations, PD control is better than full PID control because
+In car situations, PD control is better than full \gls{pid} control because
 integral term accumulates historical error causes overshoot.
 
 \begin{equation}
@@ -148,13 +151,13 @@ integral term accumulates historical error causes overshoot.
   \label{eq:pid-control}
 \end{equation}
 
-With only PID control, Lobster is still easy to veere off-track.
+With only \gls{pid} control, Lobster is still easy to veere off-track.
 We also applied a not-found-line function to overcome this issue.
 The function keeps recalling the last direction of deviation, and
 once Lobster loses its direction,
 it keeps rotating toward the memorized direction until any sensor detects a black line.
 
-On Lobster, three TCRT5000 IR sensors are mounted in parallel with a 1.2 cm inter-sensor spacing.
+On Lobster, three TCRT5000 \gls{ir} sensors are mounted in parallel with a 1.2 cm inter-sensor spacing.
 The voltage response of a single sensor exhibits a piecewise-linear characteristic,
 combining two distinct linear segments.
 Therefore, we construct a voltage-position graph \fref{fig:v-x-graph} to analyze the sensor behavior.

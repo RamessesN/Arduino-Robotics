@@ -48,13 +48,13 @@ In short, only one of these four modules works at a time.
 
 Basic approaches of the four experiments have been successfully completed.
 
-We used two light-dependent resistors (LDRs) to detect changes in light intensity.
+We used two \gls{ldr}s to detect changes in light intensity.
 Lobster can recognize a straight white light in the front of it within \textbf{15 cm} long and \textbf{10 cm} wide.
 
-Proportional-integral-derivative control (PID) was creatively applied in line tracking.
-We used TCRT5000 infrared (IR) sensor feedback to distinguish between black and non-black surfaces on the ground.
+\gls{pid} control was creatively applied in line tracking.
+We used TCRT5000 \gls{ir} sensor feedback to distinguish between black and non-black surfaces on the ground.
 Interestingly, we found that sensor feedback exhibits a linear response while in the middle of black and white,
-which enabled the implementation of PID control.
+which enabled the implementation of \gls{pid} control.
 As a result, Lobster is able to move at a speed of
 \textbf{0.5 m/s} in straight lines, and \textbf{0.3 m/s} in curved ones.
 
