@@ -38,7 +38,10 @@ a 20\% increase in light intensity causes approximately 60\% resistance drop.
   \centering
   \includegraphics[width=0.6\linewidth]{Figures/i-r_curve}
   \rule{35em}{0.5pt}
-  \caption{LDRs' Intensity-Resistance curves}
+  \caption{
+    LDRs' Intensity-Resistance curves.
+    Figure resource: \href{https://revise.im/content/02-physics/01-unit-1/03-current-electricity/ldr.jpg}{revise.im}
+  }
   \label{fig:i-r-curve}
 \end{figure}
 
@@ -52,17 +55,26 @@ These characteristics directly influence Lobster's light-seeking behavior.
   \centering
   \includegraphics[width=0.5\linewidth]{Figures/LDR}
   \rule{35em}{0.5pt}
-  \caption{Photoresistors}
-  \label{fig:figure}
+  \caption{
+    Photoresistors
+    Figure resource: \href{https://makeabilitylab.github.io/physcomp/sensors/assets/images/Photoresistors\_Wikipedia.png}{makeabilitylab.github.io/physcomp}
+  }
+  \label{fig:ldr}
 \end{figure}
 
-\subsection{Method} %% TODO
+\subsection{Method}
 
-We placed two \gls{ldr}s on the left and right side in the front of Lobster.
-0 - 1023.
-If no light (over 1000), stop.
-Otherwise, calculate the difference between left and right, then
-turn toward the smaller direction.
+Two \gls{ldr}s were mounted on the left and right front sides of Lobster,
+each returning a sensor reading between 0 and 1023.
+Since the motor voltage range is 0–255,
+the \gls{ldr} values were scaled down by a factor of 4 to match the motor input range.
+Lobster’s steering direction was determined by the difference in illumination between the two \gls{ldr}s:
+if the left-side reading was lower than the right, the right motor’s voltage was reduced (and vice versa),
+causing Lobster to turn toward the brighter side.
+Additionally, if both sensors detected insufficient light, set to over 1000,
+the motors would stop entirely, preventing movement in darkness.
+
+https://revise.im/content/02-physics/01-unit-1/03-current-electricity/ldr.jpg
 
 \subsection{Results}
 
@@ -96,7 +108,7 @@ The sensor's daylight-blocking optical filter ensures reliable operation under a
 
 \subsection{Method}
 
-The IR sensor voltage coming back was measured as
+The \gls{ir} sensor voltage coming back was measured as
 $4.15 \pm 0.1 \, \text{V}$ on black lines, and $0.15 \pm 0.1\,\text{V}$ on white ground.
 We observed a linear transition region that in the middle of black and white surfaces,
 enabling analog position detection suitable for \gls{pid} control.
