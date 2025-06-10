@@ -22,6 +22,17 @@
 
 \subsection{Theory and Technical Background}
 
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.5\linewidth]{Figures/LDR}
+  \rule{35em}{0.5pt}
+  \caption{
+    Photoresistors. \\
+    Figure resource: \href{https://makeabilitylab.github.io/physcomp/sensors/assets/images/Photoresistors\_Wikipedia.png}{makeabilitylab.github.io/physcomp}
+  }
+  \label{fig:ldr}
+\end{figure}
+
 The operating principle of \gls{ldr}s is rooted in
 the photoelectric properties of semiconductor compounds.
 When exposed to light, materials like cadmium sulfide (CdS) undergo photon absorption
@@ -39,7 +50,7 @@ a 20\% increase in light intensity causes approximately 60\% resistance drop.
   \includegraphics[width=0.6\linewidth]{Figures/i-r_curve}
   \rule{35em}{0.5pt}
   \caption{
-    LDRs' Intensity-Resistance curves.
+    LDRs' Intensity-Resistance curves. \\
     Figure resource: \href{https://revise.im/content/02-physics/01-unit-1/03-current-electricity/ldr.jpg}{revise.im}
   }
   \label{fig:i-r-curve}
@@ -49,38 +60,89 @@ a 20\% increase in light intensity causes approximately 60\% resistance drop.
 from $1\,\text{k}\Omega$ under direct sunlight to $1.5\,\text{M}\Omega$ in complete darkness,
 as recorded by our multimeter.
 
-These characteristics directly influence Lobster's light-seeking behavior.
+We use two DC Gearbox Motors (TT Motors) to implement Lobster's movement.
+Usually, it needs \gls{pwm} control. 
+Three significant value of \gls{pwm} control is frequency, duty and reso,
+whose defination is showed as follows:
 
-\begin{figure}[h!tbp]
-  \centering
-  \includegraphics[width=0.5\linewidth]{Figures/LDR}
-  \rule{35em}{0.5pt}
-  \caption{
-    Photoresistors
-    Figure resource: \href{https://makeabilitylab.github.io/physcomp/sensors/assets/images/Photoresistors\_Wikipedia.png}{makeabilitylab.github.io/physcomp}
-  }
-  \label{fig:ldr}
-\end{figure}
+\begin{equation}
+  \begin{dcases}
+    Freq = \frac{1}{T_S} \\
+    Duty = \frac{T_{ON}}{T_S} \\
+    Reso = \frac{1}{T_S}
+  \end{dcases}
+\end{equation}
+
+where $Freq$, $Duty$ and $Reso$ refer to frequency, duty and reso of \gls{pwm},
+$T_S$ refers to a cycle of \gls{pwm} time, and $T_ON$ refers to high level time.
+
+The most important value is Duty. 
+For example, $Duty = 50\%$ means nearly harf of full speed, and
+$Duty = 100\%$ is full speed.
+
+We use two DC gearbox motors (TT motors) to control Lobster's movement, 
+which typically requires \gls{pwm} for speed regulation.
+
+The three key parameters of \gls{pwm} control are frequency, duty cycle, and resolution, 
+defined as follows:
+
+\begin{equation}
+\begin{dcases}
+\text{Freq} = \frac{1}{T_S} \
+\text{Duty} = \frac{T_{\text{ON}}}{T_S} \
+\text{Reso} = \frac{1}{T_S}
+\end{dcases}
+\end{equation}
+
+where $Freq$, $Duty$, and $Reso$ represent the frequency, duty cycle, and resolution of the PWM signal,
+$T_S$ is the total period of one \gls{pwm} cycle, and
+$T_ON$ is the high-level (active) time within the cycle.
+
+The duty cycle is the most critical parameter. 
+For example, a 50\% duty cycle corresponds to approximately half of the motor's full speed, while
+a 100\% duty cycle drives the motor at maximum speed.
+
+These characteristics directly influence Lobster's light-seeking behavior.
 
 \subsection{Method}
 
+With $Arduino$'s help, gls{pwm} control can be simply done by setting motor's voltage.
+In package, it is $0$ to $255$.
+
 Two \gls{ldr}s were mounted on the left and right front sides of Lobster,
 each returning a sensor reading between 0 and 1023.
-Since the motor voltage range is 0–255,
-the \gls{ldr} values were scaled down by a factor of 4 to match the motor input range.
+Then, the \gls{ldr} values were scaled down by a factor of 4 to match the motor input range.
 Lobster’s steering direction was determined by the difference in illumination between the two \gls{ldr}s:
 if the left-side reading was lower than the right, the right motor’s voltage was reduced (and vice versa),
 causing Lobster to turn toward the brighter side.
-Additionally, if both sensors detected insufficient light, set to over 1000,
+Additionally, if both sensors detected insufficient light, set to over $1019$,
 the motors would stop entirely, preventing movement in darkness.
+It can be described in pseudocode as follows:
 
-https://revise.im/content/02-physics/01-unit-1/03-current-electricity/ldr.jpg
+\begin{minted}{cpp}
+if(Left < 1019 || Right < 1019) {
+  if(Gap >= expect_Gap) {
+    if(Left < Right) {
+      turnLeft();
+    } else {
+      turnRight();
+    }
+  } else {
+    goStraight();
+  }
+} else {
+  stop();
+}
+\end{minted}
 
 \subsection{Results}
 
-Add all appropriate figures and analysis.
-No formal word count for this section, however,
-please keep text as concise as possible.
+In the end, we managed to set straight speed at $120$.
+Lobster passed the test twice.
+On the first attempt, its turning speed was set too fast,
+which caused uncontrollable swaying, and our teacher was not satisfied with that performance.
+On the second attempt, it performed very well, 
+scoring 29 out of 30, losing 1 point for requiring two attempts.
 
 \section{Line following}
 
