@@ -28,7 +28,7 @@
   \rule{35em}{0.5pt}
   \caption{
     Photoresistors. \\
-    Figure resource: \href{https://makeabilitylab.github.io/physcomp/sensors/assets/images/Photoresistors\_Wikipedia.png}{makeabilitylab.github.io/physcomp}
+    Resource: \href{https://makeabilitylab.github.io/physcomp/sensors/assets/images/Photoresistors\_Wikipedia.png}{makeabilitylab.github.io/physcomp}
   }
   \label{fig:ldr}
 \end{figure}
@@ -51,7 +51,7 @@ a 20\% increase in light intensity causes approximately 60\% resistance drop.
   \rule{35em}{0.5pt}
   \caption{
     LDRs' Intensity-Resistance curves. \\
-    Figure resource: \href{https://revise.im/content/02-physics/01-unit-1/03-current-electricity/ldr.jpg}{revise.im}
+    Resource: \href{https://revise.im/content/02-physics/01-unit-1/03-current-electricity/ldr.jpg}{revise.im}
   }
   \label{fig:i-r-curve}
 \end{figure}
@@ -132,6 +132,7 @@ Shown in \fref{fig:TCRT5000}, \textit{TCRT5000} serves as the cornerstone in thi
 This reflective optoelectronic device integrates
 both an infrared emitter (950nm photodiode) and receiver (NPN phototransistor) in a compact 4-pin package,
 distinguished by its blue emitter and black receiver components.
+\cite{TCRT5000L_datasheet}
 
 During operation, the photodiode transmits modulated infrared signals while
 the phototransistor detects reflected radiation.
@@ -252,12 +253,28 @@ The robot maintained a tracking speed of 0.3 m/s on curved paths and 0.5 m/s on 
 
 \subsection{Theory and Technical Background}
 
-Give a brief description of the background theory for the experiment being tackled.
-Please cite appropriate work.
-Feel free to add figures into this section, where
-each figure and each equation may reduce the number of words you use.
+%% TODO
+In this experiment, \textit{HC-SR04} and \textit{SG90} are the two main sensors,
+showed in \fref{fig:hcsr04-sg90}.
 
-\subsection{Method}
+HC-SR04 reads from 2cm to 400cm with an accuracy of 0.3cm.
+\cite{HC_SR04_UserGuide}
+
+\begin{figure}[h!tbp]
+  \centering
+  \includegraphics[width=0.6\linewidth]{Figures/HC-SR04_SG90}
+  \caption[HC-SR04 and SG90]{
+    HC-SR04 ultrasonic sensor and SG90 servo motor diagram;
+    pins of HC-SR04 are arranged from left to right as:
+    \textit{VCC}, \textit{Trig}, \textit{Echo} and \textit{GND}.
+  }
+  \label{fig:hcsr04-sg90}
+\end{figure}
+
+
+Introduce SG90.
+
+\subsection{Method}d
 
 Describe the technical procedures to collect the results.
 Add figures into this section, where
@@ -265,8 +282,7 @@ each figure and each equation may reduce the number of words you use.
 
 \subsection{Results}
 
-Add all appropriate figures and analysis.
-No formal word count for this section, however,
+Add dormal word count for this section, however,
 please keep text as concise as possible.
 
 \section{Environment Measurement}
