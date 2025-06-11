@@ -253,16 +253,13 @@ The robot maintained a tracking speed of 0.3 m/s on curved paths and 0.5 m/s on 
 
 \subsection{Theory and Technical Background}
 
-%% TODO
 In this experiment, \textit{HC-SR04} and \textit{SG90} are the two main sensors,
 showed in \fref{fig:hcsr04-sg90}.
-
-HC-SR04 reads from 2cm to 400cm with an accuracy of 0.3cm.
-\cite{HC_SR04_UserGuide}
 
 \begin{figure}[h!tbp]
   \centering
   \includegraphics[width=0.6\linewidth]{Figures/HC-SR04_SG90}
+  \rule{35em}{0.5pt}
   \caption[HC-SR04 and SG90]{
     HC-SR04 ultrasonic sensor and SG90 servo motor diagram;
     pins of HC-SR04 are arranged from left to right as:
@@ -271,11 +268,43 @@ HC-SR04 reads from 2cm to 400cm with an accuracy of 0.3cm.
   \label{fig:hcsr04-sg90}
 \end{figure}
 
+The HC-SR04 ultrasonic sensor mainly consists of a transmitter and a receiver.
+This sensor has a measurement range of 2\,cm to 400\,cm with an accuracy of 0.3\,cm.
+\cite{HC_SR04_UserGuide}
+Two pins are particularly important:
 
-Introduce SG90.
+\begin{itemize}
+  \item The \textit{Trig pin} serves as a trigger.
+    Only a single high-level pulse needs to be applied to this pin during each measurement cycle.
+  \item The \textit{Echo pin} outputs a high-level signal when the HC-SR04 emits ultrasonic waves.
+    This signal remains high until the sensor receives the reflected echo.
+\end{itemize}
 
-\subsection{Method}d
+The HC-SR04 transmitter emits ultrasonic waves in one direction at a time.
+When these waves encounter an obstacle, they are reflected back and detected by the receiver.
+The distance between the HC-SR04 and the obstacle can be calculated
+by measuring the time difference between the emission and reception of the ultrasonic wave,
+combined with the speed of sound, as described in \eref{distance}:
 
+\begin{equation}
+  d = \frac{v \cdot \Delta t}{2}
+  \label{distance}
+\end{equation}
+
+where $d$ is the distance, $v$ is the speed of the ultrasonic wave, and $\Delta t$ is the time difference.
+
+During this process, the Echo pin's signal changes as follows:
+\begin{itemize}
+  \item High level when the ultrasonic wave is emitted;
+  \item Low level when the reflected wave is received.
+\end{itemize}
+
+The SG90 servo is a angle servo driver, suitable for control systems
+that require continuous angle changes and the ability to maintain a specific angle.
+
+\subsection{Method}
+
+%% TODO
 Describe the technical procedures to collect the results.
 Add figures into this section, where
 each figure and each equation may reduce the number of words you use.
