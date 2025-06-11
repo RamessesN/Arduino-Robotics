@@ -60,26 +60,6 @@ a 20\% increase in light intensity causes approximately 60\% resistance drop.
 from $1\,\text{k}\Omega$ under direct sunlight to $1.5\,\text{M}\Omega$ in complete darkness,
 as recorded by our multimeter.
 
-We use two DC Gearbox Motors (TT Motors) to implement Lobster's movement.
-Usually, it needs \gls{pwm} control. 
-Three significant value of \gls{pwm} control is frequency, duty and reso,
-whose defination is showed as follows:
-
-\begin{equation}
-  \begin{dcases}
-    Freq = \frac{1}{T_S} \\
-    Duty = \frac{T_{ON}}{T_S} \\
-    Reso = \frac{1}{T_S}
-  \end{dcases}
-\end{equation}
-
-where $Freq$, $Duty$ and $Reso$ refer to frequency, duty and reso of \gls{pwm},
-$T_S$ refers to a cycle of \gls{pwm} time, and $T_ON$ refers to high level time.
-
-The most important value is Duty. 
-For example, $Duty = 50\%$ means nearly harf of full speed, and
-$Duty = 100\%$ is full speed.
-
 We use two DC gearbox motors (TT motors) to control Lobster's movement, 
 which typically requires \gls{pwm} for speed regulation.
 
@@ -87,11 +67,11 @@ The three key parameters of \gls{pwm} control are frequency, duty cycle, and res
 defined as follows:
 
 \begin{equation}
-\begin{dcases}
-\text{Freq} = \frac{1}{T_S} \
-\text{Duty} = \frac{T_{\text{ON}}}{T_S} \
-\text{Reso} = \frac{1}{T_S}
-\end{dcases}
+  \begin{cases}
+    \text{Freq} = \frac{1}{T_S} \\
+    \text{Duty} = \frac{T_{\text{ON}}}{T_S} \\
+    \text{Reso} = \frac{1}{T_S}
+  \end{cases}
 \end{equation}
 
 where $Freq$, $Duty$, and $Reso$ represent the frequency, duty cycle, and resolution of the PWM signal,
