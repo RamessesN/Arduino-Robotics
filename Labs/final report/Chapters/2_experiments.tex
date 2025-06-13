@@ -304,15 +304,54 @@ that require continuous angle changes and the ability to maintain a specific ang
 
 \subsection{Method}
 
+We designed a \texttt{carDrive} function for obstacle avoidance through a finite state machine. 
+It processes sensor inputs and executes sequenced maneuvers when obstacles are detected.
+The whole logic of this functions is showed in \fref{fig:mermaid}.
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.6\linewidth]{Figures/deepseek_mermaid}
+  \rule{35em}{0.5pt}
+  \caption[HC-SR04 and SG90]{
+    The flowchart depicting the logicle structure of function \texttt{carDrive}.
+  }
+  \label{fig:mermaid}
+\end{figure}
+
+\textbf{Normal situations}
+
+In practice, Lobster could encounter obstacles from multiple directions,
+mainly including left side, front side and right side.
+We put a SG90 servo on Lobster's head, with a HC-SR04 on it.
+Thus, HC-SR04 could turn to different faces and detect a wider space.
+
+We made SG90 servo to turn 90 degrees each time,
+which is like shaking its head, with each time 90 degrees.
+Three sets of data are sensed.
+The front distance is directly used to trig avoiding.
+The left and right distance are calculated by \eref{eq:safe-dist}:
+
+\begin{equation}
+  \text{sideSafeDist} = \frac{\text{sideDist} \cdot \text{frontDist}}{\sqrt{\text{sideDist}^2 + \text{frontDist}^2}}
+  \label{eq:safe-dist}
+\end{equation}
+
+where \textit{sideSafeDist} is the clostest distance,
+\textit{sideDist} is either the left sensed data or the right, and
+\textit{frontDist} is the front sensed data.
+
+Lobster will simply go straight when it is safe aside.
+However, once any sets of data are calculated as too close,
+the car would change into avoiding part.
+
+\textbf{Avoiding}
 %% TODO
-Describe the technical procedures to collect the results.
-Add figures into this section, where
-each figure and each equation may reduce the number of words you use.
 
 \subsection{Results}
 
-Add dormal word count for this section, however,
-please keep text as concise as possible.
+The left or right safe distance is set to 25,
+due to a slow decrease of distance coming to the side, while
+the front safe distance is set to 40.
 
 \section{Environment Sensing}
 
