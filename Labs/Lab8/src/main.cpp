@@ -53,7 +53,7 @@ void loop() {
 
   static unsigned long lastPrintTime = 0;
   unsigned long currentTime = millis();
-  if(currentTime - lastPrintTime >= 2000) {
+  if(currentTime - lastPrintTime >= 1000) {
     bmePrint();
     mpuPrint();
     Serial.println();

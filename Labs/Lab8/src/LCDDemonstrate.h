@@ -8,8 +8,8 @@
 extern LiquidCrystal_I2C lcd;
 
 void basicDemonstrate() {
-  lcd.setCursor(2, 0);
-  lcd.print("LORD LOBSTER");
+  lcd.setCursor(1, 0);
+  lcd.print("Bionic LOBSTER");
   lcd.setCursor(4, 1);
   lcd.print("Group #15");
 }
@@ -30,7 +30,7 @@ void bmeDemonstrate() {
   fullText += "   " + fullText;
 
   unsigned long currentTime = millis();
-  if (currentTime - lastScrollTime > 250) {
+  if (currentTime - lastScrollTime > 500) {
     lcd.setCursor(0, 0);
     lcd.print(fullText.substring(scrollIndex, scrollIndex + windowWidth));
     scrollIndex++;
@@ -59,7 +59,7 @@ void mpuDemonstrate() {
   fullText += "   " + fullText;
 
   unsigned long currentTime = millis();
-  if (currentTime - lastScrollTime > 250) {
+  if (currentTime - lastScrollTime > 500) {
     lcd.setCursor(0, 1);
     lcd.print(fullText.substring(scrollIndex, scrollIndex + windowWidth));
     scrollIndex++;
