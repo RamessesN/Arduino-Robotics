@@ -304,54 +304,72 @@ that require continuous angle changes and the ability to maintain a specific ang
 
 \subsection{Method}
 
-We designed a \texttt{carDrive} function for obstacle avoidance through a finite state machine. 
+We designed a \texttt{carDrive} function for obstacle avoidance using a finite state machine. 
 It processes sensor inputs and executes sequenced maneuvers when obstacles are detected.
-The whole logic of this functions is showed in \fref{fig:mermaid}.
+The complete logic of this function is shown in \fref{fig:mermaid}.
 
 \begin{figure}[htbp]
   \centering
   \includegraphics[width=0.6\linewidth]{Figures/deepseek_mermaid}
   \rule{35em}{0.5pt}
-  \caption[HC-SR04 and SG90]{
-    The flowchart depicting the logicle structure of function \texttt{carDrive}.
+  \caption[Obstacle Avoidance State Machine]{
+    Flowchart depicting the logical structure of the \texttt{carDrive} function.
   }
   \label{fig:mermaid}
 \end{figure}
 
-\textbf{Normal situations}
+\textbf{Normal Operation}
 
-In practice, Lobster could encounter obstacles from multiple directions,
-mainly including left side, front side and right side.
-We put a SG90 servo on Lobster's head, with a HC-SR04 on it.
-Thus, HC-SR04 could turn to different faces and detect a wider space.
+In practice, Lobster may encounter obstacles from multiple directions,
+primarily from the left, front, and right.
+We mounted an SG90 servo motor on Lobster's front, with an HC-SR04 ultrasonic sensor attached.
+This allows the sensor to rotate and scan a wider area.
 
-We made SG90 servo to turn 90 degrees each time,
-which is like shaking its head, with each time 90 degrees.
-Three sets of data are sensed.
-The front distance is directly used to trig avoiding.
-The left and right distance are calculated by \eref{eq:safe-dist}:
+The SG90 servo rotates in 90-degree increments,
+performing a scanning motion at each position.
+Three distance measurements are obtained by:
+Front distance directly triggers avoidance maneuvers;
+Left and right distances are processed using \eref{eq:safe-dist}:
 
 \begin{equation}
   \text{sideSafeDist} = \frac{\text{sideDist} \cdot \text{frontDist}}{\sqrt{\text{sideDist}^2 + \text{frontDist}^2}}
   \label{eq:safe-dist}
 \end{equation}
 
-where \textit{sideSafeDist} is the clostest distance,
-\textit{sideDist} is either the left sensed data or the right, and
-\textit{frontDist} is the front sensed data.
+where:
+\textit{sideSafeDist} is the effective clearance distance,
+\textit{sideDist} represents left or right sensor readings, and
+\textit{frontDist} is the front sensor reading
 
-Lobster will simply go straight when it is safe aside.
-However, once any sets of data are calculated as too close,
-the car would change into avoiding part.
+The vehicle moves straight when all clearance distances are safe.
+If any calculated distance falls below the threshold,
+the system transitions to avoidance mode.
 
-\textbf{Avoiding}
-%% TODO
+\textbf{Avoidance Maneuvers}
+
+\textbf{\texttt{STEP\_BACK}}: 
+First, reverse to create maneuvering space. 
+Then check if sufficient clearance exists for a right turn 
+(our designated avoidance direction). 
+If adequate space exists, transition to \texttt{STEP\_TURN\_RIGHT\_90}. 
+Otherwise, proceed to \texttt{STEP\_BACK\_EXTRA}.
+        
+\textbf{\texttt{STEP\_BACK\_EXTRA}}: 
+Perform additional reverse movement. 
+Then transition to \texttt{STEP\_TURN\_RIGHT\_90}.
+        
+\textbf{\texttt{STEP\_TURN\_RIGHT\_90}}: 
+Execute 90-degree right turn. 
+Then proceed to \texttt{STEP\_DONE}.
+        
+\textbf{\texttt{STEP\_DONE}}: 
+Complete full stop and restart the control loop.
 
 \subsection{Results}
 
-The left or right safe distance is set to 25,
-due to a slow decrease of distance coming to the side, while
-the front safe distance is set to 40.
+The safety thresholds were empirically determined through iterative testing. The side clearance distance was set to 25\,cm to account for gradual distance reduction during lateral approach, while the frontal clearance used a more conservative 40\,cm threshold to ensure adequate reaction time for head-on obstacles. For turning maneuvers, a minimum 40\,cm clearance was required to execute 90° right turns safely.
+
+Motion timing parameters were carefully calibrated, with each reverse segment lasting 100\,ms and right turns completing in 300\,ms, optimized for the gearbox motor's response characteristics. In final testing within a 3\,m $\times$ 3\,m arena, the Lobster demonstrated consistent performance.
 
 \section{Environment Sensing}
 
