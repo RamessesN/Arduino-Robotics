@@ -18,6 +18,13 @@
 \chapter{Experiments}
 \label{ch:experiments}
 
+%% needs to enable package ``minitoc''
+% {
+% \hypersetup{linkcolor=black}
+% \minitoc
+% }
+%% have a mini table of content at the start of the chapter
+
 %% TODO: four line mode
 
 \section{Light Seeking}
@@ -337,9 +344,9 @@ We designed a \texttt{carDrive} function for obstacle avoidance using a finite s
 It processes sensor inputs and executes sequenced maneuvers when obstacles are detected.
 The complete logic of this function is shown in \fref{fig:mermaid}.
 
-\begin{figure}[htbp]
+\begin{figure}[h!tbp]
   \centering
-  \includegraphics[width=0.6\linewidth]{Figures/deepseek_mermaid}
+  \includegraphics[width=0.9\linewidth]{Figures/obstacle_logic}
   \rule{35em}{0.5pt}
   \caption[Obstacle Avoidance State Machine]{
     Flowchart depicting the logical structure of the \texttt{carDrive} function.
@@ -417,10 +424,24 @@ Motion timing parameters were carefully calibrated, with each reverse segment la
 
 \subsection{Theory and Technical Background}
 
-Give a brief description of the background theory for the experiment being tackled.
-Please cite appropriate work.
-Feel free to add figures into this section, where
-each figure and each equation may reduce the number of words you use.
+In some situations, a robotics car needs to measure humidity, atmospheric pressure, and temperature.
+Additionally, it needs to change its speed due to a single direction's sudden linear acceleration.
+Therefore, a BME280 sensor is used to overcome environment sensing problem, and
+an MPU6050 sensor is used to measure linear acceleration.
+The two sensors are as  shows.
+
+% \begin{figure}[h!tbp]
+%   \centering
+%   \begin{minipage}[position][height][inner pos]{width}
+    
+%   \end{minipage}
+% \end{figure}
+
+\href{https://cdn-shop.adafruit.com/970x728/2652-09.jpg}{www.adafruit.com/product/2652}
+
+\href{https://user-images.githubusercontent.com/107638696/241324971-43b8fe88-447d-4c2d-9296-4b3aaa50f4ce.png}{gitcode.com/gh\_mirrors/mpu6050/mpu6050}
+
+\cite{MPU6050_datasheet}
 
 \subsection{Method}
 
