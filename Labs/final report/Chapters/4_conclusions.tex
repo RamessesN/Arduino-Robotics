@@ -6,7 +6,15 @@
 %% including a summary of the results collected.
 \chapter{Conclusions}
 \label{ch:conclusions}
-Please give the conclusions from the characterisations
-including a summary of the results collected.
+
+This laboratory successfully achieved its primary objective of developing \gls{car}, a multifunctional robotic vehicle inspired by the agility of lobsters. Through systematic implementation of four core functionalities—light seeking, line following, obstacle avoidance, and environmental sensing—\gls{car} demonstrates robust performance across diverse operational scenarios. 
+
+In \textbf{phototaxis} experiments, \gls{car} exhibited precise light source localization within a $15 \times 10\,\text{cm}^2$ detection zone using paired \gls{ldr} sensors, achieving a near-perfect evaluation score of 29/30 after motion parameter optimization. The \textbf{line tracking} module implemented innovative \gls{pid} control based on TCRT5000 infrared sensors' linear transition characteristics, enabling stable navigation at $0.5\,\text{m/s}$ on straight paths and $0.3\,\text{m/s}$ on curves. 
+
+For \textbf{spatial awareness}, the integrated HC-SR04/SG90 system permitted reliable collision avoidance in confined $3\times3\,\text{m}^2$ environments through geometrically optimized clearance calculations. \textbf{Environmental adaptation} was realized via BME280 atmospheric sensing and MPU6050 inertial measurement, where acceleration magnitude thresholds ($\leq 8.5\,\text{m/s}^2$ for suspension; $\geq 10.0\,\text{m/s}^2$ for ground contact) enabled context-aware motor control during aerial manipulations.
+
+The lobster-inspired mechanical \textbf{design}, fabricated through Blender modeling and 3D printing, provided both aesthetic coherence and functional compartmentalization. Strategic component placement ensured optimal weight distribution while exposed sensor interfaces maintained environmental interaction fidelity. Custom \gls{pcb} implementations for each module enhanced circuit reliability and reduced wiring complexity.
+
+While all primary objectives were met, functional modularity currently limits simultaneous operation of multiple capabilities. Future iterations could explore sensor fusion techniques to enable concurrent operation modes, potentially enhancing \gls{car}'s autonomy in complex environments.
 
 \end{document}

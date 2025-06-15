@@ -13,7 +13,7 @@
 \section{Our Car Lobster}
 
 The main aim of this laboratory is to build our own robotic car named
-``\textbf{\gls{car}}'',
+``\gls{car}'',
 abbreviated as ``\textbf{\gls{car}}''.
 Its name comes from the shape, which in our opinion is a good sigh of strength and speed.
 Haohao Qi is responsible for our car's shape and color design.
@@ -22,25 +22,25 @@ Yuwei Zhao operates a 3D printer with permission from his club.
 
 In southern China, lobsters are considered a delicious delicacy.
 When harvesting them in the fields, locals find them difficult to catch due to their speed.
-Similarly, we hope our robotic car, Lobster, will be fast and robust.
+Similarly, we hope our robotic car, \gls{car}, will be fast and robust.
 
 \section{Four Aims of the Laboratory}
 
 We have done four contributions to it, which are recorded in
 Lab 3 (light seeking), Lab 5 (line following), Lab 7 (obstacle avoidance) and Lab 8 (environment sensing).
-Thus, Lobster could have the following functionalities:
+Thus, \gls{car} could have the following functionalities:
 
 \begin{enumerate}
 \item Follow the light on the floor and adjust its direction toward the light source.
 \item Follow a 1 to 3 cm wide black line on the floor.
 The line can be straight, curved, or quarter-shaped.
 \item Move straight and avoid obstacles.
-When reaches obstacles such as walls, Lobster will turn to another direction to avoid collisions.
+When reaches obstacles such as walls, \gls{car} will turn to another direction to avoid collisions.
 \item Measure temperature, humidity and atmospheric pressure,
 display the readings and adjust motor speed accordingly.
 \end{enumerate}
 
-If Lobster has installed light seeking module, then it cannot track lines any more,
+If \gls{car} has installed light seeking module, then it cannot track lines any more,
 and the same applies to the other two functionalities.
 In short, only one of these four modules works at a time.
 
@@ -52,24 +52,24 @@ More information about JLCPCB here \href{https://pro.lceda.cn/editor}{pro.lceda.
 Basic approaches of the four experiments have been successfully completed.
 
 We used two \gls{ldr}s to detect changes in light intensity.
-Lobster can recognize a straight white light in the front of it within \textbf{15 cm} long and \textbf{10 cm} wide.
+\gls{car} can recognize a straight white light in the front of it within \textbf{15 cm} long and \textbf{10 cm} wide.
 
 \gls{pid} control was creatively applied in line tracking.
 We used TCRT5000 \gls{ir} sensor feedback to distinguish between black and non-black surfaces on the ground.
 Interestingly, we found that sensor feedback exhibits a linear response while in the middle of black and white,
 which enabled the implementation of \gls{pid} control.
-As a result, Lobster is able to move at a speed of
+As a result, \gls{car} is able to move at a speed of
 \textbf{0.5 m/s} in straight lines, and \textbf{0.3 m/s} in curved ones.
 
-For obstacle avoidance, Lobster was placed in a \(3 \times 3 \, \text{m}^2\) square place with walls around.
+For obstacle avoidance, \gls{car} was placed in a \(3 \times 3 \, \text{m}^2\) square place with walls around.
 HC-SR04 ultrasonic distance sensor was used in this experiment to measure mainly front distance.
 Additionally, SG90 servo motor was applied to change HC-SR04's direction to avoid a side crash.
-Lobster passes a \textbf{1-minute} test in is square place without any collisions.
+\gls{car} passes a \textbf{1-minute} test in is square place without any collisions.
 
 In the eighth laboratory experiment, we used a BME280 sensor to measure
 humidity, atmospheric pressure, and temperature.
-The collected data is displayed on a small screen mounted on Lobster's back.
-Based on these measurements, Lobster can determine whether it is on the ground or in the air.
+The collected data is displayed on a small screen mounted on \gls{car}'s back.
+Based on these measurements, \gls{car} can determine whether it is on the ground or in the air.
 Accordingly, its wheel rotation speed is adjusted based on the detected state by a MPU6050 sensor.
 
 \end{document}

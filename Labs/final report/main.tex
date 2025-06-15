@@ -27,8 +27,8 @@
   %% this is to include all acronym
   %% You can do a sort of citation for acronym and include only the one you use,
   %% Look at the glossary package for details.
-  \glsaddall
-  \printnoidxglossary[type=\acronymtype, title=Glossary] % optional
+  % \glsaddall
+  % \printnoidxglossary[type=\acronymtype, title=Glossary] % optional
 }
 \clearpage
 
@@ -37,9 +37,6 @@
 \subfile{Chapters/2_experiments}
 \subfile{Chapters/3_lobster}
 \subfile{Chapters/4_conclusions}
-\appendix
-\subfile{Appendices/appendix}
-\clearpage
 
 \printbibliography[title={References}, heading=bibintoc, resetnumbers=true]
 %% sorted by alphabetical order, using author name
@@ -48,5 +45,8 @@
 \nocite{*}
 \printbibliography[title={Bibliography}, notcategory=cited, omitnumbers=true, heading=bibintoc]
 \end{refsection}
+
+\appendix
+\subfile{Appendices/appendix}
 
 \end{document}

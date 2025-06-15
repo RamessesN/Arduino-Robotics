@@ -15,15 +15,11 @@
 \end{center}
 \vspace{5pt}
 
-\noindent
-In accordance with the Academic Regulations,
-the thesis must contain an abstract preferably not exceeding 200 words, bound in to precede the thesis.
-The abstract should appear on its own, on a single page.
-The format should be the same as that of the main text.
-The abstract should provide a synopsis of the thesis and
-shall state clearly the nature and
-scope of the research undertaken and of the contribution made to the knowledge of the subject treated.
-There should be a brief statement of the method of investigation where
-appropriate, an outline of the major divisions or
-principal arguments of the work and a summary of any conclusions reached.
-The abstract must follow the Title Page.
+This project presents the design, implementation, and validation of ``\gls{car}'', a multifunctional robotic vehicle inspired by crustacean morphology. Through systematic integration of optoelectronic, inertial, and environmental sensors with custom \gls{pcb} implementations, the platform demonstrates four autonomous capabilities: phototactic navigation using \gls{ldr} sensors achieving 29/30 evaluation score; \gls{pid}-controlled line tracking at 0.5 m/s via TCRT5000 infrared array; obstacle avoidance in confined spaces using HC-SR04 ultrasonic scanning with geometric clearance modeling; and context-aware mobility adaptation through BME280 environmental sensing coupled with MPU6050 inertial measurement. 
+
+The lobster-themed mechanical design, realized through Blender modeling and 3D printing, provides functional compartmentalization while enabling strategic component placement. Experimental validation confirms robust performance across all operational modes, with particular success in \gls{pid}-stabilized trajectory tracking and acceleration-magnitude-based state transition (thresholds: 8.5 m/s² suspension, 10.0 m/s² ground contact). Current implementation maintains modular specialization where only one functionality operates at a time, suggesting future integration pathways through sensor fusion techniques. This work establishes a versatile platform for autonomous navigation research while demonstrating practical applications of embedded sensor systems in robotic mobility.
+
+The whole project stores in \href{https://github.com/RamessesN/Robotics-Group-15}{Group 15 GitHub Repository}.
+
+\vspace{10pt}
+\textit{Keywords}: autonomous robotics, sensor fusion, PID control, environmental sensing, mechatronic design

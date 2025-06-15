@@ -1,6 +1,3 @@
-\documentclass[../main]{subfiles}
-\begin{document}
-
 %% Appendices, labelled A, B etc., should be treated as additional chapters and should normally follow the main text.
 %% Appendices may consist of supporting material of considerable length or of
 %% lists, documents, commentaries, tables or other evidence that if included in the main text, would interrupt its flow.
@@ -9,25 +6,16 @@
 %% corresponding subsection numbering, which must be entered in the table of contents.
 %% Alternatively, short appendices may be attached to individual chapters,
 %% as an extra section with a heading of style 3.7 Appendix
+
+\documentclass[../main]{subfiles}
+\begin{document}
+
 \chapter{Contribution Statement}
 \label{ch:contribution-statement}
 
-Appendices, labelled A, B etc., should be treated as additional chapters and should normally follow the main text.
-Appendices may consist of supporting material of considerable length or of
-lists, documents, commentaries, tables or other evidence that if included in the main text, would interrupt its flow.
-The style of appendices must be consistent with the style of the main text.
-Long appendices may be divided into sections, labelled as Appendix A.1 etc., with
-corresponding subsection numbering, which must be entered in the table of contents.
-Alternatively, short appendices may be attached to individual chapters,
-as an extra section with a heading of style 3.7 Appendix
+The development of \gls{car} represents a collaborative effort with distinct yet complementary contributions from all team members. \textbf{Yuwei Zhao} spearheaded the experimental implementation and coding development while overseeing the physical construction process, including component integration and wiring optimization. As the primary architect of the lobster-inspired design, \textbf{Haohao Qi} created the detailed 3D models using Blender software and managed the 3D printing workflow, additionally documenting key dimensional measurements throughout the fabrication process. \textbf{Yilin Zhang} contributed significantly to the experimental design phase, particularly in developing control logic architectures, while taking primary responsibility for technical documentation and report composition.
 
-The contributions of each team member are as follows:
-
--- Yuwei Zhao: Responsible for data processing and experiment implementation.
-
--- Yilin Zhang: Contributed to the initial draft and collected supporting images.
-
--- Haohao Qi: Wrote the final report and participated in experiment implementation.
+All members participated in the final bodywork assembly phase following the 3D printing completion, with Yuwei and Yilin assisting in sensor mounting and aesthetic finishing. This collective approach extended to data collection activities, where team members rotated measurement duties during experimental validation sessions to ensure consistent observation standards. The modular \gls{pcb} implementations benefited from cross-verification, with each member validating at least two circuit designs beyond their primary assignments.
 
 \chapter{Source Code}
 \label{ch:source-code}
@@ -38,8 +26,6 @@ The contributions of each team member are as follows:
 %\end{lstlisting}
 
 \section{Lab 3: Light Seeking}
-
-See\ \href{https://github.com/RamessesN/Robotics-Group-15}{GitHub Repository}.
 
 \subsection{lightToward.cpp}
 \inputminted{cpp}{src/3-light/lightToward.cpp}

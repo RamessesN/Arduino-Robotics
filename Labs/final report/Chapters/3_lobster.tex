@@ -2,58 +2,86 @@
 
 \begin{document}
 
-\chapter{Bodywork}
-\label{ch:bodywork}
+\chapter{Our Car Lobster}
+\label{cha:lobster}
 
-\begin{figure}[h!tbp]
+\section{Bodywork}
+
+Our robot embodies a distinctive lobster \textbf{theme} throughout its design. Collaborating with co-author HaoHao Qi, we developed a custom 3D model using Blender (Fig. \ref{fig:car-design}), which was subsequently fabricated via 3D printing. The printed shell underwent post-processing with oil-based paints, resulting in a predominantly orange exterior with black accents on the roof section. 
+
+The lobster-inspired design comprises three key anatomical segments: cephalothorax (head), pereon (body), and pleon (tail). This thematic partitioning not only enhances visual recognition but also facilitates functional component integration. The final physical implementation is shown in \fref{fig:car-front-exterior}.
+
+The exterior shell effectively conceals ``goose'' wires within internal cavities while maintaining external sensor accessibility. All critical sensors remain exposed to ensure unimpeded environmental interaction. 
+
+A distinctive \textbf{lighting feature} was implemented by our group, and first appeared in the preliminary experimentation. Dual rear-mounted LEDs provide turning indication: the left illuminates during left turns, while the right activates during right maneuvers. This visual signaling system enhances operational visibility in low-light conditions, and becomes \gls{car}'s special characteristic.
+
+\begin{figure}[htbp]
   \centering
-  \includegraphics[width=0.6\linewidth]{Figures/car_exterior}
+  \begin{minipage}{0.35\linewidth}
+  	\includegraphics[width=\linewidth]{Figures/虾-设计版/上}
+  \end{minipage}
+  \begin{minipage}{0.35\linewidth}
+  	\includegraphics[width=\linewidth]{Figures/虾-设计版/下}
+  \end{minipage}
+  \\
+  \begin{minipage}{0.35\linewidth}
+  	\includegraphics[width=\linewidth]{Figures/虾-设计版/前}
+  \end{minipage}
+  \begin{minipage}{0.35\linewidth}
+  	\includegraphics[width=\linewidth]{Figures/虾-设计版/侧}
+  \end{minipage}
   \rule{35em}{0.5pt}
-  \caption[]{}
-  \label{fig:car-exterior}
+  \caption[Lobster Robot CAD Design]{
+    The four figures are the top, the bottom, the front and the side view. Initial Blender modeling of the lobster-themed robot. The quad-view presentation demonstrates comprehensive design considerations for component placement and aesthetic integration.
+  }
+  \label{fig:car-design}
 \end{figure}
 
-\chapter{Construction}
-\label{cha:construction}
-
-\begin{figure}[h!tbp]
+\begin{figure}[htbp]
   \centering
-  \includegraphics[width=0.6\linewidth]{Figures/car_front}
+  \begin{minipage}{0.35\linewidth}
+  	\includegraphics[width=\linewidth]{Figures/car_front}
+  \end{minipage}
+  \begin{minipage}{0.35\linewidth}
+  	\includegraphics[width=\linewidth]{Figures/car_exterior}
+  \end{minipage}
   \rule{35em}{0.5pt}
-  \caption[]{}
-  \label{fig:car-front}
+  \caption[Physical Realization]{
+    These two figures are the frontal implementation and the side perspective. Fabricated lobster robot showing: (1) Sensor integration strategy with exposed environmental interfaces, (2) Thematic color application with orange dominant and black secondary scheme, (3) Functional segmentation preserving mobility.
+  }
+  \label{fig:car-front-exterior}
 \end{figure}
 
-\begin{figure}[h!tbp]
-  \centering
-  \includegraphics[width=0.6\linewidth]{Figures/car_left}
-  \rule{35em}{0.5pt}
-  \caption[]{}
-  \label{fig:car-left}
-\end{figure}
+\section{Construction}
 
-\begin{figure}[h!tbp]
-  \centering
-  \includegraphics[width=0.6\linewidth]{Figures/car_right}
-  \rule{35em}{0.5pt}
-  \caption[]{}
-  \label{fig:car-right}
-\end{figure}
+The physical implementation demonstrates meticulous attention to construction standards, achieving full compliance with the requirement specification. All components are strategically positioned according to functional priorities, with the power system (primarily battery packs) housed in the undercarriage compartment, emulating modern electric vehicle architecture for optimal weight distribution. Control systems occupy the upper chassis, creating a clear separation between power and logic subsystems.
 
-\begin{figure}[h!tbp]
-  \centering
-  \includegraphics[width=0.6\linewidth]{Figures/car_roof}
-  \rule{35em}{0.5pt}
-  \caption[]{}
-  \label{fig:car-roof}
-\end{figure}
+Infrared sensors are precisely mounted at the ventral frontal position, oriented perpendicular to the ground surface for accurate line detection during phototaxis experiments. The ultrasonic sensor module is positioned about 5\,cm above the anterior chassis, providing unobstructed forward obstacle detection. 
 
-\begin{figure}[h!tbp]
+\textbf{Wiring} implementation adheres to rigorous color-coding standards: all \textit{Vcc} connections utilize red wire, while \textit{ground} lines uniformly employ black insulation. Signal lines follow functional grouping with orange, yellow, and blue for different sensors.
+
+Mechanical security exceeds basic requirements through dedicated design interventions. Custom mounting points were cut into the chassis to accommodate sensor clusters at orthogonal alignments, using human hands. The ADS1115 ADC module is secured with vibration-damping silicone mounts. All wiring harnesses are constrained at 5\,cm intervals using nylon cable ties.
+
+\begin{figure}[htbp]
   \centering
-  \includegraphics[width=0.6\linewidth]{Figures/car_undercarriage}
+  \begin{minipage}{0.35\linewidth}
+  	\includegraphics[width=\linewidth]{Figures/car_left}
+  \end{minipage}
+  \begin{minipage}{0.35\linewidth}
+  	\includegraphics[width=\linewidth]{Figures/car_right}
+  \end{minipage}
+  \\
+  \begin{minipage}{0.35\linewidth}
+  	\includegraphics[width=\linewidth]{Figures/car_roof}
+  \end{minipage}
+  \begin{minipage}{0.35\linewidth}
+  	\includegraphics[width=\linewidth]{Figures/car_undercarriage}
+  \end{minipage}
   \rule{35em}{0.5pt}
-  \caption[]{}
-  \label{fig:car-undercarriage}
+  \caption[Construction Details]{
+	Four orthogonal perspectives (left/right/top/bottom) document the robot's compliant construction: sensor symmetry, color-coded wiring, component security and polished PCB edges.
+  }
+  \label{fig:car-details}
 \end{figure}
 
 \end{document}
