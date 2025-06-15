@@ -432,14 +432,15 @@ The two sensors are as \fref{fig:BME280-MPU6050} shows.
 
 \begin{figure}[h!tbp]
   \centering
-  \begin{minipage}{0.45\linewidth}
+  \begin{minipage}{0.35\linewidth}
     \includegraphics[width=\linewidth]{Figures/BME280}
   \end{minipage}
-  \begin{minipage}{0.45\linewidth}
+  \begin{minipage}{0.35\linewidth}
     \includegraphics[width=\linewidth]{Figures/MPU6050}
   \end{minipage}
   \rule{35em}{0.5pt}
   \caption[BME280 and MPU6050 Figures]{
+    BME280 and MPU 6050 Figures. \\
     Resource:
     BME280 from \href{https://www.circuits-diy.com/wp-content/uploads/2022/11/BME280-BMP280-Temperature-Humidity-and-Pressure-Sensor.jpg}{www.circuits-diy.com} and
     MPU6050 from \href{https://user-images.githubusercontent.com/107638696/241324971-43b8fe88-447d-4c2d-9296-4b3aaa50f4ce.png}{gitcode.com/gh\_mirrors/mpu6050/mpu6050}
@@ -447,16 +448,44 @@ The two sensors are as \fref{fig:BME280-MPU6050} shows.
   \label{fig:BME280-MPU6050}
 \end{figure}
 
-A BME280 is a temperature humidity and pressure sensor
+A \textbf{BME280} is a temperature humidity and pressure sensor, which
+reads barometric pressure, temperature, and humidity.
+Because pressure changes with altitude, you can also estimate altitude.
+The BME280 sensor uses \gls{iic} or \gls{spi} communication protocol to exchange data with a microcontroller.
+More details here: \href{https://randomnerdtutorials.com/bme280-sensor-arduino-pressure-temperature-humidity/}{randomnerdtutorials.com}.
 
-A MPU 6050 is a 
-\cite{MPU6050_datasheet}
+The \textbf{MPU-6050} is a six-axis MotionTracking device that integrates a 3-axis gyroscope and a 3-axis accelerometer on a single chip \cite{MPU6050_datasheet}.
+It also supports both \gls{iic} and \gls{spi} communication interfaces,
+with a built-in Digital Motion Processor (DMP) for advanced motion processing tasks such as sensor fusion and gesture recognition.
+The device operates over a wide voltage range (2.375\,V to 3.46\,V),
+making it suitable for various embedded and wearable applications.
+
+I$^{2}$C (Inter-Integrated Circuit), originally developed by Philips Semiconductor in 1982, is a widely used synchronous serial communication protocol designed for short-distance communication between integrated circuits \cite{TI_I2C_guide}. It employs two bidirectional open-drain lines: SDA (Serial Data Line) and SCL (Serial Clock Line), both pulled high via external resistors. The protocol supports multiple masters and slaves on the same bus, with each slave device having a unique address. Communication begins with a START condition and ends with a STOP condition, allowing data to be transferred in packets of 8 bits, most significant bit (MSB) first. I$^{2}$C supports various speed modes including Standard Mode (100 kbps), Fast Mode (400 kbps), and High-Speed Mode (up to 3.4 Mbps), making it suitable for connecting microcontrollers with low-speed peripherals such as sensors and ADCs.
 
 \subsection{Method}
 
-Describe the technical procedures to collect the results.
-Add figures into this section, where
-each figure and each equation may reduce the number of words you use.
+The \gls{iic} protocol enables synchronous data acquisition from multiple sensors through hardware addressing. Our implementation connects two sensors: BME280 at address \texttt{0x76} and MPU6050 at address \texttt{0x68}.
+
+Acceleration data from the MPU6050 sensor is processed using the magnitude calculation:
+
+\begin{equation}
+  a_{\text{mag}} = \sqrt{a_x^2 + a_y^2 + a_z^2}
+  \label{eq:accel-mag}
+\end{equation}
+
+where \( a_x, a_y, a_z \) represent accelerations along orthogonal axes. This composite acceleration metric provides orientation-independent motion detection, ensuring reliable state identification during arbitrary device rotations (roll/pitch/yaw). As confirmed by the implementation team, this approach prevents unintended wheel stoppage when the vehicle is lifted and subjected to spatial reorientation.
+
+The state detection system employs threshold-based validation with temporal debouncing. Suspension state is triggered when the acceleration magnitude persistently satisfies \( a_{\text{mag}} \leq 8.5\, \text{m/s}^2 \) (approximately 0.87g) for over 250ms, indicating reduced gravitational influence. Ground contact is recognized when \( a_{\text{mag}} \geq 10.0\, \text{m/s}^2 \) (approximately 1.02g) maintains for the same duration, corresponding to normal gravitational loading.
+
+Control logic activates propulsion when suspended to maintain wheel momentum:
+\begin{equation}
+  \text{Control Output} = 
+  \begin{cases} 
+    \texttt{goStraight}(\mathit{reverse}, \mathit{baseSpeed}) & a_{\text{mag}} \leq 8.5\, \text{m/s}^2 \\ 
+    \texttt{fullStop}() & a_{\text{mag}} \geq 10.0\, \text{m/s}^2 
+  \end{cases}
+\end{equation}
+with parameters configured at \(\mathit{baseSpeed} = 150\) and \(\mathit{reverse} = \mathit{false}\). This design prevents motor stall during aerial manipulation while ensuring immediate stoppage upon surface contact.
 
 The phototaxis module's circuit implementation is shown in \fref{fig:pcb-environment}, designed using JLCPCB's EDA suite.
 
