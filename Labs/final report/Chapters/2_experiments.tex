@@ -500,10 +500,10 @@ The phototaxis module's circuit implementation is shown in \fref{fig:pcb-environ
   \label{fig:pcb-environment}
 \end{figure}
 
-\subsection{Results}
+\section{Results}
 
-Add all appropriate figures and analysis.
-No formal word count for this section, however,
-please keep text as concise as possible.
+The integrated sensor system demonstrated robust performance throughout experimental trials. Environmental parameters including temperature, humidity, and atmospheric pressure were successfully acquired via the BME280 sensor and displayed through dual-output channels: real-time serial monitoring on the host computer and sequential scrolling updates on a small display mounted on Lobster. This redundant visualization scheme ensured immediate parameter validation during motion operations without requiring external monitoring equipment.
+
+Lobster successfully finished the test twice. In both trials, Lobster achieved vertical acceleration exceeding over 1g during launch phases, transitioning to suspension states at trajectory apogees. During these suspension periods, deliberate triaxial rotations were imposed through manual manipulation: roll $(\pm90^\circ)$, pitch $(\pm45^\circ)$, and yaw $(360 \text{continuous rotation})$. Throughout all rotational maneuvers, wheel propulsion maintained consistent operation at the configured base speed of 150 PWM units, with zero instances of unintended motor cutoff. 
 
 \end{document}
