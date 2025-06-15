@@ -163,7 +163,7 @@ The sensor's daylight-blocking optical filter ensures reliable operation under a
 
 \begin{figure}[h!tbp]
   \centering
-  \includegraphics[width=0.6\linewidth]{Figures/TCRT5000-IR-Sensor-Module}
+  \includegraphics[width=0.6\linewidth]{Figures/TCRT5000}
   \rule{35em}{0.5pt}
   \caption[TCRT5000 IR Sensor Module]{
     A TCRT5000 IR Sensor Module mainly includes parts like
@@ -428,19 +428,28 @@ In some situations, a robotics car needs to measure humidity, atmospheric pressu
 Additionally, it needs to change its speed due to a single direction's sudden linear acceleration.
 Therefore, a BME280 sensor is used to overcome environment sensing problem, and
 an MPU6050 sensor is used to measure linear acceleration.
-The two sensors are as  shows.
+The two sensors are as \fref{fig:BME280-MPU6050} shows.
 
-% \begin{figure}[h!tbp]
-%   \centering
-%   \begin{minipage}[position][height][inner pos]{width}
-    
-%   \end{minipage}
-% \end{figure}
+\begin{figure}[h!tbp]
+  \centering
+  \begin{minipage}{0.45\linewidth}
+    \includegraphics[width=\linewidth]{Figures/BME280}
+  \end{minipage}
+  \begin{minipage}{0.45\linewidth}
+    \includegraphics[width=\linewidth]{Figures/MPU6050}
+  \end{minipage}
+  \rule{35em}{0.5pt}
+  \caption[BME280 and MPU6050 Figures]{
+    Resource:
+    BME280 from \href{https://www.circuits-diy.com/wp-content/uploads/2022/11/BME280-BMP280-Temperature-Humidity-and-Pressure-Sensor.jpg}{www.circuits-diy.com} and
+    MPU6050 from \href{https://user-images.githubusercontent.com/107638696/241324971-43b8fe88-447d-4c2d-9296-4b3aaa50f4ce.png}{gitcode.com/gh\_mirrors/mpu6050/mpu6050}
+  }
+  \label{fig:BME280-MPU6050}
+\end{figure}
 
-\href{https://cdn-shop.adafruit.com/970x728/2652-09.jpg}{www.adafruit.com/product/2652}
+A BME280 is a temperature humidity and pressure sensor
 
-\href{https://user-images.githubusercontent.com/107638696/241324971-43b8fe88-447d-4c2d-9296-4b3aaa50f4ce.png}{gitcode.com/gh\_mirrors/mpu6050/mpu6050}
-
+A MPU 6050 is a 
 \cite{MPU6050_datasheet}
 
 \subsection{Method}
