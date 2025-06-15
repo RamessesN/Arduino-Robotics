@@ -18,6 +18,8 @@
 \chapter{Experiments}
 \label{ch:experiments}
 
+%% TODO: four line mode
+
 \section{Light Seeking}
 
 \subsection{Theory and Technical Background}
@@ -114,6 +116,20 @@ if(Left < 1019 || Right < 1019) {
   stop();
 }
 \end{minted}
+
+The phototaxis module's circuit implementation is shown in \fref{fig:pcb-light}, designed using JLCPCB's EDA suite.
+
+\begin{figure}[h!tbp]
+  \centering
+  \includegraphics[width=0.6\linewidth]{Figures/jlc_light}
+  \rule{35em}{0.5pt}
+  \caption[\gls{pcb} Layout]{
+    A \gls{pcb} design for the light-seeking experiment, including
+    a symmetrical placement of two LDR sensors (LR1, LR2), and 
+    two motor drivers connections with PWM control traces.
+  }
+  \label{fig:pcb-light}
+\end{figure}
 
 \subsection{Results}
 
@@ -231,6 +247,19 @@ we mirror the outermost sensor data to artificially extend the linear region.
     Dashed lines show the mirrored extension for linearity enhancement.
   }
   \label{fig:v-x-graph}
+\end{figure}
+
+The phototaxis module's circuit implementation is shown in \fref{fig:pcb-line}, designed using JLCPCB's EDA suite.
+
+\begin{figure}[h!tbp]
+  \centering
+  \includegraphics[width=0.6\linewidth]{Figures/jlc_line}
+  \rule{35em}{0.5pt}
+  \caption[\gls{pcb} Layout]{
+    A \gls{pcb} design for the light-seeking experiment, mainly including
+    three TCRT5000 \gls{ir} sensors.
+  }
+  \label{fig:pcb-line}
 \end{figure}
 
 \subsection{Results}
@@ -365,6 +394,19 @@ Then proceed to \texttt{STEP\_DONE}.
 \textbf{\texttt{STEP\_DONE}}: 
 Complete full stop and restart the control loop.
 
+The phototaxis module's circuit implementation is shown in \fref{fig:pcb-obstacle}, designed using JLCPCB's EDA suite.
+
+\begin{figure}[h!tbp]
+  \centering
+  \includegraphics[width=0.6\linewidth]{Figures/jlc_obstacle}
+  \rule{35em}{0.5pt}
+  \caption[\gls{pcb} Layout]{
+    A \gls{pcb} design for the light-seeking experiment, mainly includes
+    an HC-SR04 ultrasonic sensor and a SG90 servo.
+  }
+  \label{fig:pcb-obstacle}
+\end{figure}
+
 \subsection{Results}
 
 The safety thresholds were empirically determined through iterative testing. The side clearance distance was set to 25\,cm to account for gradual distance reduction during lateral approach, while the frontal clearance used a more conservative 40\,cm threshold to ensure adequate reaction time for head-on obstacles. For turning maneuvers, a minimum 40\,cm clearance was required to execute 90° right turns safely.
@@ -385,6 +427,19 @@ each figure and each equation may reduce the number of words you use.
 Describe the technical procedures to collect the results.
 Add figures into this section, where
 each figure and each equation may reduce the number of words you use.
+
+The phototaxis module's circuit implementation is shown in \fref{fig:pcb-environment}, designed using JLCPCB's EDA suite.
+
+\begin{figure}[h!tbp]
+  \centering
+  \includegraphics[width=0.6\linewidth]{Figures/jlc_environment}
+  \rule{35em}{0.5pt}
+  \caption[\gls{pcb} Layout]{
+    A \gls{pcb} design for the light-seeking experiment, mainly includes
+    a BME280 sensor and a MPU6050 sensor.
+  }
+  \label{fig:pcb-environment}
+\end{figure}
 
 \subsection{Results}
 
