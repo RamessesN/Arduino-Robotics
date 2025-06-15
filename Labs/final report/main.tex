@@ -6,8 +6,12 @@
 \input{I-texes/I-config}
 \input{I-texes/I-info}
 \input{I-texes/I-glossary}
+\input{I-texes/I-packages-2} % some package need to be loaded last in preamble
 
 \begin{document}
+
+%% enable package ``minitoc''
+% \dominitoc
 
 \pagestyle{empty}
 \input{Preliminaries/titlepage}
@@ -17,14 +21,14 @@
 \input{Preliminaries/abstract}
 \clearpage
 {
-    \setstretch{1}
-    \hypersetup{linkcolor=black}
-    \tableofcontents
-    %% this is to include all acronym
-    %% You can do a sort of citation for acronym and include only the one you use,
-    %% Look at the glossary package for details.
-    \glsaddall
-    \printnoidxglossary[type=\acronymtype, title=Glossary] % optional
+  \setstretch{1}
+  \hypersetup{linkcolor=black}
+  \tableofcontents
+  %% this is to include all acronym
+  %% You can do a sort of citation for acronym and include only the one you use,
+  %% Look at the glossary package for details.
+  \glsaddall
+  \printnoidxglossary[type=\acronymtype, title=Glossary] % optional
 }
 \clearpage
 
@@ -36,7 +40,6 @@
 \subfile{Appendices/appendix}
 \clearpage
 
-%\stepcounter{chapter}
 \printbibliography[title={References}, heading=bibintoc, resetnumbers=true]
 %% sorted by alphabetical order, using author name
 \begin{refsection}

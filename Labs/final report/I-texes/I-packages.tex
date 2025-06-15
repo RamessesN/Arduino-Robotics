@@ -18,14 +18,15 @@
 \usepackage{mfirstuc}   % 首字母大写处理
 \usepackage{ragged2e}   % 改进的文本对齐
 \usepackage{setspace}   % spacing, sets line space, stretch
-\usepackage{subfiles}   % enable ``\subfile{}''
 \usepackage{tabularx}   % 自动调整宽度的表格
 \usepackage{titlesec}   % 自定义章节标题
 \usepackage{amsmath}    % 高级数学公式
 \usepackage{courier}    % 等宽字体
 \usepackage{fvextra}    % minted auto next line
-%% suggest, when using ``babel'' and biblatex; loaded after fvextra
-\usepackage{csquotes}
+%% must loaded after fvextra
+\usepackage{csquotes}   % suggest, when using ``babel'' and biblatex
+% \usepackage{minitoc}    % enable ``\minitoc''
+\usepackage{parskip}    % global ``\noindent'' and auto ``\parskip''
 \usepackage{slantsc}    % 斜体小型大写字母
 \usepackage{minted}     % 更现代的代码排版
 \usepackage{float}      % 改进的浮动体控制
