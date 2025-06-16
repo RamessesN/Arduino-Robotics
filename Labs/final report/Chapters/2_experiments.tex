@@ -28,6 +28,7 @@
 %% TODO: four line mode
 
 \section{Light Seeking}
+\label{sec:light-seeking}
 
 \subsection{Theory and Technical Background}
 
@@ -148,6 +149,7 @@ On the second attempt, it performed very well,
 scoring 29 out of 30, losing 1 point for requiring two attempts.
 
 \section{Line Following}
+\label{sec:line-following}
 
 \subsection{Theory and Technical Background}
 
@@ -286,6 +288,7 @@ The robot maintained a tracking speed of 0.3 m/s on curved paths and 0.5 m/s on 
 \end{figure}
 
 \section{Obstacle Avoidance}
+\label{sec:obstacle-avoidance}
 
 \subsection{Theory and Technical Background}
 
@@ -361,8 +364,6 @@ primarily from the left, front, and right.
 We mounted an SG90 servo motor on \gls{car}'s front, with an HC-SR04 ultrasonic sensor attached.
 This allows the sensor to rotate and scan a wider area.
 
-To ensure comprehensive 180$^\circ$ obstacle detection, we implemented a sensor fusion method combining frontal ultrasonic ranging (40\,cm threshold) and lateral infrared proximity sensing (25\,cm threshold). \fref{fig:safe-space} demonstrates the resulting safety envelope.
-
 \begin{figure}[h!tbp]
   \centering
   \includegraphics[width=0.6\linewidth]{Figures/safe_space}
@@ -372,6 +373,8 @@ To ensure comprehensive 180$^\circ$ obstacle detection, we implemented a sensor 
   }
   \label{fig:safe-space}
 \end{figure}
+
+To ensure comprehensive 180$^\circ$ obstacle detection, we implemented a sensor fusion method combining frontal ultrasonic ranging (40\,cm threshold) and lateral infrared proximity sensing (25\,cm threshold). \fref{fig:safe-space} demonstrates the resulting safety envelope.
 
 The SG90 servo rotates in 90-degree increments,
 performing a scanning motion at each position.
@@ -433,6 +436,7 @@ The safety thresholds were empirically determined through iterative testing. The
 Motion timing parameters were carefully calibrated, with each reverse segment lasting 100\,ms and right turns completing in 300\,ms, optimized for the gearbox motor's response characteristics. In final testing within a 3\,m $\times$ 3\,m arena, the \gls{car} demonstrated consistent performance.
 
 \section{Environment Sensing}
+\label{sec:environment-sensing}
 
 \subsection{Theory and Technical Background}
 
